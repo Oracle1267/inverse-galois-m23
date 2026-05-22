@@ -1,0 +1,23 @@
+{
+  "derivative_rejections": 0,
+  "enumerated_left_factor_triples": 708,
+  "modulus": 5,
+  "normalization_rejections": 0,
+  "search_options": {
+    "coprime_first": true,
+    "fixed_p2": null,
+    "fixed_p3": null,
+    "fixed_p4": null,
+    "max_left_factor_triples": 50,
+    "max_solutions": 3,
+    "require_coprime_left": true,
+    "require_derivative": true,
+    "require_nonzero_lambda": true,
+    "require_translation_normalized": true
+  },
+  "skipped_left_factor_triples": 0,
+  "solutions": [],
+  "stopped_reason": "max_left_factor_triples",
+  "tested_lambda_values": 200,
+  "tested_left_factor_triples": 50
+}

@@ -1,0 +1,26 @@
+{
+  "group_label": "23T5",
+  "group_name": "M23",
+  "degree": 23,
+  "order": 10200960,
+  "status": "seed data for local filtering; verify against GAP or Magma before proof use",
+  "source_urls": [
+    "https://www.lmfdb.org/GaloisGroup/23T5",
+    "https://galoisdb.math.uni-paderborn.de/",
+    "https://arxiv.org/abs/2202.08222"
+  ],
+  "cycle_types": [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1],
+    [3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1],
+    [4, 4, 4, 4, 2, 2, 1, 1, 1],
+    [5, 5, 5, 5, 1, 1, 1],
+    [6, 6, 3, 3, 2, 2, 1],
+    [7, 7, 7, 1, 1],
+    [8, 8, 4, 2, 1],
+    [11, 11, 1],
+    [14, 7, 2],
+    [15, 5, 3],
+    [23]
+  ]
+}

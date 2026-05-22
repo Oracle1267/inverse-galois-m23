@@ -1,0 +1,20 @@
+# Python environments and generated caches
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Test scratch space
+experiments/m23/tests/.tmp/
+
+# Local agent scratch state
+.superpowers/
+
+# Local editor and OS state
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Obsidian workspace state is machine-local; keep stable vault settings trackable.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json

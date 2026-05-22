@@ -1,0 +1,50 @@
+{
+  "status": "working notes for literature-guided M23 candidate generation",
+  "last_confirmed": "2026-05-22",
+  "sources": [
+    {
+      "label": "Hafner 2022",
+      "url": "https://arxiv.org/abs/2202.08222"
+    },
+    {
+      "label": "Elkies 2013",
+      "url": "https://msp.org/obs/2013/1-1/obs-v1-n1-p18-s.pdf"
+    }
+  ],
+  "hafner_class_vectors": {
+    "quadratic_field_realizations": [
+      {
+        "class_vector": ["14A", "2A", "2A", "2A"],
+        "base_field": "Q(sqrt(-7))(v,t)"
+      },
+      {
+        "class_vector": ["15A", "2A", "2A", "2A"],
+        "base_field": "Q(sqrt(-15))(v,t)"
+      }
+    ],
+    "symmetric_length_4_candidates": [
+      ["3A", "3A", "3A", "3A"],
+      ["4A", "4A", "4A", "4A"],
+      ["5A", "5A", "5A", "5A"],
+      ["6A", "6A", "6A", "6A"],
+      ["8A", "8A", "8A", "8A"]
+    ]
+  },
+  "elkies_complex_polynomial_shape": {
+    "branch_orders": [23, 2, 4],
+    "cycle_types": [
+      [23],
+      [2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1],
+      [4, 4, 4, 4, 2, 2, 1, 1, 1]
+    ],
+    "identity": "P2^2 * P3 * P4^4 = P7 * P8^2 + lambda",
+    "factor_degrees": {
+      "P2": 2,
+      "P3": 3,
+      "P4": 4,
+      "P7": 7,
+      "P8": 8
+    },
+    "recommended_experiment": "solve the identity modulo small primes before attempting p-adic lifting or rational reconstruction"
+  }
+}
