@@ -174,6 +174,23 @@ def test_search_elkies_identity_mod_prime_can_enumerate_coprime_triples_first():
     assert result["tested_lambda_values"] == 50
 
 
+def test_search_elkies_identity_mod_prime_can_generate_normalized_triples_first():
+    result = search_elkies_identity_mod_prime(
+        modulus=5,
+        fixed_p2=(1, 0),
+        fixed_p4=(0, 0, 0, 0),
+        max_left_factor_triples=3,
+        max_solutions=0,
+        require_translation_normalized=True,
+        normalized_first=True,
+    )
+
+    assert result["search_options"]["normalized_first"] is True
+    assert result["tested_left_factor_triples"] == 3
+    assert result["normalization_rejections"] == 0
+    assert result["tested_lambda_values"] == 15
+
+
 def test_render_belyi_search_markdown_includes_options_and_solutions():
     result = {
         "modulus": 2,

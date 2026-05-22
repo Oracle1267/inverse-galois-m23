@@ -119,6 +119,35 @@ def test_solve_belyi_modp_cli_accepts_coprime_first_flag():
     assert report["skipped_left_factor_triples"] == 0
 
 
+def test_solve_belyi_modp_cli_accepts_normalized_first_flag():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "5",
+            "--fixed-p2",
+            "1,0",
+            "--fixed-p4",
+            "0,0,0,0",
+            "--max-left-factor-triples",
+            "3",
+            "--max-solutions",
+            "0",
+            "--require-translation-normalized",
+            "--normalized-first",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    report = json.loads(result.stdout)
+    assert report["search_options"]["normalized_first"] is True
+    assert report["normalization_rejections"] == 0
+    assert report["tested_lambda_values"] == 15
+
+
 def test_solve_belyi_modp_cli_writes_json_and_markdown_reports():
     json_path = local_temp_path("belyi-report.json")
     markdown_path = local_temp_path("belyi-report.md")

@@ -70,6 +70,24 @@ def _coefficient_options(degree: int, modulus: int, fixed: Iterable[int] | None)
     return [tuple(items) for items in product(range(modulus), repeat=degree)]
 
 
+def _translation_normalized_p3_options(
+    modulus: int,
+    p2_coeffs: tuple[int, ...],
+    p4_coeffs: tuple[int, ...],
+    fixed_p3: Iterable[int] | None,
+) -> list[tuple[int, ...]]:
+    required_x2_coefficient = (-2 * p2_coeffs[0] - 4 * p4_coeffs[0]) % modulus
+    if fixed_p3 is not None:
+        coeffs = tuple(int(item) % modulus for item in fixed_p3)
+        if len(coeffs) != 3:
+            raise ValueError("expected 3 fixed coefficients")
+        return [coeffs] if coeffs[0] == required_x2_coefficient else []
+    return [
+        (required_x2_coefficient, second, third)
+        for second, third in product(range(modulus), repeat=2)
+    ]
+
+
 def _monic_divisors_from_factorization(factors: list[tuple[object, int]], modulus: int) -> Iterator[Poly]:
     divisors = [Poly(1, x, modulus=modulus)]
     for factor_expr, multiplicity in factors:
@@ -172,6 +190,7 @@ def search_elkies_identity_mod_prime(
     require_derivative: bool = False,
     require_translation_normalized: bool = False,
     coprime_first: bool = False,
+    normalized_first: bool = False,
     fixed_p2: Iterable[int] | None = None,
     fixed_p3: Iterable[int] | None = None,
     fixed_p4: Iterable[int] | None = None,
@@ -197,6 +216,7 @@ def search_elkies_identity_mod_prime(
         "require_derivative": require_derivative,
         "require_translation_normalized": require_translation_normalized,
         "coprime_first": coprime_first,
+        "normalized_first": normalized_first,
         "fixed_p2": list(fixed_p2) if fixed_p2 is not None else None,
         "fixed_p3": list(fixed_p3) if fixed_p3 is not None else None,
         "fixed_p4": list(fixed_p4) if fixed_p4 is not None else None,
@@ -224,68 +244,86 @@ def search_elkies_identity_mod_prime(
     derivative_rejections = 0
     solutions: list[dict] = []
 
-    for p2_coeffs in p2_options:
+    if normalized_first and require_translation_normalized:
+        left_factor_coefficient_triples = (
+            (p2_coeffs, p3_coeffs, p4_coeffs)
+            for p2_coeffs in p2_options
+            for p4_coeffs in p4_options
+            for p3_coeffs in _translation_normalized_p3_options(
+                modulus=modulus,
+                p2_coeffs=p2_coeffs,
+                p4_coeffs=p4_coeffs,
+                fixed_p3=fixed_p3,
+            )
+        )
+    else:
+        left_factor_coefficient_triples = (
+            (p2_coeffs, p3_coeffs, p4_coeffs)
+            for p2_coeffs in p2_options
+            for p3_coeffs in p3_options
+            for p4_coeffs in p4_options
+        )
+
+    for p2_coeffs, p3_coeffs, p4_coeffs in left_factor_coefficient_triples:
         p2 = monic_polynomial(2, p2_coeffs, modulus)
-        for p3_coeffs in p3_options:
-            p3 = monic_polynomial(3, p3_coeffs, modulus)
-            for p4_coeffs in p4_options:
-                enumerated_left += 1
-                p4 = monic_polynomial(4, p4_coeffs, modulus)
-                left_is_coprime = _left_factors_are_coprime(p2, p3, p4)
-                if coprime_first and require_coprime_left and not left_is_coprime:
-                    continue
-                if max_left_factor_triples is not None and tested_left >= max_left_factor_triples:
-                    enumerated_left -= 1
-                    return build_result("max_left_factor_triples")
-                tested_left += 1
-                placeholder = ElkiesIdentityFactors(
+        p3 = monic_polynomial(3, p3_coeffs, modulus)
+        enumerated_left += 1
+        p4 = monic_polynomial(4, p4_coeffs, modulus)
+        left_is_coprime = _left_factors_are_coprime(p2, p3, p4)
+        if coprime_first and require_coprime_left and not left_is_coprime:
+            continue
+        if max_left_factor_triples is not None and tested_left >= max_left_factor_triples:
+            enumerated_left -= 1
+            return build_result("max_left_factor_triples")
+        tested_left += 1
+        placeholder = ElkiesIdentityFactors(
+            p2=p2_coeffs,
+            p3=p3_coeffs,
+            p4=p4_coeffs,
+            p7=(0,) * 7,
+            p8=(0,) * 8,
+            lam=0,
+        )
+        if require_translation_normalized and not is_elkies_translation_normalized(
+            placeholder, modulus=modulus
+        ):
+            normalization_rejections += 1
+            continue
+        if require_coprime_left and not left_is_coprime:
+            skipped_left += 1
+            continue
+        left = p2**2 * p3 * p4**4
+        for lam in lambda_values:
+            tested_lambdas += 1
+            if max_solutions == 0:
+                continue
+            left_minus_lambda = Poly(left.as_expr() - lam, x, modulus=modulus)
+            for right in derive_right_factorizations(left_minus_lambda, modulus=modulus):
+                factors = ElkiesIdentityFactors(
                     p2=p2_coeffs,
                     p3=p3_coeffs,
                     p4=p4_coeffs,
-                    p7=(0,) * 7,
-                    p8=(0,) * 8,
-                    lam=0,
+                    p7=right["p7"],
+                    p8=right["p8"],
+                    lam=lam,
                 )
-                if require_translation_normalized and not is_elkies_translation_normalized(
-                    placeholder, modulus=modulus
-                ):
-                    normalization_rejections += 1
+                if not is_elkies_identity_solution(factors, modulus=modulus):
                     continue
-                if require_coprime_left and not left_is_coprime:
-                    skipped_left += 1
+                if require_derivative and not is_elkies_derivative_solution(factors, modulus=modulus):
+                    derivative_rejections += 1
                     continue
-                left = p2**2 * p3 * p4**4
-                for lam in lambda_values:
-                    tested_lambdas += 1
-                    if max_solutions == 0:
-                        continue
-                    left_minus_lambda = Poly(left.as_expr() - lam, x, modulus=modulus)
-                    for right in derive_right_factorizations(left_minus_lambda, modulus=modulus):
-                        factors = ElkiesIdentityFactors(
-                            p2=p2_coeffs,
-                            p3=p3_coeffs,
-                            p4=p4_coeffs,
-                            p7=right["p7"],
-                            p8=right["p8"],
-                            lam=lam,
-                        )
-                        if not is_elkies_identity_solution(factors, modulus=modulus):
-                            continue
-                        if require_derivative and not is_elkies_derivative_solution(factors, modulus=modulus):
-                            derivative_rejections += 1
-                            continue
-                        solutions.append(
-                            {
-                                "p2": list(p2_coeffs),
-                                "p3": list(p3_coeffs),
-                                "p4": list(p4_coeffs),
-                                "p7": list(right["p7"]),
-                                "p8": list(right["p8"]),
-                                "lam": lam,
-                            }
-                        )
-                        if len(solutions) >= max_solutions:
-                            return build_result("max_solutions")
+                solutions.append(
+                    {
+                        "p2": list(p2_coeffs),
+                        "p3": list(p3_coeffs),
+                        "p4": list(p4_coeffs),
+                        "p7": list(right["p7"]),
+                        "p8": list(right["p8"]),
+                        "lam": lam,
+                    }
+                )
+                if len(solutions) >= max_solutions:
+                    return build_result("max_solutions")
 
     return build_result("exhausted")
 

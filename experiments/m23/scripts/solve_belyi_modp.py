@@ -28,6 +28,7 @@ def main() -> int:
     parser.add_argument("--require-derivative", action="store_true")
     parser.add_argument("--require-translation-normalized", action="store_true")
     parser.add_argument("--coprime-first", action="store_true")
+    parser.add_argument("--normalized-first", action="store_true")
     parser.add_argument("--fixed-p2", type=parse_coefficients)
     parser.add_argument("--fixed-p3", type=parse_coefficients)
     parser.add_argument("--fixed-p4", type=parse_coefficients)
@@ -45,6 +46,7 @@ def main() -> int:
         require_derivative=args.require_derivative,
         require_translation_normalized=args.require_translation_normalized,
         coprime_first=args.coprime_first,
+        normalized_first=args.normalized_first,
         fixed_p2=args.fixed_p2,
         fixed_p3=args.fixed_p3,
         fixed_p4=args.fixed_p4,

@@ -50,6 +50,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-literature-constraint-map]] - literature-derived constraints for the next M23 candidate generator.
 - [[wiki/m23-elkies-finite-field-solver]] - bounded finite-field search scaffold for the Elkies-style M23 identity.
 - [[wiki/m23-belyi-gf5-prefix-report]] - durable interpretation of the first constrained `GF(5)` Belyi prefix run.
+- [[wiki/m23-belyi-gf5-normalized-500-report]] - durable interpretation of the larger normalized-first `GF(5)` Belyi run.
 
 ## Active Project
 
@@ -120,6 +121,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-22-m23-search-loop]]
 - [[logs/ingest/2026-05-22-m23-literature-constraints]]
 - [[logs/ingest/2026-05-22-git-initialization]]
+- [[logs/ingest/2026-05-22-m23-belyi-normalized-search]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 
