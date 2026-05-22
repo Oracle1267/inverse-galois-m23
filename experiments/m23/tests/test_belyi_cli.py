@@ -148,6 +148,97 @@ def test_solve_belyi_modp_cli_accepts_normalized_first_flag():
     assert report["tested_lambda_values"] == 15
 
 
+def test_solve_belyi_modp_cli_accepts_resume_offset():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "5",
+            "--fixed-p2",
+            "1,0",
+            "--fixed-p4",
+            "0,0,0,0",
+            "--start-left-factor-triples",
+            "3",
+            "--max-left-factor-triples",
+            "2",
+            "--max-solutions",
+            "0",
+            "--require-translation-normalized",
+            "--normalized-first",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    report = json.loads(result.stdout)
+    assert report["search_options"]["start_left_factor_triples"] == 3
+    assert report["skipped_start_left_factor_triples"] == 3
+    assert report["tested_left_factor_triples"] == 2
+    assert report["tested_lambda_values"] == 10
+
+
+def test_solve_belyi_modp_cli_accepts_derivative_first_flag():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "2",
+            "--fixed-p2",
+            "0,0",
+            "--fixed-p3",
+            "0,0,0",
+            "--fixed-p4",
+            "0,0,0,0",
+            "--max-solutions",
+            "1",
+            "--require-derivative",
+            "--derivative-first",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    report = json.loads(result.stdout)
+    assert report["search_options"]["derivative_first"] is True
+    assert len(report["solutions"]) == 1
+    assert report["derivative_prefilter_rejections"] == 0
+
+
+def test_solve_belyi_modp_cli_accepts_derive_lambda_flag():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "2",
+            "--fixed-p2",
+            "0,0",
+            "--fixed-p3",
+            "0,0,0",
+            "--fixed-p4",
+            "0,0,0,0",
+            "--max-solutions",
+            "1",
+            "--require-derivative",
+            "--derivative-first",
+            "--derive-lambda",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    report = json.loads(result.stdout)
+    assert report["search_options"]["derive_lambda"] is True
+    assert report["tested_lambda_values"] == 1
+    assert report["solutions"][0]["lam"] == 0
+
+
 def test_solve_belyi_modp_cli_writes_json_and_markdown_reports():
     json_path = local_temp_path("belyi-report.json")
     markdown_path = local_temp_path("belyi-report.md")

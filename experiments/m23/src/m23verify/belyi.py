@@ -181,16 +181,41 @@ def derive_right_factorizations(left_minus_lambda: Poly, modulus: int) -> Iterat
             }
 
 
+def _derive_p8_from_derivative(p2: Poly, p4: Poly, left: Poly, modulus: int) -> tuple[int, ...] | None:
+    denominator = Poly(((23 % modulus) * p2 * p4**3).as_expr(), x, modulus=modulus)
+    p8, remainder = divmod(left.diff(), denominator)
+    if not remainder.is_zero:
+        return None
+    if p8.degree() != 8 or int(p8.LC()) % modulus != 1:
+        return None
+    return _nonleading_coefficients(p8, degree=8, modulus=modulus)
+
+
+def _right_factorization_with_fixed_p8(
+    left_minus_lambda: Poly, p8_coeffs: tuple[int, ...], modulus: int
+) -> Iterator[dict[str, tuple[int, ...]]]:
+    p8 = monic_polynomial(8, p8_coeffs, modulus)
+    p7, remainder = divmod(left_minus_lambda, p8 * p8)
+    if remainder.is_zero and p7.degree() == 7 and int(p7.LC()) % modulus == 1:
+        yield {
+            "p7": _nonleading_coefficients(p7, degree=7, modulus=modulus),
+            "p8": p8_coeffs,
+        }
+
+
 def search_elkies_identity_mod_prime(
     modulus: int,
     max_solutions: int = 10,
     max_left_factor_triples: int | None = None,
+    start_left_factor_triples: int = 0,
     require_coprime_left: bool = False,
     require_nonzero_lambda: bool = False,
     require_derivative: bool = False,
     require_translation_normalized: bool = False,
     coprime_first: bool = False,
     normalized_first: bool = False,
+    derivative_first: bool = False,
+    derive_lambda: bool = False,
     fixed_p2: Iterable[int] | None = None,
     fixed_p3: Iterable[int] | None = None,
     fixed_p4: Iterable[int] | None = None,
@@ -199,6 +224,12 @@ def search_elkies_identity_mod_prime(
         raise ValueError(f"modulus must be prime: {modulus}")
     if max_solutions < 0:
         raise ValueError("max_solutions must be nonnegative")
+    if start_left_factor_triples < 0:
+        raise ValueError("start_left_factor_triples must be nonnegative")
+    if derivative_first and not require_derivative:
+        raise ValueError("derivative_first requires require_derivative")
+    if derive_lambda and not derivative_first:
+        raise ValueError("derive_lambda requires derivative_first")
     if require_derivative and modulus == 23:
         raise ValueError("derivative constraint is singular in characteristic 23")
     if require_translation_normalized and modulus == 23:
@@ -211,12 +242,15 @@ def search_elkies_identity_mod_prime(
     search_options = {
         "max_solutions": max_solutions,
         "max_left_factor_triples": max_left_factor_triples,
+        "start_left_factor_triples": start_left_factor_triples,
         "require_coprime_left": require_coprime_left,
         "require_nonzero_lambda": require_nonzero_lambda,
         "require_derivative": require_derivative,
         "require_translation_normalized": require_translation_normalized,
         "coprime_first": coprime_first,
         "normalized_first": normalized_first,
+        "derivative_first": derivative_first,
+        "derive_lambda": derive_lambda,
         "fixed_p2": list(fixed_p2) if fixed_p2 is not None else None,
         "fixed_p3": list(fixed_p3) if fixed_p3 is not None else None,
         "fixed_p4": list(fixed_p4) if fixed_p4 is not None else None,
@@ -228,20 +262,26 @@ def search_elkies_identity_mod_prime(
             "search_options": search_options,
             "enumerated_left_factor_triples": enumerated_left,
             "tested_left_factor_triples": tested_left,
+            "skipped_start_left_factor_triples": skipped_start_left,
             "skipped_left_factor_triples": skipped_left,
             "tested_lambda_values": tested_lambdas,
             "normalization_rejections": normalization_rejections,
+            "derivative_prefilter_rejections": derivative_prefilter_rejections,
             "derivative_rejections": derivative_rejections,
+            "lambda_derivation_rejections": lambda_derivation_rejections,
             "solutions": solutions,
             "stopped_reason": stopped_reason,
         }
 
     tested_left = 0
     enumerated_left = 0
+    skipped_start_left = 0
     skipped_left = 0
     tested_lambdas = 0
     normalization_rejections = 0
+    derivative_prefilter_rejections = 0
     derivative_rejections = 0
+    lambda_derivation_rejections = 0
     solutions: list[dict] = []
 
     if normalized_first and require_translation_normalized:
@@ -264,6 +304,43 @@ def search_elkies_identity_mod_prime(
             for p4_coeffs in p4_options
         )
 
+    def record_solution(
+        p2_coeffs: tuple[int, ...],
+        p3_coeffs: tuple[int, ...],
+        p4_coeffs: tuple[int, ...],
+        right: dict[str, tuple[int, ...]],
+        lam: int,
+    ) -> bool:
+        nonlocal derivative_rejections
+        factors = ElkiesIdentityFactors(
+            p2=p2_coeffs,
+            p3=p3_coeffs,
+            p4=p4_coeffs,
+            p7=right["p7"],
+            p8=right["p8"],
+            lam=lam,
+        )
+        if not is_elkies_identity_solution(factors, modulus=modulus):
+            return False
+        if (
+            require_derivative
+            and not derivative_first
+            and not is_elkies_derivative_solution(factors, modulus=modulus)
+        ):
+            derivative_rejections += 1
+            return False
+        solutions.append(
+            {
+                "p2": list(p2_coeffs),
+                "p3": list(p3_coeffs),
+                "p4": list(p4_coeffs),
+                "p7": list(right["p7"]),
+                "p8": list(right["p8"]),
+                "lam": lam,
+            }
+        )
+        return len(solutions) >= max_solutions
+
     for p2_coeffs, p3_coeffs, p4_coeffs in left_factor_coefficient_triples:
         p2 = monic_polynomial(2, p2_coeffs, modulus)
         p3 = monic_polynomial(3, p3_coeffs, modulus)
@@ -271,6 +348,9 @@ def search_elkies_identity_mod_prime(
         p4 = monic_polynomial(4, p4_coeffs, modulus)
         left_is_coprime = _left_factors_are_coprime(p2, p3, p4)
         if coprime_first and require_coprime_left and not left_is_coprime:
+            continue
+        if skipped_start_left < start_left_factor_triples:
+            skipped_start_left += 1
             continue
         if max_left_factor_triples is not None and tested_left >= max_left_factor_triples:
             enumerated_left -= 1
@@ -293,36 +373,51 @@ def search_elkies_identity_mod_prime(
             skipped_left += 1
             continue
         left = p2**2 * p3 * p4**4
+        derivative_first_p8 = None
+        if derivative_first:
+            derivative_first_p8 = _derive_p8_from_derivative(p2, p4, left, modulus=modulus)
+            if derivative_first_p8 is None:
+                derivative_prefilter_rejections += 1
+                continue
+        if derive_lambda:
+            tested_lambdas += 1
+            if max_solutions == 0:
+                continue
+            p8 = monic_polynomial(8, derivative_first_p8, modulus)
+            p7, remainder = divmod(left, p8 * p8)
+            if remainder.is_zero:
+                lam = 0
+            elif remainder.degree() == 0:
+                lam = int(remainder.TC()) % modulus
+            else:
+                lambda_derivation_rejections += 1
+                continue
+            if require_nonzero_lambda and lam == 0:
+                lambda_derivation_rejections += 1
+                continue
+            if p7.degree() != 7 or int(p7.LC()) % modulus != 1:
+                lambda_derivation_rejections += 1
+                continue
+            right = {
+                "p7": _nonleading_coefficients(p7, degree=7, modulus=modulus),
+                "p8": derivative_first_p8,
+            }
+            if record_solution(p2_coeffs, p3_coeffs, p4_coeffs, right, lam):
+                return build_result("max_solutions")
+            continue
         for lam in lambda_values:
             tested_lambdas += 1
             if max_solutions == 0:
                 continue
             left_minus_lambda = Poly(left.as_expr() - lam, x, modulus=modulus)
-            for right in derive_right_factorizations(left_minus_lambda, modulus=modulus):
-                factors = ElkiesIdentityFactors(
-                    p2=p2_coeffs,
-                    p3=p3_coeffs,
-                    p4=p4_coeffs,
-                    p7=right["p7"],
-                    p8=right["p8"],
-                    lam=lam,
+            if derivative_first_p8 is None:
+                right_factorizations = derive_right_factorizations(left_minus_lambda, modulus=modulus)
+            else:
+                right_factorizations = _right_factorization_with_fixed_p8(
+                    left_minus_lambda, derivative_first_p8, modulus=modulus
                 )
-                if not is_elkies_identity_solution(factors, modulus=modulus):
-                    continue
-                if require_derivative and not is_elkies_derivative_solution(factors, modulus=modulus):
-                    derivative_rejections += 1
-                    continue
-                solutions.append(
-                    {
-                        "p2": list(p2_coeffs),
-                        "p3": list(p3_coeffs),
-                        "p4": list(p4_coeffs),
-                        "p7": list(right["p7"]),
-                        "p8": list(right["p8"]),
-                        "lam": lam,
-                    }
-                )
-                if len(solutions) >= max_solutions:
+            for right in right_factorizations:
+                if record_solution(p2_coeffs, p3_coeffs, p4_coeffs, right, lam):
                     return build_result("max_solutions")
 
     return build_result("exhausted")
@@ -345,10 +440,13 @@ def render_belyi_search_markdown(result: dict, title: str = "M23 Belyi Finite-Fi
             [
                 ["enumerated_left_factor_triples", str(result.get("enumerated_left_factor_triples", 0))],
                 ["tested_left_factor_triples", str(result["tested_left_factor_triples"])],
+                ["skipped_start_left_factor_triples", str(result.get("skipped_start_left_factor_triples", 0))],
                 ["skipped_left_factor_triples", str(result["skipped_left_factor_triples"])],
                 ["tested_lambda_values", str(result["tested_lambda_values"])],
                 ["normalization_rejections", str(result["normalization_rejections"])],
+                ["derivative_prefilter_rejections", str(result.get("derivative_prefilter_rejections", 0))],
                 ["derivative_rejections", str(result["derivative_rejections"])],
+                ["lambda_derivation_rejections", str(result.get("lambda_derivation_rejections", 0))],
             ],
         )
     )

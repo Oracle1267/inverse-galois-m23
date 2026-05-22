@@ -23,12 +23,15 @@ def main() -> int:
     parser.add_argument("--modulus", type=int, required=True)
     parser.add_argument("--max-solutions", type=int, default=10)
     parser.add_argument("--max-left-factor-triples", type=int)
+    parser.add_argument("--start-left-factor-triples", type=int, default=0)
     parser.add_argument("--require-coprime-left", action="store_true")
     parser.add_argument("--require-nonzero-lambda", action="store_true")
     parser.add_argument("--require-derivative", action="store_true")
     parser.add_argument("--require-translation-normalized", action="store_true")
     parser.add_argument("--coprime-first", action="store_true")
     parser.add_argument("--normalized-first", action="store_true")
+    parser.add_argument("--derivative-first", action="store_true")
+    parser.add_argument("--derive-lambda", action="store_true")
     parser.add_argument("--fixed-p2", type=parse_coefficients)
     parser.add_argument("--fixed-p3", type=parse_coefficients)
     parser.add_argument("--fixed-p4", type=parse_coefficients)
@@ -41,12 +44,15 @@ def main() -> int:
         modulus=args.modulus,
         max_solutions=args.max_solutions,
         max_left_factor_triples=args.max_left_factor_triples,
+        start_left_factor_triples=args.start_left_factor_triples,
         require_coprime_left=args.require_coprime_left,
         require_nonzero_lambda=args.require_nonzero_lambda,
         require_derivative=args.require_derivative,
         require_translation_normalized=args.require_translation_normalized,
         coprime_first=args.coprime_first,
         normalized_first=args.normalized_first,
+        derivative_first=args.derivative_first,
+        derive_lambda=args.derive_lambda,
         fixed_p2=args.fixed_p2,
         fixed_p3=args.fixed_p3,
         fixed_p4=args.fixed_p4,

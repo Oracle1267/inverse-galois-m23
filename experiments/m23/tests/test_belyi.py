@@ -191,6 +191,118 @@ def test_search_elkies_identity_mod_prime_can_generate_normalized_triples_first(
     assert result["tested_lambda_values"] == 15
 
 
+def test_search_elkies_identity_mod_prime_can_resume_after_counted_left_triples():
+    result = search_elkies_identity_mod_prime(
+        modulus=5,
+        fixed_p2=(1, 0),
+        fixed_p4=(0, 0, 0, 0),
+        start_left_factor_triples=3,
+        max_left_factor_triples=2,
+        max_solutions=0,
+        require_translation_normalized=True,
+        normalized_first=True,
+    )
+
+    assert result["search_options"]["start_left_factor_triples"] == 3
+    assert result["skipped_start_left_factor_triples"] == 3
+    assert result["tested_left_factor_triples"] == 2
+    assert result["tested_lambda_values"] == 10
+
+
+def test_search_elkies_identity_mod_prime_rejects_negative_resume_offset():
+    with pytest.raises(ValueError, match="start_left_factor_triples must be nonnegative"):
+        search_elkies_identity_mod_prime(
+            modulus=5,
+            start_left_factor_triples=-1,
+        )
+
+
+def test_search_elkies_identity_mod_prime_derivative_first_finds_fixed_solution():
+    result = search_elkies_identity_mod_prime(
+        modulus=2,
+        fixed_p2=(0, 0),
+        fixed_p3=(0, 0, 0),
+        fixed_p4=(0, 0, 0, 0),
+        max_solutions=1,
+        require_derivative=True,
+        derivative_first=True,
+    )
+
+    assert result["search_options"]["derivative_first"] is True
+    assert result["solutions"][0]["p8"] == [0, 0, 0, 0, 0, 0, 0, 0]
+    assert result["derivative_prefilter_rejections"] == 0
+
+
+def test_search_elkies_identity_mod_prime_derivative_first_avoids_late_derivative_rejections():
+    result = search_elkies_identity_mod_prime(
+        modulus=2,
+        fixed_p2=(0, 0),
+        fixed_p3=(0, 0, 0),
+        fixed_p4=(0, 0, 0, 1),
+        max_solutions=10,
+        require_derivative=True,
+        derivative_first=True,
+    )
+
+    assert result["solutions"] == []
+    assert result["tested_lambda_values"] == 2
+    assert result["derivative_prefilter_rejections"] == 0
+    assert result["derivative_rejections"] == 0
+
+
+def test_search_elkies_identity_mod_prime_rejects_derivative_first_without_derivative_constraint():
+    with pytest.raises(ValueError, match="derivative_first requires require_derivative"):
+        search_elkies_identity_mod_prime(
+            modulus=5,
+            require_derivative=False,
+            derivative_first=True,
+        )
+
+
+def test_search_elkies_identity_mod_prime_derive_lambda_finds_fixed_solution():
+    result = search_elkies_identity_mod_prime(
+        modulus=2,
+        fixed_p2=(0, 0),
+        fixed_p3=(0, 0, 0),
+        fixed_p4=(0, 0, 0, 0),
+        max_solutions=1,
+        require_derivative=True,
+        derivative_first=True,
+        derive_lambda=True,
+    )
+
+    assert result["search_options"]["derive_lambda"] is True
+    assert result["tested_lambda_values"] == 1
+    assert result["solutions"][0]["lam"] == 0
+
+
+def test_search_elkies_identity_mod_prime_derive_lambda_rejects_nonconstant_remainder():
+    result = search_elkies_identity_mod_prime(
+        modulus=2,
+        fixed_p2=(0, 0),
+        fixed_p3=(0, 0, 0),
+        fixed_p4=(0, 0, 0, 1),
+        max_solutions=10,
+        require_derivative=True,
+        derivative_first=True,
+        derive_lambda=True,
+    )
+
+    assert result["solutions"] == []
+    assert result["tested_lambda_values"] == 1
+    assert result["lambda_derivation_rejections"] == 1
+
+
+def test_search_elkies_identity_mod_prime_rejects_derive_lambda_without_derivative_first():
+    with pytest.raises(ValueError, match="derive_lambda requires derivative_first"):
+        search_elkies_identity_mod_prime(
+            modulus=5,
+            require_derivative=True,
+            derivative_first=False,
+            derive_lambda=True,
+        )
+
+
 def test_render_belyi_search_markdown_includes_options_and_solutions():
     result = {
         "modulus": 2,

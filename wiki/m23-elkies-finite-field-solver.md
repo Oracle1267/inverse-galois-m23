@@ -71,12 +71,19 @@ Second-field normalized-first search:
 .\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 7 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.md --title "M23 Belyi GF(7) Normalized 500 Search"
 ```
 
+Resumed search with derivative and lambda derivation:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 20000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.md --title "M23 Belyi GF(5) Normalized 20000-24000 Search"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
 - The constrained prefix search over `GF(2)` with coprime left factors, nonzero `lambda`, and derivative compatibility found no solutions in the first 20 left-factor triples.
 - A constrained prefix search over `GF(5)` with translation normalization, coprime left factors, nonzero `lambda`, derivative compatibility, and `--coprime-first` found no solutions after internally enumerating 708 raw triples, testing 50 coprime triples, and scanning 200 lambda values.
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
+- The resumed `GF(5)` search has covered the contiguous interval from 0 through 24,000 tested triples with no modular solutions.
 - The normalized-first `GF(7)` run found no solutions after generating 827 normalized triples, testing 500 coprime triples, and scanning 3,000 lambda values.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
@@ -87,6 +94,7 @@ Second-field normalized-first search:
 - [[wiki/m23-belyi-gf5-prefix-report]] interprets that run as a bounded negative result and a reporting-pipeline check.
 - [[experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500]] records the larger normalized-first `GF(5)` run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] interprets the larger run as the current finite-field search frontier.
+- [[wiki/m23-belyi-gf5-contiguous-24000-report]] records the current contiguous `GF(5)` coverage.
 - [[experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500]] records the same normalized-first search over `GF(7)`.
 - [[wiki/m23-belyi-gf7-normalized-500-report]] compares the second-field run with the `GF(5)` frontier.
 
@@ -107,6 +115,12 @@ Away from characteristic 23, a monic degree-23 polynomial can be translated to e
 In a fixed `GF(5)` sample with `P2 = x^2 + x`, the normalization flag rejected the factor triple before any lambda values were tested.
 
 The CLI flag `--normalized-first` uses the coefficient relation `2*a(P2) + c(P3) + 4*f(P4) = 0 mod p` to derive the leading non-monic coefficient of `P3` when translation normalization is required. This makes the prefix budget count generated normalized triples instead of raw triples that are later rejected.
+
+## Derivative and Lambda Derivation
+
+The CLI flag `--derivative-first` derives `P8` from the derivative identity before checking the full Belyi identity. The CLI flag `--derive-lambda` then derives lambda from the remainder of `left` modulo `P8^2`. Together, these flags preserve the same mathematical constraints while avoiding repeated square-divisor factorization and repeated lambda scans.
+
+The `--start-left-factor-triples` flag makes these searches resumable by skipping a counted prefix before applying the current batch budget.
 
 ## Enumeration Order
 

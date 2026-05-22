@@ -84,6 +84,12 @@ Run the same normalized search over a second finite field:
 .\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 7 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.md --title "M23 Belyi GF(7) Normalized 500 Search"
 ```
 
+Resume a later normalized `GF(5)` batch with derivative and lambda derivation enabled:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 20000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.md --title "M23 Belyi GF(5) Normalized 20000-24000 Search"
+```
+
 Run tests:
 
 ```powershell
