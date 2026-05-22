@@ -22,6 +22,10 @@ relationships:
     type: "related-to"
     confidence: 0.86
     note: "Extends the earlier 50-triple GF(5) prefix run with direct normalization."
+  - target: "[[wiki/m23-belyi-gf7-normalized-500-report]]"
+    type: "related-to"
+    confidence: 0.86
+    note: "Provides the first same-size comparison over a second finite field."
 supersedes: []
 superseded_by: []
 review_after: 2026-06-22
@@ -46,4 +50,4 @@ This is a bounded negative result in `GF(5)`. It does not weaken the Elkies-styl
 
 The operational improvement is meaningful: the same 50 tested-triple prefix previously required 708 raw enumerated triples, while normalized-first generation reached 50 tested triples after 88 generated triples. The 500-triple run extends that improved mode by an order of magnitude.
 
-The next useful branch is to compare behavior in another small finite field or encode additional branch-cycle restrictions before scaling the search volume.
+The next useful branch is to compare behavior across more small finite fields or encode additional branch-cycle restrictions before scaling the search volume.

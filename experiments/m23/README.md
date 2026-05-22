@@ -78,6 +78,12 @@ Write the normalized search to JSON and Markdown artifacts:
 .\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500.md --title "M23 Belyi GF(5) Normalized 500 Search"
 ```
 
+Run the same normalized search over a second finite field:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 7 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.md --title "M23 Belyi GF(7) Normalized 500 Search"
+```
+
 Run tests:
 
 ```powershell

@@ -65,12 +65,19 @@ Normalized-first report-producing search:
 .\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500.md --title "M23 Belyi GF(5) Normalized 500 Search"
 ```
 
+Second-field normalized-first search:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 7 --max-left-factor-triples 500 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500.md --title "M23 Belyi GF(7) Normalized 500 Search"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
 - The constrained prefix search over `GF(2)` with coprime left factors, nonzero `lambda`, and derivative compatibility found no solutions in the first 20 left-factor triples.
 - A constrained prefix search over `GF(5)` with translation normalization, coprime left factors, nonzero `lambda`, derivative compatibility, and `--coprime-first` found no solutions after internally enumerating 708 raw triples, testing 50 coprime triples, and scanning 200 lambda values.
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
+- The normalized-first `GF(7)` run found no solutions after generating 827 normalized triples, testing 500 coprime triples, and scanning 3,000 lambda values.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
 
@@ -80,6 +87,8 @@ Normalized-first report-producing search:
 - [[wiki/m23-belyi-gf5-prefix-report]] interprets that run as a bounded negative result and a reporting-pipeline check.
 - [[experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500]] records the larger normalized-first `GF(5)` run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] interprets the larger run as the current finite-field search frontier.
+- [[experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500]] records the same normalized-first search over `GF(7)`.
+- [[wiki/m23-belyi-gf7-normalized-500-report]] compares the second-field run with the `GF(5)` frontier.
 
 ## Derivative Constraint
 
@@ -105,4 +114,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The next improvements should add stronger branch-cycle constraints, test a second finite field, or run longer report-producing searches.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The next improvements should add stronger branch-cycle constraints, compare more finite fields, or run longer report-producing searches.
