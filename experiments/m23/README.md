@@ -87,8 +87,16 @@ Run the same normalized search over a second finite field:
 Resume a later normalized `GF(5)` batch with derivative and lambda derivation enabled:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 20000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.md --title "M23 Belyi GF(5) Normalized 20000-24000 Search"
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 32000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-32000-36000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-32000-36000.md --title "M23 Belyi GF(5) Normalized 32000-36000 Search"
 ```
+
+Run the remaining current `GF(5)` search locally in checkpointed batches:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/run_belyi_batches.py --modulus 5 --start-left-factor-triples 32000 --stop-left-factor-triples 212636 --batch-size 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --report-dir experiments/m23/reports/gf5-exhaustive --report-prefix gf5-normalized
+```
+
+The batch runner writes one JSON and one Markdown report per interval plus a summary JSON file. It stops when it reaches the stop offset, finds a solution, exhausts the finite iterator, or makes no progress. Re-running the same command reuses existing batch reports unless `--force` is provided.
 
 Run tests:
 

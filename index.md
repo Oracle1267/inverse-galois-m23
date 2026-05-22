@@ -51,7 +51,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-elkies-finite-field-solver]] - bounded finite-field search scaffold for the Elkies-style M23 identity.
 - [[wiki/m23-belyi-gf5-prefix-report]] - durable interpretation of the first constrained `GF(5)` Belyi prefix run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] - durable interpretation of the larger normalized-first `GF(5)` Belyi run.
-- [[wiki/m23-belyi-gf5-contiguous-24000-report]] - contiguous `GF(5)` Belyi search coverage through 24,000 tested triples.
+- [[wiki/m23-belyi-gf5-contiguous-32000-report]] - contiguous `GF(5)` Belyi search coverage through 32,000 tested triples.
 - [[wiki/m23-belyi-gf7-normalized-500-report]] - durable interpretation of the same normalized-first Belyi run over `GF(7)`.
 
 ## Active Project
@@ -126,6 +126,8 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-22-m23-belyi-normalized-search]]
 - [[logs/ingest/2026-05-22-m23-belyi-gf7-comparison]]
 - [[logs/ingest/2026-05-22-m23-belyi-resumable-search]]
+- [[logs/ingest/2026-05-22-m23-belyi-gf5-32000]]
+- [[logs/ingest/2026-05-22-m23-local-batch-runner]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

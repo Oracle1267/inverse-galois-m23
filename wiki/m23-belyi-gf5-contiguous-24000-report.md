@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-22
 last_confirmed: 2026-05-22
 confidence: 0.76
@@ -32,7 +32,8 @@ relationships:
     note: "Extends the same GF(5) search line beyond the first 500 tested triples."
 supersedes:
   - "[[wiki/m23-belyi-gf5-normalized-500-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf5-contiguous-32000-report]]"
 review_after: 2026-06-22
 ---
 
@@ -65,3 +66,7 @@ The later intervals use `--derivative-first --derive-lambda`, which preserves th
 This is a bounded negative result in `GF(5)`. It does not exhaust the finite-field search, but it makes the current frontier explicit and resumable.
 
 The next contiguous batch should start at `--start-left-factor-triples 24000`.
+
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf5-contiguous-32000-report]], which extends the same search line through 32,000 tested triples.

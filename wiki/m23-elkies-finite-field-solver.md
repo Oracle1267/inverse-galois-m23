@@ -74,7 +74,13 @@ Second-field normalized-first search:
 Resumed search with derivative and lambda derivation:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 20000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-20000-24000.md --title "M23 Belyi GF(5) Normalized 20000-24000 Search"
+.\.venv\Scripts\python experiments/m23/scripts/solve_belyi_modp.py --modulus 5 --start-left-factor-triples 32000 --max-left-factor-triples 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-32000-36000.json --markdown-out experiments/m23/reports/2026-05-22-belyi-gf5-normalized-32000-36000.md --title "M23 Belyi GF(5) Normalized 32000-36000 Search"
+```
+
+Local checkpointed runner:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/run_belyi_batches.py --modulus 5 --start-left-factor-triples 32000 --stop-left-factor-triples 212636 --batch-size 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --report-dir experiments/m23/reports/gf5-exhaustive --report-prefix gf5-normalized
 ```
 
 ## Current Behavior
@@ -83,10 +89,11 @@ Resumed search with derivative and lambda derivation:
 - The constrained prefix search over `GF(2)` with coprime left factors, nonzero `lambda`, and derivative compatibility found no solutions in the first 20 left-factor triples.
 - A constrained prefix search over `GF(5)` with translation normalization, coprime left factors, nonzero `lambda`, derivative compatibility, and `--coprime-first` found no solutions after internally enumerating 708 raw triples, testing 50 coprime triples, and scanning 200 lambda values.
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
-- The resumed `GF(5)` search has covered the contiguous interval from 0 through 24,000 tested triples with no modular solutions.
+- The resumed `GF(5)` search has covered the contiguous interval from 0 through 32,000 tested triples with no modular solutions.
 - The normalized-first `GF(7)` run found no solutions after generating 827 normalized triples, testing 500 coprime triples, and scanning 3,000 lambda values.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
+- The batch runner `experiments/m23/scripts/run_belyi_batches.py` can continue a local search without chat supervision by writing interval checkpoints and a summary JSON file.
 
 ## Report Artifacts
 
@@ -94,7 +101,7 @@ Resumed search with derivative and lambda derivation:
 - [[wiki/m23-belyi-gf5-prefix-report]] interprets that run as a bounded negative result and a reporting-pipeline check.
 - [[experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500]] records the larger normalized-first `GF(5)` run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] interprets the larger run as the current finite-field search frontier.
-- [[wiki/m23-belyi-gf5-contiguous-24000-report]] records the current contiguous `GF(5)` coverage.
+- [[wiki/m23-belyi-gf5-contiguous-32000-report]] records the current contiguous `GF(5)` coverage.
 - [[experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500]] records the same normalized-first search over `GF(7)`.
 - [[wiki/m23-belyi-gf7-normalized-500-report]] compares the second-field run with the `GF(5)` frontier.
 
@@ -121,6 +128,12 @@ The CLI flag `--normalized-first` uses the coefficient relation `2*a(P2) + c(P3)
 The CLI flag `--derivative-first` derives `P8` from the derivative identity before checking the full Belyi identity. The CLI flag `--derive-lambda` then derives lambda from the remainder of `left` modulo `P8^2`. Together, these flags preserve the same mathematical constraints while avoiding repeated square-divisor factorization and repeated lambda scans.
 
 The `--start-left-factor-triples` flag makes these searches resumable by skipping a counted prefix before applying the current batch budget.
+
+## Local Runner
+
+The batch runner is intended for unattended local execution. It repeatedly runs adjacent intervals, writes checkpoint artifacts, and stops on the first survivor or at the requested stop offset.
+
+For the current `GF(5)` line, the stop offset `212636` is the exact count of pairwise-coprime normalized left-factor triples. Since the current frontier is 32,000, the remaining local run has 180,636 tested candidates.
 
 ## Enumeration Order
 
