@@ -90,7 +90,7 @@ Local checkpointed runner:
 - A constrained prefix search over `GF(5)` with translation normalization, coprime left factors, nonzero `lambda`, derivative compatibility, and `--coprime-first` found no solutions after internally enumerating 708 raw triples, testing 50 coprime triples, and scanning 200 lambda values.
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
 - The constrained `GF(5)` search has exhausted all 212,636 pairwise-coprime normalized left-factor triples with no modular solutions.
-- The normalized-first `GF(7)` run found no solutions after generating 827 normalized triples, testing 500 coprime triples, and scanning 3,000 lambda values.
+- The constrained `GF(7)` search has covered the interval from 0 through 100,000 tested triples with no modular solutions.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
 - The batch runner `experiments/m23/scripts/run_belyi_batches.py` can continue a local search without chat supervision by writing interval checkpoints and a summary JSON file.
@@ -102,8 +102,7 @@ Local checkpointed runner:
 - [[experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500]] records the larger normalized-first `GF(5)` run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] interprets the larger run as the current finite-field search frontier.
 - [[wiki/m23-belyi-gf5-exhausted-report]] records exhaustion of the constrained `GF(5)` search space.
-- [[experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500]] records the same normalized-first search over `GF(7)`.
-- [[wiki/m23-belyi-gf7-normalized-500-report]] compares the second-field run with the `GF(5)` frontier.
+- [[wiki/m23-belyi-gf7-deep-100000-report]] records the current `GF(7)` frontier through 100,000 tested triples.
 
 ## Derivative Constraint
 
@@ -143,4 +142,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors; the next improvements should add stronger branch-cycle constraints or compare a deeper `GF(7)` run before scaling further.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, and the constrained `GF(7)` version has no survivors through 100,000 tested triples. The next improvements should add stronger branch-cycle constraints or choose a new group/search target before scaling further.

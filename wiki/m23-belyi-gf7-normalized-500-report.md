@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-22
 last_confirmed: 2026-05-22
 confidence: 0.74
@@ -23,7 +23,8 @@ relationships:
     confidence: 0.86
     note: "Uses the same tested-triple budget over a different finite field."
 supersedes: []
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-deep-100000-report]]"
 review_after: 2026-06-22
 ---
 
@@ -51,3 +52,7 @@ Neither run produced a modular equation-system survivor.
 This is a bounded negative result in `GF(7)`. It is useful mainly as a second-field comparison point: early behavior is consistent with the `GF(5)` prefix, where the current constraints produce no survivors before the chosen budget limit.
 
 The next useful branch is to add more mathematical filtering before factorization, or to run a modest grid over several primes with smaller per-prime budgets to see whether any field has a qualitatively different rejection profile.
+
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf7-deep-100000-report]], which extends the same constrained `GF(7)` line through 100,000 tested triples.
