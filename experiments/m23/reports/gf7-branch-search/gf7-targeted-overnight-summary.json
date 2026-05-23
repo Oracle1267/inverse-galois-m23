@@ -1,0 +1,6229 @@
+{
+  "beam_width": 35,
+  "best": {
+    "ambiguous_count": 0,
+    "exact_derivative": null,
+    "exact_identity": null,
+    "exact_translation_normalization": null,
+    "final_lambda": 760965862,
+    "final_modulus": 96889010407,
+    "lift_status": "lifted",
+    "prefix": [
+      3,
+      2,
+      0,
+      5,
+      0,
+      0,
+      0,
+      6,
+      4,
+      2,
+      0,
+      0
+    ],
+    "reconstruction_status": "partial",
+    "score": [
+      0,
+      0,
+      23,
+      -2,
+      0
+    ],
+    "total_count": 25,
+    "unique_count": 23,
+    "unresolved_count": 2
+  },
+  "best_lift": {
+    "final_modulus": 96889010407,
+    "initial_modulus": 7,
+    "lifted": {
+      "lam": 760965862,
+      "p2": [
+        42577640238,
+        95550421851
+      ],
+      "p3": [
+        29151546185,
+        88669731860,
+        4378488068
+      ],
+      "p4": [
+        44090051140,
+        40722175773,
+        4132964341,
+        29566895259
+      ],
+      "p7": [
+        59028556095,
+        440797732,
+        61093466468,
+        55445810484,
+        72984513516,
+        5934840068,
+        7812210297
+      ],
+      "p8": [
+        18930227156,
+        24063221339,
+        50435897538,
+        64960338098,
+        23188089161,
+        56261120645,
+        33189378494,
+        73447295838
+      ]
+    },
+    "prime": 7,
+    "requested_levels": 13,
+    "seed": {
+      "lam": 6,
+      "p2": [
+        0,
+        3
+      ],
+      "p3": [
+        6,
+        3,
+        3
+      ],
+      "p4": [
+        2,
+        6,
+        2,
+        6
+      ],
+      "p7": [
+        5,
+        4,
+        6,
+        1,
+        5,
+        3,
+        3
+      ],
+      "p8": [
+        1,
+        3,
+        5,
+        5,
+        6,
+        2,
+        6,
+        0
+      ]
+    },
+    "status": "lifted",
+    "steps": [
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 3,
+          "p2": [
+            3,
+            1
+          ],
+          "p3": [
+            6,
+            3,
+            2
+          ],
+          "p4": [
+            0,
+            4,
+            0,
+            4
+          ],
+          "p7": [
+            0,
+            0,
+            0,
+            5,
+            4,
+            0,
+            1
+          ],
+          "p8": [
+            3,
+            5,
+            2,
+            4,
+            2,
+            4,
+            6,
+            6
+          ]
+        },
+        "free_values": {
+          "lam": 3
+        },
+        "from_modulus": 7,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 49,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 2,
+          "p2": [
+            6,
+            3
+          ],
+          "p3": [
+            3,
+            5,
+            2
+          ],
+          "p4": [
+            1,
+            3,
+            5,
+            5
+          ],
+          "p7": [
+            5,
+            4,
+            4,
+            1,
+            1,
+            5,
+            2
+          ],
+          "p8": [
+            4,
+            1,
+            0,
+            5,
+            3,
+            5,
+            2,
+            5
+          ]
+        },
+        "free_values": {
+          "lam": 2
+        },
+        "from_modulus": 49,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 343,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            3,
+            0
+          ],
+          "p3": [
+            4,
+            6,
+            1
+          ],
+          "p4": [
+            2,
+            2,
+            1,
+            4
+          ],
+          "p7": [
+            6,
+            1,
+            6,
+            0,
+            2,
+            0,
+            6
+          ],
+          "p8": [
+            3,
+            2,
+            5,
+            2,
+            5,
+            0,
+            0,
+            6
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 343,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 2401,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 5,
+          "p2": [
+            5,
+            2
+          ],
+          "p3": [
+            2,
+            6,
+            5
+          ],
+          "p4": [
+            5,
+            3,
+            2,
+            1
+          ],
+          "p7": [
+            0,
+            0,
+            1,
+            2,
+            6,
+            1,
+            5
+          ],
+          "p8": [
+            6,
+            0,
+            2,
+            2,
+            3,
+            3,
+            3,
+            6
+          ]
+        },
+        "free_values": {
+          "lam": 5
+        },
+        "from_modulus": 2401,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 16807,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            6,
+            1
+          ],
+          "p3": [
+            0,
+            1,
+            3
+          ],
+          "p4": [
+            1,
+            5,
+            4,
+            3
+          ],
+          "p7": [
+            3,
+            5,
+            6,
+            4,
+            0,
+            2,
+            4
+          ],
+          "p8": [
+            1,
+            0,
+            0,
+            5,
+            3,
+            4,
+            0,
+            4
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 16807,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 117649,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            3,
+            4
+          ],
+          "p3": [
+            5,
+            4,
+            4
+          ],
+          "p4": [
+            0,
+            3,
+            3,
+            0
+          ],
+          "p7": [
+            2,
+            1,
+            4,
+            6,
+            4,
+            3,
+            0
+          ],
+          "p8": [
+            2,
+            1,
+            4,
+            0,
+            3,
+            6,
+            5,
+            3
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 117649,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 823543,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            5,
+            5
+          ],
+          "p3": [
+            5,
+            1,
+            3
+          ],
+          "p4": [
+            1,
+            6,
+            6,
+            6
+          ],
+          "p7": [
+            3,
+            3,
+            4,
+            6,
+            2,
+            3,
+            1
+          ],
+          "p8": [
+            5,
+            1,
+            6,
+            3,
+            2,
+            2,
+            1,
+            4
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 823543,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 5764801,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 6,
+          "p2": [
+            0,
+            5
+          ],
+          "p3": [
+            2,
+            2,
+            3
+          ],
+          "p4": [
+            4,
+            0,
+            2,
+            4
+          ],
+          "p7": [
+            5,
+            6,
+            6,
+            6,
+            4,
+            0,
+            4
+          ],
+          "p8": [
+            0,
+            2,
+            5,
+            5,
+            4,
+            1,
+            3,
+            0
+          ]
+        },
+        "free_values": {
+          "lam": 6
+        },
+        "from_modulus": 5764801,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 40353607,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 4,
+          "p2": [
+            5,
+            1
+          ],
+          "p3": [
+            1,
+            6,
+            3
+          ],
+          "p4": [
+            0,
+            1,
+            4,
+            4
+          ],
+          "p7": [
+            6,
+            3,
+            1,
+            1,
+            2,
+            0,
+            4
+          ],
+          "p8": [
+            0,
+            1,
+            3,
+            6,
+            0,
+            1,
+            3,
+            0
+          ]
+        },
+        "free_values": {
+          "lam": 4
+        },
+        "from_modulus": 40353607,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 282475249,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 2,
+          "p2": [
+            3,
+            2
+          ],
+          "p3": [
+            5,
+            5,
+            1
+          ],
+          "p4": [
+            2,
+            4,
+            0,
+            6
+          ],
+          "p7": [
+            5,
+            1,
+            6,
+            0,
+            6,
+            0,
+            6
+          ],
+          "p8": [
+            4,
+            1,
+            3,
+            5,
+            5,
+            3,
+            5,
+            1
+          ]
+        },
+        "free_values": {
+          "lam": 2
+        },
+        "from_modulus": 282475249,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 1977326743,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            0,
+            6
+          ],
+          "p3": [
+            0,
+            2,
+            2
+          ],
+          "p4": [
+            1,
+            6,
+            2,
+            0
+          ],
+          "p7": [
+            1,
+            0,
+            2,
+            0,
+            1,
+            3,
+            3
+          ],
+          "p8": [
+            2,
+            5,
+            4,
+            4,
+            4,
+            0,
+            2,
+            2
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 1977326743,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 13841287201,
+        "variables": 25
+      },
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            3,
+            6
+          ],
+          "p3": [
+            2,
+            6,
+            0
+          ],
+          "p4": [
+            3,
+            2,
+            0,
+            2
+          ],
+          "p7": [
+            4,
+            0,
+            4,
+            4,
+            5,
+            0,
+            0
+          ],
+          "p8": [
+            1,
+            1,
+            3,
+            4,
+            1,
+            4,
+            2,
+            5
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 13841287201,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "rank": 24,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 96889010407,
+        "variables": 25
+      }
+    ]
+  },
+  "best_reconstruction": {
+    "ambiguous": [],
+    "exact_derivative": null,
+    "exact_identity": null,
+    "exact_translation_normalization": null,
+    "max_denominator": 250000,
+    "max_numerator": 250000,
+    "modulus": 96889010407,
+    "reconstructed": {
+      "lam": {
+        "candidates": [
+          {
+            "denominator": 207665,
+            "numerator": -241587
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 207665,
+          "numerator": -241587
+        }
+      },
+      "p2": [
+        {
+          "candidates": [
+            {
+              "denominator": 181091,
+              "numerator": 150598
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 181091,
+            "numerator": 150598
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 232055,
+              "numerator": 2262
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 232055,
+            "numerator": 2262
+          }
+        }
+      ],
+      "p3": [
+        {
+          "candidates": [
+            {
+              "denominator": 21926,
+              "numerator": -2669
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 21926,
+            "numerator": -2669
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 132627,
+              "numerator": 236188
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 132627,
+            "numerator": 236188
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 131133,
+              "numerator": 149162
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 131133,
+            "numerator": 149162
+          }
+        }
+      ],
+      "p4": [
+        {
+          "candidates": [
+            {
+              "denominator": 171040,
+              "numerator": -22431
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 171040,
+            "numerator": -22431
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 119061,
+              "numerator": -67534
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 119061,
+            "numerator": -67534
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 5345,
+              "numerator": 29849
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 5345,
+            "numerator": 29849
+          }
+        },
+        {
+          "candidate_count": 0,
+          "candidates": [],
+          "status": "none",
+          "value": null
+        }
+      ],
+      "p7": [
+        {
+          "candidates": [
+            {
+              "denominator": 87954,
+              "numerator": 120535
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 87954,
+            "numerator": 120535
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 127706,
+              "numerator": 116325
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 127706,
+            "numerator": 116325
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 63389,
+              "numerator": -27738
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 63389,
+            "numerator": -27738
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 75331,
+              "numerator": -65159
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 75331,
+            "numerator": -65159
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 14636,
+              "numerator": 83001
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 14636,
+            "numerator": 83001
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 137591,
+              "numerator": 85992
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 137591,
+            "numerator": 85992
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 96874,
+              "numerator": 22501
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 96874,
+            "numerator": 22501
+          }
+        }
+      ],
+      "p8": [
+        {
+          "candidates": [
+            {
+              "denominator": 175908,
+              "numerator": -120535
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 175908,
+            "numerator": -120535
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 22999,
+              "numerator": 130877
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 22999,
+            "numerator": 130877
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 114361,
+              "numerator": -195899
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 114361,
+            "numerator": -195899
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 118323,
+              "numerator": 171937
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 118323,
+            "numerator": 171937
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 77246,
+              "numerator": -63603
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 77246,
+            "numerator": -63603
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 35593,
+              "numerator": 25609
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 35593,
+            "numerator": 25609
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 166501,
+              "numerator": 66249
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 166501,
+            "numerator": 66249
+          }
+        },
+        {
+          "candidate_count": 0,
+          "candidates": [],
+          "status": "none",
+          "value": null
+        }
+      ]
+    },
+    "status": "partial",
+    "total_count": 25,
+    "unique_count": 23,
+    "unresolved": [
+      "p4[3]",
+      "p8[7]"
+    ]
+  },
+  "checkpoint_dir": "experiments\\m23\\reports\\gf7-branch-search\\checkpoints-targeted-overnight",
+  "checkpoint_prefix": "gf7-targeted-overnight",
+  "depth": 12,
+  "digit_options": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "evaluated_branches": 791,
+  "final_best": {
+    "ambiguous_count": 0,
+    "exact_derivative": null,
+    "exact_identity": null,
+    "exact_translation_normalization": null,
+    "final_lambda": 760965862,
+    "final_modulus": 96889010407,
+    "lift_status": "lifted",
+    "prefix": [
+      3,
+      2,
+      0,
+      5,
+      0,
+      0,
+      0,
+      6,
+      4,
+      2,
+      0,
+      0
+    ],
+    "reconstruction_status": "partial",
+    "score": [
+      0,
+      0,
+      23,
+      -2,
+      0
+    ],
+    "total_count": 25,
+    "unique_count": 23,
+    "unresolved_count": 2
+  },
+  "history": [
+    {
+      "cheap_scored": 7,
+      "expanded": 7,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 23071334,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 5776931,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -8,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 28836135,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            15,
+            -9,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 15,
+          "unresolved_count": 9
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 17306533,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            14,
+            -10,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 14,
+          "unresolved_count": 10
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 34600936,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            14,
+            -11,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 14,
+          "unresolved_count": 11
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 11541732,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            14,
+            -11,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 14,
+          "unresolved_count": 11
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 12130,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            13,
+            -12,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 13,
+          "unresolved_count": 12
+        }
+      ],
+      "position": 7,
+      "refined": 7
+    },
+    {
+      "cheap_scored": 49,
+      "expanded": 49,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 224839369,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 219074568,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 121072951,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 172956160,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 115308150,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 69189742,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 242133772,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -5,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 57660140,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -5,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 46130538,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -6,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 6
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 196015364,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -6,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 6
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 213309767,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -6,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 6
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 230604170,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            19,
+            -6,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 19,
+          "unresolved_count": 6
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 23071334,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 86484145,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 40365737,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 92248946,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 161426558,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 184485762,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 138367354,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            18,
+            -7,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 18,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 103778548,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -7,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 7
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 80719344,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 98013747,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 74954543,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 109543349,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 149896956,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 155661757,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 259428175,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 126837752,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 63424941,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            17,
+            -8,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 17,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 5776931,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -8,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 51895339,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -8,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 8
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 236368971,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -9,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 9
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 276722578,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -9,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 9
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 132602553,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -9,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 9
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 270957777,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            16,
+            -9,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 16,
+          "unresolved_count": 9
+        }
+      ],
+      "position": 8,
+      "refined": 49
+    },
+    {
+      "cheap_scored": 245,
+      "expanded": 245,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 760965862,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            4,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 974263499,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 219074568,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 887791484,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 893556285,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 224839369,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 697553051,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1931220465,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1458506783,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 121072951,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1908161261,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1487330788,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            1,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1533449196,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 968498698,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 172956160,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1879337256,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 801319469,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1689098823,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            6,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -4,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1631450813,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1844748450,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            3,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 495785016,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1913926062,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 749436260,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 328605787,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 455431409,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1833218848,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            3,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1683334022,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1400858773,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1176031534,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 605316235,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 674493847,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            2,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1568038002,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            3,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1452741982,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 69189742,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 115308150,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            2,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        }
+      ],
+      "position": 9,
+      "refined": 245
+    },
+    {
+      "cheap_scored": 245,
+      "expanded": 245,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 760965862,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            4,
+            2,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 974263499,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3,
+            3,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10001941865,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            2,
+            0,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 219074568,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 893556285,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 8583800819,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            2,
+            2,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 887791484,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 224839369,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            5,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 697553051,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 12832459156,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            3,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -3,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 13743297714,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4,
+            6,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 801319469,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            2,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1458506783,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10860897214,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3,
+            3,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 9367813755,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1533449196,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10584186766,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1931220465,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 121072951,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 172956160,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1879337256,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 13264819231,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6,
+            4,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 9955823457,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1,
+            0,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1908161261,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1487330788,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            1,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 968498698,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            3,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 11345140498,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -4,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1689098823,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            6,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -4,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 5862814747,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5,
+            6,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -4,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 11287492488,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6,
+            4,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -4,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1913926062,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 3666425566,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            6,
+            5,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 455431409,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            1,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 8364738381,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            1,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1833218848,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            3,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            20,
+            -5,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 20,
+          "unresolved_count": 5
+        }
+      ],
+      "position": 10,
+      "refined": 245
+    },
+    {
+      "cheap_scored": 245,
+      "expanded": 245,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 760965862,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            4,
+            2,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 974263499,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 57054247627,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            6,
+            5,
+            0,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10001941865,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            2,
+            0,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 14538840252,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 69903989056,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 79162259462,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1,
+            0,
+            5,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            23,
+            -2,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 23,
+          "unresolved_count": 2
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 8583800819,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            2,
+            2,
+            4,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 219074568,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            3,
+            5,
+            0,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 65320972261,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1,
+            0,
+            5,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 893556285,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 887791484,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 69327508956,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            5
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 50107662422,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            2,
+            2,
+            4,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 56252940288,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            0,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 224839369,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            5,
+            0,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 697553051,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 42221414654,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 13962360152,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 33545389149,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            5,
+            6,
+            2,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            22,
+            -3,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 22,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 1,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 12832459156,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            3,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -3,
+            -1
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 3
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 13743297714,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4,
+            4,
+            6,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1458506783,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 83503154615,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            1,
+            0,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 801319469,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            2,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10860897214,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            3,
+            3,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 28380127453,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            0,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 95880182362,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            3,
+            6,
+            6
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 9367813755,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5,
+            4,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 10584186766,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            3,
+            2,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 1931220465,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            6,
+            5,
+            6,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 121072951,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 41696817763,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2,
+            4,
+            0,
+            0,
+            3
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 13264819231,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            6,
+            4,
+            6,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 9955823457,
+          "final_modulus": 96889010407,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            5,
+            1,
+            0,
+            5,
+            0
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            21,
+            -4,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 21,
+          "unresolved_count": 4
+        }
+      ],
+      "position": 11,
+      "refined": 245
+    }
+  ],
+  "initial_prefixes": [
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      0,
+      0
+    ]
+  ],
+  "levels": 13,
+  "max_denominator": 250000,
+  "max_numerator": 250000,
+  "prime": 7,
+  "refine_all": true,
+  "refine_multiplier": 2,
+  "score_levels": 10,
+  "score_max_denominator": 50000,
+  "score_max_numerator": 50000,
+  "status": "partial"
+}

@@ -9,6 +9,7 @@ sensitivity: internal
 sources:
   - "[[wiki/m23-belyi-gf7-overnight-result]]"
   - "[[experiments/m23/reports/gf7-branch-search/gf7-targeted-smoke]]"
+  - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -22,6 +23,10 @@ relationships:
     type: "supports"
     confidence: 0.82
     note: "Extends the checkpointed runner with initial-prefix and refine-all modes."
+  - target: "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
+    type: "supports"
+    confidence: 0.86
+    note: "The targeted runner produced the completed 23/25 result."
 supersedes: []
 superseded_by: []
 review_after: 2026-06-23
@@ -66,3 +71,7 @@ If interrupted, rerun the same command with `--resume`.
 ## Uncertainty
 
 This remains a heuristic branch search. It is stronger than the previous cheap score-then-refine pass because every child in the current frontier receives full reconstruction before pruning, but it is still not an exhaustive proof over all lambda branches.
+
+## Completed Run
+
+The first targeted overnight run is recorded in [[wiki/m23-belyi-gf7-targeted-overnight-result]]. It improved the reconstruction signal to 23/25 coefficients but remained partial.

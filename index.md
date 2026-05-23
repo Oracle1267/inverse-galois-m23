@@ -56,6 +56,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf7-overnight-branch-runner]] - checkpointed local runner for unattended `GF(7)` lambda branch searches.
 - [[wiki/m23-belyi-gf7-overnight-result]] - completed overnight branch-search result, improving the current signal to 20/25 reconstructed coefficients.
 - [[wiki/m23-belyi-gf7-targeted-branch-runner]] - targeted continuation runner for the current best `GF(7)` lambda prefix.
+- [[wiki/m23-belyi-gf7-targeted-overnight-result]] - completed targeted continuation result, improving the current signal to 23/25 reconstructed coefficients.
 
 ## Active Project
 
@@ -141,6 +142,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-overnight-runner]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-overnight-result]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-runner]]
+- [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-overnight-result]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

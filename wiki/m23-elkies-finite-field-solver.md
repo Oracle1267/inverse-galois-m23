@@ -12,6 +12,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-overnight-branch-runner]]"
   - "[[wiki/m23-belyi-gf7-overnight-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
+  - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -118,6 +119,7 @@ Targeted branch continuation:
 - The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
 - The branch-search CLI can now continue from a known lambda prefix and refine every child before pruning.
 - The first overnight branch search completed without a full reconstruction, but improved the strongest known branch to 20/25 reconstructed coefficients at lambda `12130`.
+- The first targeted overnight continuation improved the strongest known branch to 23/25 reconstructed coefficients at lambda `760965862`, but symbolic consistency checks show the current unique reconstructions are not jointly exact.
 
 ## Report Artifacts
 
@@ -134,6 +136,7 @@ Targeted branch continuation:
 - [[wiki/m23-belyi-gf7-overnight-branch-runner]] records the checkpointed local runner for unattended lambda branch searches.
 - [[wiki/m23-belyi-gf7-overnight-result]] records the completed overnight run and current strongest reconstruction signal.
 - [[wiki/m23-belyi-gf7-targeted-branch-runner]] records the targeted continuation runner for the current best lambda prefix.
+- [[wiki/m23-belyi-gf7-targeted-overnight-result]] records the targeted run and the 23/25 partial reconstruction.
 
 ## Derivative Constraint
 
@@ -173,4 +176,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The overnight branch search improved the rational-reconstruction signal to 20/25 coefficients, leaving five coefficients unresolved.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The targeted overnight branch search improved the rational-reconstruction signal to 23/25 coefficients, but exact-equation consistency remains unresolved.
