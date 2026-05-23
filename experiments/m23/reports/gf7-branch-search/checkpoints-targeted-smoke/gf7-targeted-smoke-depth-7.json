@@ -1,0 +1,257 @@
+{
+  "beam_width": 3,
+  "best": {
+    "ambiguous_count": 0,
+    "exact_derivative": null,
+    "exact_identity": null,
+    "exact_translation_normalization": null,
+    "final_lambda": 11541732,
+    "final_modulus": 40353607,
+    "lift_status": "lifted",
+    "prefix": [
+      3,
+      2,
+      0,
+      5,
+      0,
+      0,
+      0,
+      2
+    ],
+    "reconstruction_status": "partial",
+    "score": [
+      0,
+      0,
+      6,
+      -19,
+      0
+    ],
+    "total_count": 25,
+    "unique_count": 6,
+    "unresolved_count": 19
+  },
+  "depth": 8,
+  "digit_options": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "evaluated_branches": 7,
+  "history": [
+    {
+      "cheap_scored": 7,
+      "expanded": 7,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 11541732,
+          "final_modulus": 40353607,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            2
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            6,
+            -19,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 6,
+          "unresolved_count": 19
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 5776931,
+          "final_modulus": 40353607,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            1
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            4,
+            -21,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 4,
+          "unresolved_count": 21
+        },
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": null,
+          "exact_identity": null,
+          "exact_translation_normalization": null,
+          "final_lambda": 23071334,
+          "final_modulus": 40353607,
+          "lift_status": "lifted",
+          "prefix": [
+            3,
+            2,
+            0,
+            5,
+            0,
+            0,
+            0,
+            4
+          ],
+          "reconstruction_status": "partial",
+          "score": [
+            0,
+            0,
+            4,
+            -21,
+            0
+          ],
+          "total_count": 25,
+          "unique_count": 4,
+          "unresolved_count": 21
+        }
+      ],
+      "position": 7,
+      "refined": 7
+    }
+  ],
+  "initial_prefixes": [
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      0,
+      0
+    ]
+  ],
+  "kept": [
+    {
+      "ambiguous_count": 0,
+      "exact_derivative": null,
+      "exact_identity": null,
+      "exact_translation_normalization": null,
+      "final_lambda": 11541732,
+      "final_modulus": 40353607,
+      "lift_status": "lifted",
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        2
+      ],
+      "reconstruction_status": "partial",
+      "score": [
+        0,
+        0,
+        6,
+        -19,
+        0
+      ],
+      "total_count": 25,
+      "unique_count": 6,
+      "unresolved_count": 19
+    },
+    {
+      "ambiguous_count": 0,
+      "exact_derivative": null,
+      "exact_identity": null,
+      "exact_translation_normalization": null,
+      "final_lambda": 5776931,
+      "final_modulus": 40353607,
+      "lift_status": "lifted",
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        1
+      ],
+      "reconstruction_status": "partial",
+      "score": [
+        0,
+        0,
+        4,
+        -21,
+        0
+      ],
+      "total_count": 25,
+      "unique_count": 4,
+      "unresolved_count": 21
+    },
+    {
+      "ambiguous_count": 0,
+      "exact_derivative": null,
+      "exact_identity": null,
+      "exact_translation_normalization": null,
+      "final_lambda": 23071334,
+      "final_modulus": 40353607,
+      "lift_status": "lifted",
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        4
+      ],
+      "reconstruction_status": "partial",
+      "score": [
+        0,
+        0,
+        4,
+        -21,
+        0
+      ],
+      "total_count": 25,
+      "unique_count": 4,
+      "unresolved_count": 21
+    }
+  ],
+  "levels": 9,
+  "max_denominator": 2000,
+  "max_numerator": 2000,
+  "position": 7,
+  "prime": 7,
+  "refine_all": true,
+  "refine_multiplier": 2,
+  "score_levels": 8,
+  "score_max_denominator": 1000,
+  "score_max_numerator": 1000
+}

@@ -100,11 +100,16 @@ def _latest_checkpoint(checkpoint_dir: Path, checkpoint_prefix: str) -> dict[str
 
 
 def _validate_checkpoint_compatibility(checkpoint: dict[str, object], expected: dict[str, object]) -> None:
+    defaults: dict[str, object] = {
+        "initial_prefixes": [[]],
+        "refine_all": False,
+    }
     for key, expected_value in expected.items():
-        if checkpoint.get(key) != expected_value:
+        actual_value = checkpoint[key] if key in checkpoint else defaults.get(key)
+        if actual_value != expected_value:
             raise ValueError(
                 "checkpoint is incompatible with current search: "
-                + f"{key} is {checkpoint.get(key)!r}, expected {expected_value!r}"
+                + f"{key} is {actual_value!r}, expected {expected_value!r}"
             )
 
 
@@ -135,6 +140,29 @@ def _best_summary_from_history(history: list[dict[str, object]]) -> dict[str, ob
             if isinstance(candidate, dict) and _is_better_summary(candidate, best):
                 best = candidate
     return best
+
+
+def _normalize_initial_prefixes(
+    initial_prefixes: Iterable[Iterable[int]] | None,
+    *,
+    prime: int,
+    depth: int,
+) -> tuple[list[list[int]], int]:
+    if initial_prefixes is None:
+        return [[]], 0
+    prefixes = [[int(digit) for digit in prefix] for prefix in initial_prefixes]
+    if not prefixes:
+        raise ValueError("initial_prefixes cannot be empty")
+    prefix_length = len(prefixes[0])
+    if prefix_length > depth:
+        raise ValueError("initial prefix length cannot exceed depth")
+    for prefix in prefixes:
+        if len(prefix) != prefix_length:
+            raise ValueError("initial prefixes must have the same length")
+        for digit in prefix:
+            if not 0 <= digit < prime:
+                raise ValueError("initial prefix digits must be in range 0..prime-1")
+    return prefixes, prefix_length
 
 
 def search_lambda_branches(
@@ -247,6 +275,8 @@ def search_lambda_branches_checkpointed(
     score_max_denominator: int,
     refine_multiplier: int = 2,
     digits: Iterable[int] | None = None,
+    initial_prefixes: Iterable[Iterable[int]] | None = None,
+    refine_all: bool = False,
     checkpoint_dir: Path | str | None = None,
     checkpoint_prefix: str = "lambda-branch-search",
     resume: bool = False,
@@ -272,10 +302,11 @@ def search_lambda_branches_checkpointed(
             raise ValueError("digits must be in range 0..prime-1")
 
     checkpoint_root = Path(checkpoint_dir) if checkpoint_dir is not None else None
-    prefixes: list[list[int]] = [[]]
+    prefixes, initial_depth = _normalize_initial_prefixes(initial_prefixes, prime=prime, depth=depth)
+    initial_roots = [list(prefix) for prefix in prefixes]
     history: list[dict[str, object]] = []
     evaluated = 0
-    start_position = 0
+    start_position = initial_depth
     checkpoint_best_summary: dict[str, object] | None = None
 
     if resume and checkpoint_root is not None:
@@ -293,6 +324,8 @@ def search_lambda_branches_checkpointed(
                     "score_max_numerator": score_max_numerator,
                     "score_max_denominator": score_max_denominator,
                     "refine_multiplier": refine_multiplier,
+                    "refine_all": refine_all,
+                    "initial_prefixes": initial_roots,
                     "digit_options": digit_options,
                 },
             )
@@ -306,6 +339,22 @@ def search_lambda_branches_checkpointed(
     best_record: BranchRecord | None = None
     final_record: BranchRecord | None = None
 
+    if start_position > 0:
+        initial_records = [
+            _evaluate_prefix(
+                seed,
+                prime=prime,
+                levels=levels,
+                prefix=prefix,
+                max_numerator=max_numerator,
+                max_denominator=max_denominator,
+            )
+            for prefix in prefixes
+        ]
+        _sort_summaries(initial_records)
+        best_record = initial_records[0]
+        final_record = initial_records[0]
+
     if checkpoint_best_summary is not None:
         best_record = _evaluate_prefix(
             seed,
@@ -315,6 +364,7 @@ def search_lambda_branches_checkpointed(
             max_numerator=max_numerator,
             max_denominator=max_denominator,
         )
+        final_record = best_record
 
     if start_position >= depth:
         best_prefix = prefixes[0] if prefixes else []
@@ -368,7 +418,7 @@ def search_lambda_branches_checkpointed(
                     )
         evaluated += expanded
         _sort_summaries(cheap_records)
-        refine_width = min(len(cheap_records), beam_width * refine_multiplier)
+        refine_width = len(cheap_records) if refine_all else min(len(cheap_records), beam_width * refine_multiplier)
         refine_prefixes = [record[0]["prefix"] for record in cheap_records[:refine_width]]
 
         refined: list[tuple[dict[str, object], dict[str, object], dict[str, object]]] = []
@@ -420,6 +470,8 @@ def search_lambda_branches_checkpointed(
             "score_max_numerator": score_max_numerator,
             "score_max_denominator": score_max_denominator,
             "refine_multiplier": refine_multiplier,
+            "refine_all": refine_all,
+            "initial_prefixes": initial_roots,
             "digit_options": digit_options,
             "evaluated_branches": evaluated,
             "history": history,
@@ -458,6 +510,8 @@ def search_lambda_branches_checkpointed(
         "max_denominator": max_denominator,
         "score_max_numerator": score_max_numerator,
         "score_max_denominator": score_max_denominator,
+        "initial_prefixes": initial_roots,
+        "refine_all": refine_all,
         "digit_options": digit_options,
         "evaluated_branches": evaluated,
         "checkpoint_dir": str(checkpoint_root) if checkpoint_root is not None else None,

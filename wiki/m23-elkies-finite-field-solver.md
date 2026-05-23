@@ -11,6 +11,7 @@ sources:
   - "[[sources/elkies-2013-complex-m23-polynomials]]"
   - "[[wiki/m23-belyi-gf7-overnight-branch-runner]]"
   - "[[wiki/m23-belyi-gf7-overnight-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -91,6 +92,12 @@ Checkpointed lambda branch runner:
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 12 --depth 8 --beam-width 25 --max-numerator 80000 --max-denominator 80000 --score-levels 8 --score-max-numerator 10000 --score-max-denominator 10000 --refine-multiplier 2 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-overnight --checkpoint-prefix gf7-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-overnight-summary.md --title "M23 Belyi GF(7) Overnight Lambda Branch Search"
 ```
 
+Targeted branch continuation:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-overnight --checkpoint-prefix gf7-targeted-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-overnight-summary.md --title "M23 Belyi GF(7) Targeted Overnight Branch Search"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -109,6 +116,7 @@ Checkpointed lambda branch runner:
 - The reconstruction CLI `experiments/m23/scripts/reconstruct_belyi_lift.py` can test small-rational explanations for lifted coefficients.
 - The branch-search CLI `experiments/m23/scripts/search_lambda_branches.py` can search `lambda` correction sequences with a bounded beam.
 - The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
+- The branch-search CLI can now continue from a known lambda prefix and refine every child before pruning.
 - The first overnight branch search completed without a full reconstruction, but improved the strongest known branch to 20/25 reconstructed coefficients at lambda `12130`.
 
 ## Report Artifacts
@@ -125,6 +133,7 @@ Checkpointed lambda branch runner:
 - [[wiki/m23-belyi-gf7-lambda-branch-search-report]] records the first bounded beam search over the free `lambda` direction.
 - [[wiki/m23-belyi-gf7-overnight-branch-runner]] records the checkpointed local runner for unattended lambda branch searches.
 - [[wiki/m23-belyi-gf7-overnight-result]] records the completed overnight run and current strongest reconstruction signal.
+- [[wiki/m23-belyi-gf7-targeted-branch-runner]] records the targeted continuation runner for the current best lambda prefix.
 
 ## Derivative Constraint
 

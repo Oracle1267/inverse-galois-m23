@@ -22,6 +22,10 @@ relationships:
     type: "supersedes"
     confidence: 0.82
     note: "Improves the prior lambda-branch frontier from 16/25 to 20/25 reconstructed coefficients."
+  - target: "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
+    type: "supports"
+    confidence: 0.84
+    note: "Provides the current best prefix for the targeted continuation runner."
 supersedes:
   - "[[wiki/m23-belyi-gf7-lambda-branch-search-report]]"
 superseded_by: []
@@ -66,4 +70,4 @@ The five unresolved coefficients in the best reconstruction are:
 
 This is a meaningful improvement in the computational search, not a solution. The branch with `lambda = 12130` is the strongest current rational-reconstruction signal, but five coefficients remain unresolved under the current lift level and rational bounds.
 
-The cheap scoring pass can prune a branch that scores better under full reconstruction bounds. Future runs should either increase the refinement width enough to refine every child of the beam frontier, or use a more conservative protected-branch rule for strong prior branches.
+The cheap scoring pass can prune a branch that scores better under full reconstruction bounds. The next runner mode is recorded in [[wiki/m23-belyi-gf7-targeted-branch-runner]]; it starts from the best known prefix and uses full child refinement before pruning.

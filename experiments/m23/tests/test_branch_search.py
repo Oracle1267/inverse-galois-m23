@@ -369,3 +369,136 @@ def test_checkpointed_lambda_branch_search_reports_best_seen_not_only_final_fron
     assert result["best"]["unique_count"] == 5
     assert result["final_best"]["prefix"] == [0, 0]
     assert result["final_best"]["unique_count"] == 3
+
+
+def test_checkpointed_lambda_branch_search_can_start_from_initial_prefix(monkeypatch):
+    def fake_evaluate_prefix(
+        seed,
+        *,
+        prime,
+        levels,
+        prefix,
+        max_numerator,
+        max_denominator,
+    ):
+        unique_by_prefix = {
+            (1,): 6,
+            (1, 0): 2,
+            (1, 1): 3,
+            (1, 1, 0): 4,
+            (1, 1, 1): 5,
+        }
+        unique = unique_by_prefix[tuple(prefix)]
+        summary = {
+            "prefix": list(prefix),
+            "score": [0, 0, unique, unique - 10, 0],
+            "lift_status": "lifted",
+            "final_modulus": levels,
+            "final_lambda": unique,
+            "reconstruction_status": "partial",
+            "unique_count": unique,
+            "total_count": 10,
+            "unresolved_count": 10 - unique,
+            "ambiguous_count": 0,
+            "exact_identity": None,
+            "exact_derivative": None,
+            "exact_translation_normalization": None,
+        }
+        return summary, {"prefix": list(prefix)}, {"status": "partial", "unique_count": unique}
+
+    monkeypatch.setattr(branch_search_module, "_evaluate_prefix", fake_evaluate_prefix)
+
+    result = branch_search_module.search_lambda_branches_checkpointed(
+        degenerate_identity_factors(),
+        prime=2,
+        levels=4,
+        depth=3,
+        beam_width=1,
+        max_numerator=10,
+        max_denominator=10,
+        score_levels=2,
+        score_max_numerator=5,
+        score_max_denominator=5,
+        refine_multiplier=1,
+        digits=(0, 1),
+        initial_prefixes=([1],),
+    )
+
+    assert result["initial_prefixes"] == [[1]]
+    assert result["history"][0]["position"] == 1
+    assert result["evaluated_branches"] == 4
+    assert result["best"]["prefix"] == [1]
+    assert result["final_best"]["prefix"] == [1, 1, 1]
+
+
+def test_checkpointed_lambda_branch_search_refine_all_refines_every_expanded_branch():
+    result = search_lambda_branches_checkpointed(
+        degenerate_identity_factors(),
+        prime=2,
+        levels=3,
+        depth=2,
+        beam_width=1,
+        max_numerator=10,
+        max_denominator=10,
+        score_levels=2,
+        score_max_numerator=5,
+        score_max_denominator=5,
+        refine_multiplier=1,
+        refine_all=True,
+    )
+
+    assert result["refine_all"] is True
+    assert result["history"][0]["expanded"] == 2
+    assert result["history"][0]["refined"] == 2
+
+
+def test_search_lambda_branches_cli_supports_initial_prefix_and_refine_all():
+    out_path = local_temp_path("branch-initial-prefix.json")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--prime",
+            "2",
+            "--levels",
+            "2",
+            "--depth",
+            "1",
+            "--beam-width",
+            "1",
+            "--max-numerator",
+            "10",
+            "--max-denominator",
+            "10",
+            "--checkpoint-dir",
+            str(local_temp_dir("branch-cli-initial-prefix")),
+            "--checkpoint-prefix",
+            "unit-initial",
+            "--initial-prefix",
+            "0",
+            "--refine-all",
+            "--p2",
+            "0,0",
+            "--p3",
+            "0,0,0",
+            "--p4",
+            "0,0,0,0",
+            "--p7",
+            "0,0,0,0,0,0,0",
+            "--p8",
+            "0,0,0,0,0,0,0,0",
+            "--lambda",
+            "0",
+            "--out",
+            str(out_path),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    report = json.loads(result.stdout)
+    assert report["initial_prefixes"] == [[0]]
+    assert report["refine_all"] is True
+    assert out_path.exists()

@@ -74,6 +74,8 @@ def main() -> int:
     parser.add_argument("--score-max-numerator", type=int)
     parser.add_argument("--score-max-denominator", type=int)
     parser.add_argument("--refine-multiplier", type=int, default=2)
+    parser.add_argument("--refine-all", action="store_true")
+    parser.add_argument("--initial-prefix", action="append", type=parse_digits)
     parser.add_argument("--checkpoint-dir")
     parser.add_argument("--checkpoint-prefix", default="lambda-branch-search")
     parser.add_argument("--resume", action="store_true")
@@ -151,6 +153,8 @@ def main() -> int:
             score_max_denominator=score_max_denominator,
             refine_multiplier=args.refine_multiplier,
             digits=args.digits,
+            initial_prefixes=args.initial_prefix,
+            refine_all=args.refine_all,
             checkpoint_dir=args.checkpoint_dir,
             checkpoint_prefix=args.checkpoint_prefix,
             resume=args.resume,
