@@ -1,0 +1,435 @@
+{
+  "ambiguous": [
+    "p2[0]",
+    "p2[1]",
+    "p3[2]",
+    "p4[2]",
+    "p7[0]",
+    "p7[1]",
+    "p7[2]",
+    "p7[5]",
+    "p8[1]",
+    "p8[3]",
+    "p8[4]",
+    "p8[5]",
+    "p8[7]"
+  ],
+  "exact_derivative": null,
+  "exact_identity": null,
+  "exact_translation_normalization": null,
+  "max_denominator": 500,
+  "max_numerator": 500,
+  "modulus": 117649,
+  "reconstructed": {
+    "lam": {
+      "candidates": [
+        {
+          "denominator": 1,
+          "numerator": 6
+        }
+      ],
+      "status": "unique",
+      "value": {
+        "denominator": 1,
+        "numerator": 6
+      }
+    },
+    "p2": [
+      {
+        "candidate_count": 3,
+        "candidates": [
+          {
+            "denominator": 1,
+            "numerator": -322
+          },
+          {
+            "denominator": 365,
+            "numerator": 119
+          },
+          {
+            "denominator": 366,
+            "numerator": -203
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidate_count": 3,
+        "candidates": [
+          {
+            "denominator": 81,
+            "numerator": -359
+          },
+          {
+            "denominator": 251,
+            "numerator": 340
+          },
+          {
+            "denominator": 332,
+            "numerator": -19
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      }
+    ],
+    "p3": [
+      {
+        "candidates": [
+          {
+            "denominator": 108,
+            "numerator": -115
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 108,
+          "numerator": -115
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 459,
+            "numerator": -443
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 459,
+          "numerator": -443
+        }
+      },
+      {
+        "candidate_count": 4,
+        "candidates": [
+          {
+            "denominator": 46,
+            "numerator": 327
+          },
+          {
+            "denominator": 309,
+            "numerator": -361
+          },
+          {
+            "denominator": 355,
+            "numerator": -34
+          },
+          {
+            "denominator": 401,
+            "numerator": 293
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      }
+    ],
+    "p4": [
+      {
+        "candidates": [
+          {
+            "denominator": 73,
+            "numerator": 62
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 73,
+          "numerator": 62
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 34,
+            "numerator": 197
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 34,
+          "numerator": 197
+        }
+      },
+      {
+        "candidate_count": 4,
+        "candidates": [
+          {
+            "denominator": 116,
+            "numerator": 337
+          },
+          {
+            "denominator": 177,
+            "numerator": -500
+          },
+          {
+            "denominator": 293,
+            "numerator": -163
+          },
+          {
+            "denominator": 409,
+            "numerator": 174
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 151,
+            "numerator": 164
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 151,
+          "numerator": 164
+        }
+      }
+    ],
+    "p7": [
+      {
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "denominator": 254,
+            "numerator": 493
+          },
+          {
+            "denominator": 471,
+            "numerator": 451
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidate_count": 4,
+        "candidates": [
+          {
+            "denominator": 107,
+            "numerator": 498
+          },
+          {
+            "denominator": 172,
+            "numerator": -299
+          },
+          {
+            "denominator": 279,
+            "numerator": 199
+          },
+          {
+            "denominator": 451,
+            "numerator": -100
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "denominator": 108,
+            "numerator": 235
+          },
+          {
+            "denominator": 451,
+            "numerator": -108
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 22,
+            "numerator": -195
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 22,
+          "numerator": -195
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "denominator": 188,
+            "numerator": 81
+          },
+          {
+            "denominator": 473,
+            "numerator": -422
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 50,
+            "numerator": -39
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 50,
+          "numerator": -39
+        }
+      }
+    ],
+    "p8": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 3,
+        "candidates": [
+          {
+            "denominator": 130,
+            "numerator": -443
+          },
+          {
+            "denominator": 233,
+            "numerator": 111
+          },
+          {
+            "denominator": 363,
+            "numerator": -332
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 85,
+            "numerator": 82
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 85,
+          "numerator": 82
+        }
+      },
+      {
+        "candidate_count": 4,
+        "candidates": [
+          {
+            "denominator": 47,
+            "numerator": 347
+          },
+          {
+            "denominator": 272,
+            "numerator": -495
+          },
+          {
+            "denominator": 319,
+            "numerator": -148
+          },
+          {
+            "denominator": 366,
+            "numerator": 199
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidate_count": 3,
+        "candidates": [
+          {
+            "denominator": 61,
+            "numerator": -243
+          },
+          {
+            "denominator": 386,
+            "numerator": 391
+          },
+          {
+            "denominator": 447,
+            "numerator": 148
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidate_count": 4,
+        "candidates": [
+          {
+            "denominator": 50,
+            "numerator": 499
+          },
+          {
+            "denominator": 201,
+            "numerator": -347
+          },
+          {
+            "denominator": 251,
+            "numerator": 152
+          },
+          {
+            "denominator": 452,
+            "numerator": -195
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 43,
+            "numerator": -141
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 43,
+          "numerator": -141
+        }
+      },
+      {
+        "candidate_count": 2,
+        "candidates": [
+          {
+            "denominator": 55,
+            "numerator": 252
+          },
+          {
+            "denominator": 447,
+            "numerator": -91
+          }
+        ],
+        "status": "ambiguous",
+        "value": null
+      }
+    ]
+  },
+  "status": "partial",
+  "total_count": 25,
+  "unique_count": 10,
+  "unresolved": [
+    "p7[4]",
+    "p8[0]"
+  ]
+}

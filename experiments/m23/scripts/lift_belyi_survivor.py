@@ -23,6 +23,10 @@ def parse_coefficients(raw: str) -> tuple[int, ...]:
     return tuple(int(item.strip()) for item in raw.split(",") if item.strip())
 
 
+def parse_digits(raw: str) -> tuple[int, ...]:
+    return tuple(int(item.strip()) for item in raw.split(",") if item.strip())
+
+
 def load_seed_from_json(path: Path, solution_index: int) -> ElkiesIdentityFactors:
     data = json.loads(path.read_text(encoding="utf-8"))
     solutions = data.get("solutions", [])
@@ -69,13 +73,19 @@ def main() -> int:
     parser.add_argument("--p7", type=parse_coefficients)
     parser.add_argument("--p8", type=parse_coefficients)
     parser.add_argument("--lambda", dest="lam", type=int)
+    parser.add_argument("--lambda-corrections", type=parse_digits)
     parser.add_argument("--out", help="Optional JSON output path")
     parser.add_argument("--markdown-out", help="Optional Markdown report output path")
     parser.add_argument("--title", default="M23 Belyi Lift Report")
     args = parser.parse_args()
 
     seed = seed_from_args(args)
-    result = lift_elkies_solution_mod_prime_power(seed, prime=args.prime, levels=args.levels)
+    result = lift_elkies_solution_mod_prime_power(
+        seed,
+        prime=args.prime,
+        levels=args.levels,
+        lambda_corrections=args.lambda_corrections,
+    )
     output = json.dumps(result, indent=2, sort_keys=True)
     if args.out:
         out_path = Path(args.out)

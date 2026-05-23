@@ -1,0 +1,237 @@
+{
+  "ambiguous": [],
+  "exact_derivative": null,
+  "exact_identity": null,
+  "exact_translation_normalization": null,
+  "max_denominator": 1000,
+  "max_numerator": 1000,
+  "modulus": 5764801,
+  "reconstructed": {
+    "lam": {
+      "candidates": [
+        {
+          "denominator": 1,
+          "numerator": 6
+        }
+      ],
+      "status": "unique",
+      "value": {
+        "denominator": 1,
+        "numerator": 6
+      }
+    },
+    "p2": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 915,
+            "numerator": 302
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 915,
+          "numerator": 302
+        }
+      }
+    ],
+    "p3": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p4": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 34,
+            "numerator": 197
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 34,
+          "numerator": 197
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p7": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p8": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 366,
+            "numerator": 199
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 366,
+          "numerator": 199
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 61,
+            "numerator": -243
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 61,
+          "numerator": -243
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 502,
+            "numerator": 161
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 502,
+          "numerator": 161
+        }
+      }
+    ]
+  },
+  "status": "partial",
+  "total_count": 25,
+  "unique_count": 6,
+  "unresolved": [
+    "p2[0]",
+    "p3[0]",
+    "p3[1]",
+    "p3[2]",
+    "p4[0]",
+    "p4[2]",
+    "p4[3]",
+    "p7[0]",
+    "p7[1]",
+    "p7[2]",
+    "p7[3]",
+    "p7[4]",
+    "p7[5]",
+    "p7[6]",
+    "p8[0]",
+    "p8[1]",
+    "p8[2]",
+    "p8[5]",
+    "p8[6]"
+  ]
+}

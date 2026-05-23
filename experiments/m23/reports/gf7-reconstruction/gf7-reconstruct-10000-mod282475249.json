@@ -1,0 +1,261 @@
+{
+  "ambiguous": [],
+  "exact_derivative": null,
+  "exact_identity": null,
+  "exact_translation_normalization": null,
+  "max_denominator": 10000,
+  "max_numerator": 10000,
+  "modulus": 282475249,
+  "reconstructed": {
+    "lam": {
+      "candidates": [
+        {
+          "denominator": 1,
+          "numerator": 6
+        }
+      ],
+      "status": "unique",
+      "value": {
+        "denominator": 1,
+        "numerator": 6
+      }
+    },
+    "p2": [
+      {
+        "candidates": [
+          {
+            "denominator": 6196,
+            "numerator": 4921
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 6196,
+          "numerator": 4921
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 7522,
+            "numerator": 8783
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 7522,
+          "numerator": 8783
+        }
+      }
+    ],
+    "p3": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 6521,
+            "numerator": 3190
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 6521,
+          "numerator": 3190
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p4": [
+      {
+        "candidates": [
+          {
+            "denominator": 6131,
+            "numerator": -2851
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 6131,
+          "numerator": -2851
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p7": [
+      {
+        "candidates": [
+          {
+            "denominator": 4604,
+            "numerator": 6157
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 4604,
+          "numerator": 6157
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 5477,
+            "numerator": -417
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 5477,
+          "numerator": -417
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 8923,
+            "numerator": 99
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 8923,
+          "numerator": 99
+        }
+      }
+    ],
+    "p8": [
+      {
+        "candidates": [
+          {
+            "denominator": 9208,
+            "numerator": -6157
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 9208,
+          "numerator": -6157
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 7708,
+            "numerator": -5021
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 7708,
+          "numerator": -5021
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ]
+  },
+  "status": "partial",
+  "total_count": 25,
+  "unique_count": 10,
+  "unresolved": [
+    "p3[0]",
+    "p3[2]",
+    "p4[1]",
+    "p4[2]",
+    "p4[3]",
+    "p7[1]",
+    "p7[2]",
+    "p7[4]",
+    "p7[5]",
+    "p8[1]",
+    "p8[3]",
+    "p8[4]",
+    "p8[5]",
+    "p8[6]",
+    "p8[7]"
+  ]
+}

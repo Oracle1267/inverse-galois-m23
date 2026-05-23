@@ -134,6 +134,7 @@ def _solve_linear_system_mod_prime(
     matrix: list[list[int]],
     rhs: list[int],
     prime: int,
+    free_values: dict[int, int] | None = None,
 ) -> dict[str, object]:
     if not matrix:
         return {"status": "solved", "solution": [], "rank": 0, "pivot_columns": []}
@@ -185,9 +186,20 @@ def _solve_linear_system_mod_prime(
             "inconsistent_rows": inconsistent_rows,
         }
 
+    free_values = free_values or {}
     solution = [0] * column_count
+    free_columns = [column for column in range(column_count) if column not in pivot_columns]
+    for column, value in free_values.items():
+        if column < 0 or column >= column_count:
+            raise ValueError(f"free variable column out of range: {column}")
+        if column not in free_columns:
+            continue
+        solution[column] = value % prime
     for row_index, column in enumerate(pivot_columns):
-        solution[column] = rows[row_index][-1] % prime
+        pivot_value = rows[row_index][-1]
+        for free_column in free_columns:
+            pivot_value -= rows[row_index][free_column] * solution[free_column]
+        solution[column] = pivot_value % prime
     return {
         "status": "solved",
         "solution": solution,
@@ -201,6 +213,7 @@ def _lift_one_level(
     factors: ElkiesIdentityFactors,
     prime: int,
     current_modulus: int,
+    lambda_correction_digit: int | None = None,
 ) -> tuple[ElkiesIdentityFactors | None, dict[str, object]]:
     target_modulus = current_modulus * prime
     base_residuals = _constraint_residuals(factors)
@@ -234,7 +247,12 @@ def _lift_one_level(
         [columns[column_index][row_index] for column_index in range(len(VARIABLES))]
         for row_index in range(len(base_residuals))
     ]
-    solved = _solve_linear_system_mod_prime(matrix, rhs, prime)
+    free_values = None
+    if lambda_correction_digit is not None:
+        if not 0 <= lambda_correction_digit < prime:
+            raise ValueError("lambda correction digits must be in range 0..prime-1")
+        free_values = {len(VARIABLES) - 1: lambda_correction_digit}
+    solved = _solve_linear_system_mod_prime(matrix, rhs, prime, free_values=free_values)
     step: dict[str, object] = {
         "from_modulus": current_modulus,
         "to_modulus": target_modulus,
@@ -243,6 +261,8 @@ def _lift_one_level(
         "rank": solved["rank"],
         "pivot_columns": solved["pivot_columns"],
     }
+    if lambda_correction_digit is not None:
+        step["free_values"] = {"lam": lambda_correction_digit}
     if solved["status"] != "solved":
         inconsistent_rows = [
             {
@@ -293,11 +313,18 @@ def lift_elkies_solution_mod_prime_power(
     seed: ElkiesIdentityFactors,
     prime: int,
     levels: int = 2,
+    lambda_corrections: Iterable[int] | None = None,
 ) -> dict[str, object]:
     if not _is_prime_candidate(prime):
         raise ValueError(f"prime must be prime: {prime}")
     if levels < 1:
         raise ValueError("levels must be at least 1")
+    correction_digits = list(lambda_corrections or [])
+    if len(correction_digits) > max(0, levels - 1):
+        raise ValueError("lambda_corrections cannot have more entries than lift steps")
+    for digit in correction_digits:
+        if not 0 <= int(digit) < prime:
+            raise ValueError("lambda correction digits must be in range 0..prime-1")
 
     current_modulus = prime
     current = ElkiesIdentityFactors(
@@ -322,8 +349,14 @@ def lift_elkies_solution_mod_prime_power(
             "steps": steps,
         }
 
-    for _ in range(1, levels):
-        lifted, step = _lift_one_level(current, prime=prime, current_modulus=current_modulus)
+    for step_index in range(1, levels):
+        digit = correction_digits[step_index - 1] if step_index - 1 < len(correction_digits) else None
+        lifted, step = _lift_one_level(
+            current,
+            prime=prime,
+            current_modulus=current_modulus,
+            lambda_correction_digit=digit,
+        )
         steps.append(step)
         if lifted is None:
             return {

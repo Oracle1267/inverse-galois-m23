@@ -1,5 +1,5 @@
 from m23verify.belyi import ElkiesIdentityFactors
-from m23verify.lifting import lift_elkies_solution_mod_prime_power
+from m23verify.lifting import lift_elkies_solution_mod_prime_power, _solve_linear_system_mod_prime
 
 
 def degenerate_identity_factors(lam: int = 0) -> ElkiesIdentityFactors:
@@ -64,3 +64,29 @@ def test_lift_elkies_solution_lifts_gf7_survivor_to_mod_49():
     assert report["steps"][0]["residual_mod_target_all_zero"] is True
     assert report["lifted"]["p2"] == [21, 24]
     assert report["lifted"]["lam"] == 6
+
+
+def test_linear_solver_can_assign_free_variable():
+    solved = _solve_linear_system_mod_prime(
+        matrix=[[1, 1]],
+        rhs=[0],
+        prime=7,
+        free_values={1: 3},
+    )
+
+    assert solved["status"] == "solved"
+    assert solved["solution"] == [4, 3]
+
+
+def test_lift_elkies_solution_accepts_lambda_correction_digit():
+    report = lift_elkies_solution_mod_prime_power(
+        gf7_survivor_factors(),
+        prime=7,
+        levels=2,
+        lambda_corrections=[1],
+    )
+
+    assert report["status"] == "lifted"
+    assert report["lifted"]["lam"] == 13
+    assert report["steps"][0]["free_values"] == {"lam": 1}
+    assert report["steps"][0]["residual_mod_target_all_zero"] is True

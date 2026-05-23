@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-23
 last_confirmed: 2026-05-23
 confidence: 0.84
@@ -24,7 +24,8 @@ relationships:
     note: "Adds a lifting phase after finite-field search."
 supersedes:
   - "[[wiki/m23-belyi-gf7-modular-survivor-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-reconstruction-report]]"
 review_after: 2026-06-23
 ---
 
@@ -79,3 +80,6 @@ P8 = [93794, 69681, 78895, 82612, 111859, 115306, 32829, 100541]
 
 The modular survivor did not die at `49` or `343`; it continued to lift through `117649`. The next useful step is rational reconstruction or a more constrained normalization choice, because the linear system has rank 24 with 25 variables. In the current implementation, the free variable is left at zero correction, which keeps `lambda = 6` throughout the recorded lift.
 
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf7-reconstruction-report]], which records rational reconstruction attempts and exposes the free `lambda` correction direction.

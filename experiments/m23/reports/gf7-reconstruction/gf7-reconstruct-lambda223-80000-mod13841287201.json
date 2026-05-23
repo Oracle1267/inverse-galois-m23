@@ -1,0 +1,255 @@
+{
+  "ambiguous": [],
+  "exact_derivative": null,
+  "exact_identity": null,
+  "exact_translation_normalization": null,
+  "max_denominator": 80000,
+  "max_numerator": 80000,
+  "modulus": 13841287201,
+  "reconstructed": {
+    "lam": {
+      "candidates": [
+        {
+          "denominator": 1,
+          "numerator": 223
+        }
+      ],
+      "status": "unique",
+      "value": {
+        "denominator": 1,
+        "numerator": 223
+      }
+    },
+    "p2": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p3": [
+      {
+        "candidates": [
+          {
+            "denominator": 10595,
+            "numerator": 61043
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 10595,
+          "numerator": 61043
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 64291,
+            "numerator": 43584
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 64291,
+          "numerator": 43584
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p4": [
+      {
+        "candidates": [
+          {
+            "denominator": 19886,
+            "numerator": -78857
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 19886,
+          "numerator": -78857
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p7": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 50573,
+            "numerator": 18537
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 50573,
+          "numerator": 18537
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ],
+    "p8": [
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 20703,
+            "numerator": -33188
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 20703,
+          "numerator": -33188
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 26997,
+            "numerator": 33499
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 26997,
+          "numerator": 33499
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 65878,
+            "numerator": -66739
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 65878,
+          "numerator": -66739
+        }
+      },
+      {
+        "candidates": [
+          {
+            "denominator": 34023,
+            "numerator": 54116
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 34023,
+          "numerator": 54116
+        }
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      },
+      {
+        "candidate_count": 0,
+        "candidates": [],
+        "status": "none",
+        "value": null
+      }
+    ]
+  },
+  "status": "partial",
+  "total_count": 25,
+  "unique_count": 9,
+  "unresolved": [
+    "p2[0]",
+    "p2[1]",
+    "p3[2]",
+    "p4[1]",
+    "p4[2]",
+    "p4[3]",
+    "p7[0]",
+    "p7[1]",
+    "p7[2]",
+    "p7[3]",
+    "p7[4]",
+    "p7[6]",
+    "p8[0]",
+    "p8[1]",
+    "p8[6]",
+    "p8[7]"
+  ]
+}
