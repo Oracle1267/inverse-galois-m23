@@ -55,6 +55,75 @@ def test_run_belyi_batches_cli_writes_checkpoint_reports():
     assert (report_dir / "unit-gf5-summary.json").exists()
 
 
+def test_run_belyi_batches_cli_prints_progress_to_stderr():
+    report_dir = local_temp_dir("belyi-progress")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "5",
+            "--start-left-factor-triples",
+            "0",
+            "--stop-left-factor-triples",
+            "4",
+            "--batch-size",
+            "2",
+            "--max-solutions",
+            "0",
+            "--require-translation-normalized",
+            "--normalized-first",
+            "--report-dir",
+            str(report_dir),
+            "--report-prefix",
+            "unit-progress",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    assert "batch 0-2 finished" in result.stderr
+    assert "batch 2-4 finished" in result.stderr
+    assert "next=4" in result.stderr
+    json.loads(result.stdout)
+
+
+def test_run_belyi_batches_cli_can_suppress_progress_output():
+    report_dir = local_temp_dir("belyi-quiet")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--modulus",
+            "5",
+            "--start-left-factor-triples",
+            "0",
+            "--stop-left-factor-triples",
+            "2",
+            "--batch-size",
+            "2",
+            "--max-solutions",
+            "0",
+            "--require-translation-normalized",
+            "--normalized-first",
+            "--report-dir",
+            str(report_dir),
+            "--report-prefix",
+            "unit-quiet",
+            "--quiet",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.stderr == ""
+    json.loads(result.stdout)
+
+
 def test_run_belyi_batches_cli_stops_on_solution():
     report_dir = local_temp_dir("belyi-solution")
 

@@ -56,6 +56,26 @@ def batch_record(start: int, end: int, json_path: Path, markdown_path: Path, res
     }
 
 
+def emit_progress(start: int, end: int, current: int, result: dict, reused: bool, quiet: bool) -> None:
+    if quiet:
+        return
+    action = "reused" if reused else "finished"
+    print(
+        " ".join(
+            [
+                f"batch {start}-{end} {action}:",
+                f"tested={result['tested_left_factor_triples']}",
+                f"lambda={result['tested_lambda_values']}",
+                f"solutions={len(result['solutions'])}",
+                f"stop={result['stopped_reason']}",
+                f"next={current}",
+            ]
+        ),
+        file=sys.stderr,
+        flush=True,
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run resumable batches of the Elkies-style M23 Belyi search.")
     parser.add_argument("--modulus", type=int, required=True)
@@ -78,6 +98,7 @@ def main() -> int:
     parser.add_argument("--report-prefix", default=None)
     parser.add_argument("--summary-out")
     parser.add_argument("--force", action="store_true", help="Overwrite existing batch reports instead of reusing them")
+    parser.add_argument("--quiet", action="store_true", help="Suppress per-batch progress output")
     args = parser.parse_args()
 
     if args.start_left_factor_triples < 0:
@@ -99,24 +120,34 @@ def main() -> int:
     stopped_reason = "target_reached"
 
     while current < args.stop_left_factor_triples:
-        end = min(current + args.batch_size, args.stop_left_factor_triples)
+        batch_start = current
+        end = min(batch_start + args.batch_size, args.stop_left_factor_triples)
         json_path = report_dir / f"{prefix}-{current}-{end}.json"
         markdown_path = report_dir / f"{prefix}-{current}-{end}.md"
+        reused = json_path.exists() and markdown_path.exists() and not args.force
 
-        if json_path.exists() and markdown_path.exists() and not args.force:
+        if reused:
             result = json.loads(json_path.read_text(encoding="utf-8"))
         else:
-            result = run_batch(args, start=current, end=end)
-            title = f"M23 Belyi GF({args.modulus}) Batch {current}-{end}"
+            result = run_batch(args, start=batch_start, end=end)
+            title = f"M23 Belyi GF({args.modulus}) Batch {batch_start}-{end}"
             write_json(json_path, result)
             markdown_path.parent.mkdir(parents=True, exist_ok=True)
             markdown_path.write_text(render_belyi_search_markdown(result, title=title), encoding="utf-8")
 
-        batches.append(batch_record(current, end, json_path, markdown_path, result))
+        batches.append(batch_record(batch_start, end, json_path, markdown_path, result))
         all_solutions.extend(result["solutions"])
         tested_total += result["tested_left_factor_triples"]
         lambda_total += result["tested_lambda_values"]
         current += result["tested_left_factor_triples"]
+        emit_progress(
+            start=batch_start,
+            end=end,
+            current=current,
+            result=result,
+            reused=reused,
+            quiet=args.quiet,
+        )
 
         if result["solutions"]:
             stopped_reason = "solution_found"

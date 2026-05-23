@@ -129,6 +129,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-22-m23-belyi-gf5-32000]]
 - [[logs/ingest/2026-05-22-m23-local-batch-runner]]
 - [[logs/ingest/2026-05-22-m23-belyi-gf5-exhausted]]
+- [[logs/ingest/2026-05-22-m23-runner-progress]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

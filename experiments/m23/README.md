@@ -98,6 +98,14 @@ Run the remaining current `GF(5)` search locally in checkpointed batches:
 
 The batch runner writes one JSON and one Markdown report per interval plus a summary JSON file. It stops when it reaches the stop offset, finds a solution, exhausts the finite iterator, or makes no progress. Re-running the same command reuses existing batch reports unless `--force` is provided.
 
+Progress is printed to stderr after each batch, for example:
+
+```text
+batch 32000-36000 finished: tested=4000 lambda=4000 solutions=0 stop=max_left_factor_triples next=36000
+```
+
+Use `--quiet` to suppress progress lines while keeping the final JSON summary on stdout.
+
 Run tests:
 
 ```powershell

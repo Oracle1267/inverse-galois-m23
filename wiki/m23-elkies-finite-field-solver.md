@@ -135,6 +135,8 @@ The batch runner is intended for unattended local execution. It repeatedly runs 
 
 For the current `GF(5)` line, the stop offset `212636` is the exact count of pairwise-coprime normalized left-factor triples. The local runner reached that stop offset with no solutions.
 
+The runner prints one progress line to stderr after each interval, including the tested interval, candidate count, lambda count, solution count, stop reason, and next offset. Use `--quiet` to suppress those progress lines while preserving the final JSON summary on stdout.
+
 ## Enumeration Order
 
 The CLI flags `--coprime-first` and `--normalized-first` change the meaning of the left-factor prefix budget. Non-coprime triples can be skipped before counting, and translation-normalized triples can be generated directly. The raw default ordering remains available for reproducibility.
