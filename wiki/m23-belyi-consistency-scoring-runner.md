@@ -62,6 +62,8 @@ The search loop also stops early only for a complete and exact reconstruction. A
 
 Candidates below `--consistency-min-unique` are kept below candidates that actually receive consistency scoring. This preserves the threshold as a compute guard instead of letting unscored candidates outrank scored candidates because of tuple-shape differences.
 
+The scorer also detects cheap linear symbolic conflicts. If two residual equations independently force different exact values for the same unresolved coefficient, the branch is treated as symbolically inconsistent even when no residual is a standalone nonzero constant.
+
 ## Verified Smoke
 
 The controlled degenerate identity smoke passed with `hard_contradiction_count = 0` and `symbolic_constraint_count = 0`:

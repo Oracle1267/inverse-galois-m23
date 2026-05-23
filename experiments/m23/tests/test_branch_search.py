@@ -572,6 +572,7 @@ def test_consistency_score_prioritizes_fewer_hard_contradictions_over_unique_cou
         "ambiguous": [],
         "partial_consistency": {
             "hard_contradiction_count": 0,
+            "linear_conflict_count": 0,
             "symbolic_constraint_count": 5,
             "unknown_count": 5,
         },
@@ -583,6 +584,7 @@ def test_consistency_score_prioritizes_fewer_hard_contradictions_over_unique_cou
         "ambiguous": [],
         "partial_consistency": {
             "hard_contradiction_count": 2,
+            "linear_conflict_count": 0,
             "symbolic_constraint_count": 2,
             "unknown_count": 2,
         },
@@ -599,6 +601,7 @@ def test_consistency_score_keeps_skipped_candidates_below_scored_candidates():
         "ambiguous": [],
         "partial_consistency": {
             "hard_contradiction_count": 3,
+            "linear_conflict_count": 0,
             "symbolic_constraint_count": 5,
             "unknown_count": 5,
         },
@@ -613,3 +616,32 @@ def test_consistency_score_keeps_skipped_candidates_below_scored_candidates():
     }
 
     assert _score_candidate(scored) > _score_candidate(skipped)
+
+
+def test_consistency_score_penalizes_linear_symbolic_conflicts():
+    compatible = {
+        "status": "partial",
+        "unique_count": 20,
+        "unresolved": ["a", "b", "c", "d", "e"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_conflict_count": 0,
+            "symbolic_constraint_count": 8,
+            "unknown_count": 5,
+        },
+    }
+    incompatible = {
+        "status": "partial",
+        "unique_count": 22,
+        "unresolved": ["a", "b", "c"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_conflict_count": 1,
+            "symbolic_constraint_count": 4,
+            "unknown_count": 3,
+        },
+    }
+
+    assert _score_candidate(compatible) > _score_candidate(incompatible)

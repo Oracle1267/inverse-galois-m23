@@ -14,6 +14,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
   - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
   - "[[wiki/m23-belyi-consistency-scoring-runner]]"
+  - "[[wiki/m23-belyi-gf7-targeted-consistency-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -106,6 +107,12 @@ Consistency-scored targeted continuation:
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 16 --depth 15 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0,6,4,2,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-consistency-overnight --checkpoint-prefix gf7-consistency-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.md --title "M23 Belyi GF(7) Consistency-Scored Branch Search"
 ```
 
+Linear-conflict-aware targeted consistency rescore:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-linear-consistency --checkpoint-prefix gf7-targeted-linear-consistency --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-linear-consistency-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-linear-consistency-summary.md --title "M23 Belyi GF(7) Targeted Linear Consistency Rescore"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -126,8 +133,10 @@ Consistency-scored targeted continuation:
 - The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
 - The branch-search CLI can now continue from a known lambda prefix and refine every child before pruning.
 - The branch-search CLI can now score full/refined candidates by partial exact-equation consistency using `--score-consistency`.
+- The branch-search CLI can now penalize cheap linear symbolic conflicts among unresolved coefficients.
 - The first overnight branch search completed without a full reconstruction, but improved the strongest known branch to 20/25 reconstructed coefficients at lambda `12130`.
 - The first targeted overnight continuation improved the strongest known branch to 23/25 reconstructed coefficients at lambda `760965862`, but symbolic consistency checks show the current unique reconstructions are not jointly exact.
+- The first targeted consistency rescore found a 22/25 branch with zero hard contradictions, but post-run linear symbolic checking showed that branch also has incompatible forced values for `p3[0]`.
 
 ## Report Artifacts
 
@@ -146,6 +155,7 @@ Consistency-scored targeted continuation:
 - [[wiki/m23-belyi-gf7-targeted-branch-runner]] records the targeted continuation runner for the current best lambda prefix.
 - [[wiki/m23-belyi-gf7-targeted-overnight-result]] records the targeted run and the 23/25 partial reconstruction.
 - [[wiki/m23-belyi-consistency-scoring-runner]] records the consistency-aware branch scoring mode and next recommended continuation.
+- [[wiki/m23-belyi-gf7-targeted-consistency-result]] records the hard-contradiction rescore and the follow-up linear-symbolic conflict.
 
 ## Derivative Constraint
 

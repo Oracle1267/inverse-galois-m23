@@ -1,6 +1,8 @@
 from copy import deepcopy
 
-from m23verify.consistency import partial_consistency_report
+import sympy as sp
+
+from m23verify.consistency import _linear_conflicts, _linear_implication_from_expression, partial_consistency_report
 from m23verify.reconstruction import reconstruct_lift_report
 
 
@@ -55,3 +57,17 @@ def test_partial_consistency_keeps_symbolic_unknowns_out_of_hard_contradictions(
     assert report["unknowns"] == ["p8[7]"]
     assert report["hard_contradiction_count"] == 0
     assert report["symbolic_constraint_count"] > 0
+
+
+def test_linear_implication_conflicts_detect_incompatible_symbolic_constraints():
+    variable = sp.Symbol("a")
+    implications = [
+        _linear_implication_from_expression(2 * variable - 4, source="identity", index=1),
+        _linear_implication_from_expression(3 * variable - 9, source="identity", index=2),
+    ]
+
+    conflicts = _linear_conflicts([item for item in implications if item is not None])
+
+    assert len(conflicts) == 1
+    assert conflicts[0]["symbol"] == "a"
+    assert conflicts[0]["values"] == ["2", "3"]

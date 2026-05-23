@@ -14,10 +14,11 @@
 - Best lambda: `0`
 - Unique coefficients: `25 / 25`
 - Hard consistency contradictions: `0`
+- Linear symbolic conflicts: `0`
 - Symbolic consistency constraints: `0`
 
 ## Beam History
 
 ### Position 0
 
-- `[0]` lambda `0` unique `25 / 25` status `complete` hard `0`
+- `[0]` lambda `0` unique `25 / 25` status `complete` hard `0` linear `0`
