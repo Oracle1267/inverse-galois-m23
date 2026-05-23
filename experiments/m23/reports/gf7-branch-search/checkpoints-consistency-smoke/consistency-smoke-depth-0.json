@@ -1,0 +1,126 @@
+{
+  "beam_width": 1,
+  "best": {
+    "ambiguous_count": 0,
+    "exact_derivative": true,
+    "exact_identity": true,
+    "exact_translation_normalization": true,
+    "final_lambda": 0,
+    "final_modulus": 4,
+    "hard_contradiction_count": 0,
+    "lift_status": "lifted",
+    "prefix": [
+      0
+    ],
+    "reconstruction_status": "complete",
+    "score": [
+      1,
+      1,
+      0,
+      0,
+      25,
+      0,
+      0,
+      0,
+      0
+    ],
+    "symbolic_constraint_count": 0,
+    "total_count": 25,
+    "unique_count": 25,
+    "unknown_count": 0,
+    "unresolved_count": 0
+  },
+  "consistency_min_unique": 0,
+  "depth": 1,
+  "digit_options": [
+    0,
+    1
+  ],
+  "evaluated_branches": 2,
+  "history": [
+    {
+      "cheap_scored": 2,
+      "expanded": 2,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": true,
+          "exact_identity": true,
+          "exact_translation_normalization": true,
+          "final_lambda": 0,
+          "final_modulus": 4,
+          "hard_contradiction_count": 0,
+          "lift_status": "lifted",
+          "prefix": [
+            0
+          ],
+          "reconstruction_status": "complete",
+          "score": [
+            1,
+            1,
+            0,
+            0,
+            25,
+            0,
+            0,
+            0,
+            0
+          ],
+          "symbolic_constraint_count": 0,
+          "total_count": 25,
+          "unique_count": 25,
+          "unknown_count": 0,
+          "unresolved_count": 0
+        }
+      ],
+      "position": 0,
+      "refined": 2
+    }
+  ],
+  "initial_prefixes": [
+    []
+  ],
+  "kept": [
+    {
+      "ambiguous_count": 0,
+      "exact_derivative": true,
+      "exact_identity": true,
+      "exact_translation_normalization": true,
+      "final_lambda": 0,
+      "final_modulus": 4,
+      "hard_contradiction_count": 0,
+      "lift_status": "lifted",
+      "prefix": [
+        0
+      ],
+      "reconstruction_status": "complete",
+      "score": [
+        1,
+        1,
+        0,
+        0,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "symbolic_constraint_count": 0,
+      "total_count": 25,
+      "unique_count": 25,
+      "unknown_count": 0,
+      "unresolved_count": 0
+    }
+  ],
+  "levels": 2,
+  "max_denominator": 10,
+  "max_numerator": 10,
+  "position": 0,
+  "prime": 2,
+  "refine_all": false,
+  "refine_multiplier": 2,
+  "score_consistency": true,
+  "score_levels": 1,
+  "score_max_denominator": 10,
+  "score_max_numerator": 10
+}

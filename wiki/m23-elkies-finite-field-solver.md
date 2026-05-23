@@ -13,6 +13,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-overnight-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
   - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
+  - "[[wiki/m23-belyi-consistency-scoring-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -99,6 +100,12 @@ Targeted branch continuation:
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-overnight --checkpoint-prefix gf7-targeted-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-overnight-summary.md --title "M23 Belyi GF(7) Targeted Overnight Branch Search"
 ```
 
+Consistency-scored targeted continuation:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 16 --depth 15 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0,6,4,2,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-consistency-overnight --checkpoint-prefix gf7-consistency-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.md --title "M23 Belyi GF(7) Consistency-Scored Branch Search"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -118,6 +125,7 @@ Targeted branch continuation:
 - The branch-search CLI `experiments/m23/scripts/search_lambda_branches.py` can search `lambda` correction sequences with a bounded beam.
 - The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
 - The branch-search CLI can now continue from a known lambda prefix and refine every child before pruning.
+- The branch-search CLI can now score full/refined candidates by partial exact-equation consistency using `--score-consistency`.
 - The first overnight branch search completed without a full reconstruction, but improved the strongest known branch to 20/25 reconstructed coefficients at lambda `12130`.
 - The first targeted overnight continuation improved the strongest known branch to 23/25 reconstructed coefficients at lambda `760965862`, but symbolic consistency checks show the current unique reconstructions are not jointly exact.
 
@@ -137,6 +145,7 @@ Targeted branch continuation:
 - [[wiki/m23-belyi-gf7-overnight-result]] records the completed overnight run and current strongest reconstruction signal.
 - [[wiki/m23-belyi-gf7-targeted-branch-runner]] records the targeted continuation runner for the current best lambda prefix.
 - [[wiki/m23-belyi-gf7-targeted-overnight-result]] records the targeted run and the 23/25 partial reconstruction.
+- [[wiki/m23-belyi-consistency-scoring-runner]] records the consistency-aware branch scoring mode and next recommended continuation.
 
 ## Derivative Constraint
 
@@ -176,4 +185,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The targeted overnight branch search improved the rational-reconstruction signal to 23/25 coefficients, but exact-equation consistency remains unresolved.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The targeted overnight branch search improved the rational-reconstruction signal to 23/25 coefficients, but exact-equation consistency remains unresolved. The next local run should prioritize branches with few or no hard consistency contradictions.

@@ -1,0 +1,636 @@
+{
+  "beam_width": 1,
+  "best": {
+    "ambiguous_count": 0,
+    "exact_derivative": true,
+    "exact_identity": true,
+    "exact_translation_normalization": true,
+    "final_lambda": 0,
+    "final_modulus": 4,
+    "hard_contradiction_count": 0,
+    "lift_status": "lifted",
+    "prefix": [
+      0
+    ],
+    "reconstruction_status": "complete",
+    "score": [
+      1,
+      1,
+      0,
+      0,
+      25,
+      0,
+      0,
+      0,
+      0
+    ],
+    "symbolic_constraint_count": 0,
+    "total_count": 25,
+    "unique_count": 25,
+    "unknown_count": 0,
+    "unresolved_count": 0
+  },
+  "best_lift": {
+    "final_modulus": 4,
+    "initial_modulus": 2,
+    "lifted": {
+      "lam": 0,
+      "p2": [
+        0,
+        0
+      ],
+      "p3": [
+        0,
+        0,
+        0
+      ],
+      "p4": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "p7": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "p8": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "prime": 2,
+    "requested_levels": 2,
+    "seed": {
+      "lam": 0,
+      "p2": [
+        0,
+        0
+      ],
+      "p3": [
+        0,
+        0,
+        0
+      ],
+      "p4": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "p7": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "p8": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "status": "lifted",
+    "steps": [
+      {
+        "constraints": 48,
+        "correction": {
+          "lam": 0,
+          "p2": [
+            0,
+            0
+          ],
+          "p3": [
+            0,
+            0,
+            0
+          ],
+          "p4": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "p7": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "p8": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "free_values": {
+          "lam": 0
+        },
+        "from_modulus": 2,
+        "pivot_columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9,
+          12,
+          13,
+          14,
+          15,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "rank": 17,
+        "residual_mod_target_all_zero": true,
+        "status": "lifted",
+        "to_modulus": 4,
+        "variables": 25
+      }
+    ]
+  },
+  "best_reconstruction": {
+    "ambiguous": [],
+    "exact_derivative": true,
+    "exact_identity": true,
+    "exact_translation_normalization": true,
+    "max_denominator": 10,
+    "max_numerator": 10,
+    "modulus": 4,
+    "partial_consistency": {
+      "hard_contradiction_count": 0,
+      "hard_contradictions": [],
+      "symbolic_constraint_count": 0,
+      "symbolic_constraints": [],
+      "unknown_count": 0,
+      "unknowns": [],
+      "zero_coefficient_count": 48
+    },
+    "reconstructed": {
+      "lam": {
+        "candidates": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "status": "unique",
+        "value": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      "p2": [
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        }
+      ],
+      "p3": [
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        }
+      ],
+      "p4": [
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        }
+      ],
+      "p7": [
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        }
+      ],
+      "p8": [
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        },
+        {
+          "candidates": [
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          "status": "unique",
+          "value": {
+            "denominator": 1,
+            "numerator": 0
+          }
+        }
+      ]
+    },
+    "status": "complete",
+    "total_count": 25,
+    "unique_count": 25,
+    "unresolved": []
+  },
+  "checkpoint_dir": "experiments\\m23\\reports\\gf7-branch-search\\checkpoints-consistency-smoke",
+  "checkpoint_prefix": "consistency-smoke",
+  "consistency_min_unique": 0,
+  "depth": 1,
+  "digit_options": [
+    0,
+    1
+  ],
+  "evaluated_branches": 2,
+  "final_best": {
+    "ambiguous_count": 0,
+    "exact_derivative": true,
+    "exact_identity": true,
+    "exact_translation_normalization": true,
+    "final_lambda": 0,
+    "final_modulus": 4,
+    "hard_contradiction_count": 0,
+    "lift_status": "lifted",
+    "prefix": [
+      0
+    ],
+    "reconstruction_status": "complete",
+    "score": [
+      1,
+      1,
+      0,
+      0,
+      25,
+      0,
+      0,
+      0,
+      0
+    ],
+    "symbolic_constraint_count": 0,
+    "total_count": 25,
+    "unique_count": 25,
+    "unknown_count": 0,
+    "unresolved_count": 0
+  },
+  "history": [
+    {
+      "cheap_scored": 2,
+      "expanded": 2,
+      "kept": [
+        {
+          "ambiguous_count": 0,
+          "exact_derivative": true,
+          "exact_identity": true,
+          "exact_translation_normalization": true,
+          "final_lambda": 0,
+          "final_modulus": 4,
+          "hard_contradiction_count": 0,
+          "lift_status": "lifted",
+          "prefix": [
+            0
+          ],
+          "reconstruction_status": "complete",
+          "score": [
+            1,
+            1,
+            0,
+            0,
+            25,
+            0,
+            0,
+            0,
+            0
+          ],
+          "symbolic_constraint_count": 0,
+          "total_count": 25,
+          "unique_count": 25,
+          "unknown_count": 0,
+          "unresolved_count": 0
+        }
+      ],
+      "position": 0,
+      "refined": 2
+    }
+  ],
+  "initial_prefixes": [
+    []
+  ],
+  "levels": 2,
+  "max_denominator": 10,
+  "max_numerator": 10,
+  "prime": 2,
+  "refine_all": false,
+  "refine_multiplier": 2,
+  "score_consistency": true,
+  "score_levels": 1,
+  "score_max_denominator": 10,
+  "score_max_numerator": 10,
+  "status": "complete"
+}

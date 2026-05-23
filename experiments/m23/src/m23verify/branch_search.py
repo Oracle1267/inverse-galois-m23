@@ -6,20 +6,40 @@ from typing import Callable
 from typing import Iterable
 
 from .belyi import ElkiesIdentityFactors
+from .consistency import partial_consistency_report
 from .lifting import lift_elkies_solution_mod_prime_power
 from .reconstruction import reconstruct_lift_report
 
 
-def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, int, int, int, int]:
-    complete_score = 1 if reconstruction["status"] == "complete" else 0
+def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
     exact_score = 1 if (
         reconstruction.get("exact_identity") is True
         and reconstruction.get("exact_derivative") is True
         and reconstruction.get("exact_translation_normalization") is True
     ) else 0
+    complete_score = 1 if reconstruction["status"] == "complete" and exact_score else 0
+    inexact_penalty = -1 if (
+        reconstruction.get("exact_identity") is False
+        or reconstruction.get("exact_derivative") is False
+        or reconstruction.get("exact_translation_normalization") is False
+    ) else 0
+    partial_consistency = reconstruction.get("partial_consistency")
+    if isinstance(partial_consistency, dict):
+        return (
+            complete_score,
+            exact_score,
+            inexact_penalty,
+            -int(partial_consistency["hard_contradiction_count"]),
+            int(reconstruction["unique_count"]),
+            -int(partial_consistency["unknown_count"]),
+            -int(partial_consistency["symbolic_constraint_count"]),
+            -len(reconstruction.get("unresolved", [])),  # type: ignore[arg-type]
+            -len(reconstruction.get("ambiguous", [])),  # type: ignore[arg-type]
+        )
     return (
         complete_score,
         exact_score,
+        inexact_penalty,
         int(reconstruction["unique_count"]),
         -len(reconstruction.get("unresolved", [])),  # type: ignore[arg-type]
         -len(reconstruction.get("ambiguous", [])),  # type: ignore[arg-type]
@@ -31,7 +51,7 @@ def _candidate_summary(
     lift: dict[str, object],
     reconstruction: dict[str, object],
 ) -> dict[str, object]:
-    return {
+    summary = {
         "prefix": prefix,
         "score": list(_score_candidate(reconstruction)),
         "lift_status": lift["status"],
@@ -45,7 +65,15 @@ def _candidate_summary(
         "exact_identity": reconstruction.get("exact_identity"),
         "exact_derivative": reconstruction.get("exact_derivative"),
         "exact_translation_normalization": reconstruction.get("exact_translation_normalization"),
+        "hard_contradiction_count": None,
+        "symbolic_constraint_count": None,
     }
+    partial_consistency = reconstruction.get("partial_consistency")
+    if isinstance(partial_consistency, dict):
+        summary["hard_contradiction_count"] = partial_consistency["hard_contradiction_count"]
+        summary["symbolic_constraint_count"] = partial_consistency["symbolic_constraint_count"]
+        summary["unknown_count"] = partial_consistency["unknown_count"]
+    return summary
 
 
 def _evaluate_prefix(
@@ -56,6 +84,8 @@ def _evaluate_prefix(
     prefix: list[int],
     max_numerator: int,
     max_denominator: int,
+    score_consistency: bool = False,
+    consistency_min_unique: int = 0,
 ) -> tuple[dict[str, object], dict[str, object], dict[str, object]]:
     lift = lift_elkies_solution_mod_prime_power(
         seed,
@@ -68,6 +98,8 @@ def _evaluate_prefix(
         max_numerator=max_numerator,
         max_denominator=max_denominator,
     )
+    if score_consistency and int(reconstruction["unique_count"]) >= consistency_min_unique:
+        reconstruction["partial_consistency"] = partial_consistency_report(reconstruction)
     return _candidate_summary(prefix, lift, reconstruction), lift, reconstruction
 
 
@@ -103,6 +135,8 @@ def _validate_checkpoint_compatibility(checkpoint: dict[str, object], expected: 
     defaults: dict[str, object] = {
         "initial_prefixes": [[]],
         "refine_all": False,
+        "score_consistency": False,
+        "consistency_min_unique": 0,
     }
     for key, expected_value in expected.items():
         actual_value = checkpoint[key] if key in checkpoint else defaults.get(key)
@@ -131,6 +165,15 @@ def _is_better_summary(candidate: dict[str, object], current: dict[str, object] 
 
 def _is_better_record(candidate: BranchRecord, current: BranchRecord | None) -> bool:
     return current is None or _is_better_summary(candidate[0], current[0])
+
+
+def _is_exact_complete_summary(summary: dict[str, object]) -> bool:
+    return (
+        summary["reconstruction_status"] == "complete"
+        and summary.get("exact_identity") is True
+        and summary.get("exact_derivative") is True
+        and summary.get("exact_translation_normalization") is True
+    )
 
 
 def _best_summary_from_history(history: list[dict[str, object]]) -> dict[str, object] | None:
@@ -175,6 +218,8 @@ def search_lambda_branches(
     max_numerator: int,
     max_denominator: int,
     digits: Iterable[int] | None = None,
+    score_consistency: bool = False,
+    consistency_min_unique: int = 0,
 ) -> dict[str, object]:
     if depth < 0:
         raise ValueError("depth must be nonnegative")
@@ -204,6 +249,8 @@ def search_lambda_branches(
             prefix=[],
             max_numerator=max_numerator,
             max_denominator=max_denominator,
+            score_consistency=score_consistency,
+            consistency_min_unique=consistency_min_unique,
         )
         final_record = best_record
         evaluated = 1
@@ -221,6 +268,8 @@ def search_lambda_branches(
                         prefix=[*prefix, digit],
                         max_numerator=max_numerator,
                         max_denominator=max_denominator,
+                        score_consistency=score_consistency,
+                        consistency_min_unique=consistency_min_unique,
                     )
                 )
         candidates.sort(key=lambda item: tuple(item[0]["score"]), reverse=True)  # type: ignore[arg-type]
@@ -237,7 +286,7 @@ def search_lambda_branches(
             final_record = kept[0]
             if _is_better_record(final_record, best_record):
                 best_record = final_record
-        if best_record and best_record[0]["reconstruction_status"] == "complete":
+        if best_record and _is_exact_complete_summary(best_record[0]):
             break
 
     assert best_record is not None
@@ -251,6 +300,8 @@ def search_lambda_branches(
         "beam_width": beam_width,
         "max_numerator": max_numerator,
         "max_denominator": max_denominator,
+        "score_consistency": score_consistency,
+        "consistency_min_unique": consistency_min_unique,
         "digit_options": digit_options,
         "evaluated_branches": evaluated,
         "best": best_summary,
@@ -277,6 +328,8 @@ def search_lambda_branches_checkpointed(
     digits: Iterable[int] | None = None,
     initial_prefixes: Iterable[Iterable[int]] | None = None,
     refine_all: bool = False,
+    score_consistency: bool = False,
+    consistency_min_unique: int = 0,
     checkpoint_dir: Path | str | None = None,
     checkpoint_prefix: str = "lambda-branch-search",
     resume: bool = False,
@@ -325,6 +378,8 @@ def search_lambda_branches_checkpointed(
                     "score_max_denominator": score_max_denominator,
                     "refine_multiplier": refine_multiplier,
                     "refine_all": refine_all,
+                    "score_consistency": score_consistency,
+                    "consistency_min_unique": consistency_min_unique,
                     "initial_prefixes": initial_roots,
                     "digit_options": digit_options,
                 },
@@ -348,6 +403,8 @@ def search_lambda_branches_checkpointed(
                 prefix=prefix,
                 max_numerator=max_numerator,
                 max_denominator=max_denominator,
+                score_consistency=score_consistency,
+                consistency_min_unique=consistency_min_unique,
             )
             for prefix in prefixes
         ]
@@ -363,6 +420,8 @@ def search_lambda_branches_checkpointed(
             prefix=list(checkpoint_best_summary["prefix"]),  # type: ignore[arg-type]
             max_numerator=max_numerator,
             max_denominator=max_denominator,
+            score_consistency=score_consistency,
+            consistency_min_unique=consistency_min_unique,
         )
         final_record = best_record
 
@@ -375,6 +434,8 @@ def search_lambda_branches_checkpointed(
             prefix=best_prefix,
             max_numerator=max_numerator,
             max_denominator=max_denominator,
+            score_consistency=score_consistency,
+            consistency_min_unique=consistency_min_unique,
         )
         if _is_better_record(final_record, best_record):
             best_record = final_record
@@ -432,6 +493,8 @@ def search_lambda_branches_checkpointed(
                     prefix=prefix,
                     max_numerator=max_numerator,
                     max_denominator=max_denominator,
+                    score_consistency=score_consistency,
+                    consistency_min_unique=consistency_min_unique,
                 )
             )
             if progress_callback and progress_every > 0 and index % progress_every == 0:
@@ -471,6 +534,8 @@ def search_lambda_branches_checkpointed(
             "score_max_denominator": score_max_denominator,
             "refine_multiplier": refine_multiplier,
             "refine_all": refine_all,
+            "score_consistency": score_consistency,
+            "consistency_min_unique": consistency_min_unique,
             "initial_prefixes": initial_roots,
             "digit_options": digit_options,
             "evaluated_branches": evaluated,
@@ -492,7 +557,7 @@ def search_lambda_branches_checkpointed(
                     "best": best,
                 }
             )
-        if best_record and best_record[0]["reconstruction_status"] == "complete":
+        if best_record and _is_exact_complete_summary(best_record[0]):
             break
 
     assert best_record is not None
@@ -512,6 +577,8 @@ def search_lambda_branches_checkpointed(
         "score_max_denominator": score_max_denominator,
         "initial_prefixes": initial_roots,
         "refine_all": refine_all,
+        "score_consistency": score_consistency,
+        "consistency_min_unique": consistency_min_unique,
         "digit_options": digit_options,
         "evaluated_branches": evaluated,
         "checkpoint_dir": str(checkpoint_root) if checkpoint_root is not None else None,
@@ -539,11 +606,20 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
         f"- Levels: `{result['levels']}`",
         f"- Depth: `{result['depth']}`",
         f"- Beam width: `{result['beam_width']}`",
+        f"- Score consistency: `{result.get('score_consistency', False)}`",
+        f"- Consistency min unique: `{result.get('consistency_min_unique', 0)}`",
         f"- Evaluated branches: `{result['evaluated_branches']}`",
         f"- Best prefix: `{best['prefix']}`",
         f"- Best lambda: `{best['final_lambda']}`",
         f"- Unique coefficients: `{best['unique_count']} / {best['total_count']}`",
     ]
+    if best.get("hard_contradiction_count") is not None:
+        lines.extend(
+            [
+                f"- Hard consistency contradictions: `{best['hard_contradiction_count']}`",
+                f"- Symbolic consistency constraints: `{best['symbolic_constraint_count']}`",
+            ]
+        )
     if isinstance(final_best, dict) and final_best["prefix"] != best["prefix"]:
         lines.extend(
             [
@@ -557,12 +633,18 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
         assert isinstance(step, dict)
         lines.extend([f"### Position {step['position']}", ""])
         for candidate in step["kept"]:  # type: ignore[index]
+            consistency = (
+                ""
+                if candidate.get("hard_contradiction_count") is None
+                else f" hard `{candidate['hard_contradiction_count']}`"
+            )
             lines.append(
                 "- "
                 + f"`{candidate['prefix']}` "
                 + f"lambda `{candidate['final_lambda']}` "
                 + f"unique `{candidate['unique_count']} / {candidate['total_count']}` "
                 + f"status `{candidate['reconstruction_status']}`"
+                + consistency
             )
         lines.append("")
     return "\n".join(lines).rstrip() + "\n"

@@ -75,6 +75,8 @@ def main() -> int:
     parser.add_argument("--score-max-denominator", type=int)
     parser.add_argument("--refine-multiplier", type=int, default=2)
     parser.add_argument("--refine-all", action="store_true")
+    parser.add_argument("--score-consistency", action="store_true")
+    parser.add_argument("--consistency-min-unique", type=int, default=0)
     parser.add_argument("--initial-prefix", action="append", type=parse_digits)
     parser.add_argument("--checkpoint-dir")
     parser.add_argument("--checkpoint-prefix", default="lambda-branch-search")
@@ -122,12 +124,18 @@ def main() -> int:
         elif event["event"] == "depth-finished":
             best = event.get("best")
             if isinstance(best, dict):
+                consistency = (
+                    ""
+                    if best.get("hard_contradiction_count") is None
+                    else f" hard={best['hard_contradiction_count']}"
+                )
                 print(
                     f"depth {int(event['position']) + 1}/{event['depth']} finished: "
                     f"expanded={event['expanded']} refined={event['refined']} "
                     f"best_prefix={best['prefix']} lambda={best['final_lambda']} "
                     f"unique={best['unique_count']}/{best['total_count']} "
-                    f"status={best['reconstruction_status']}",
+                    f"status={best['reconstruction_status']}"
+                    + consistency,
                     file=sys.stderr,
                     flush=True,
                 )
@@ -155,6 +163,8 @@ def main() -> int:
             digits=args.digits,
             initial_prefixes=args.initial_prefix,
             refine_all=args.refine_all,
+            score_consistency=args.score_consistency,
+            consistency_min_unique=args.consistency_min_unique,
             checkpoint_dir=args.checkpoint_dir,
             checkpoint_prefix=args.checkpoint_prefix,
             resume=args.resume,
@@ -171,6 +181,8 @@ def main() -> int:
             max_numerator=args.max_numerator,
             max_denominator=args.max_denominator,
             digits=args.digits,
+            score_consistency=args.score_consistency,
+            consistency_min_unique=args.consistency_min_unique,
         )
     output = json.dumps(result, indent=2, sort_keys=True)
     if args.out:

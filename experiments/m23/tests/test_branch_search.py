@@ -6,7 +6,7 @@ from uuid import uuid4
 
 import m23verify.branch_search as branch_search_module
 from m23verify.belyi import ElkiesIdentityFactors
-from m23verify.branch_search import search_lambda_branches, search_lambda_branches_checkpointed
+from m23verify.branch_search import _score_candidate, search_lambda_branches, search_lambda_branches_checkpointed
 
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "search_lambda_branches.py"
@@ -324,6 +324,8 @@ def test_checkpointed_lambda_branch_search_reports_best_seen_not_only_final_fron
         prefix,
         max_numerator,
         max_denominator,
+        score_consistency=False,
+        consistency_min_unique=0,
     ):
         unique_by_prefix = {
             (0,): 5,
@@ -371,6 +373,56 @@ def test_checkpointed_lambda_branch_search_reports_best_seen_not_only_final_fron
     assert result["final_best"]["unique_count"] == 3
 
 
+def test_checkpointed_lambda_branch_search_does_not_stop_on_inexact_complete(monkeypatch):
+    def fake_evaluate_prefix(
+        seed,
+        *,
+        prime,
+        levels,
+        prefix,
+        max_numerator,
+        max_denominator,
+        score_consistency=False,
+        consistency_min_unique=0,
+    ):
+        is_bad_complete = prefix == [0]
+        unique = 25 if is_bad_complete else len(prefix)
+        summary = {
+            "prefix": list(prefix),
+            "score": [1, 0, unique] if is_bad_complete else [0, 0, unique],
+            "lift_status": "lifted",
+            "final_modulus": levels,
+            "final_lambda": int("".join(str(digit) for digit in prefix) or "0"),
+            "reconstruction_status": "complete" if is_bad_complete else "partial",
+            "unique_count": unique,
+            "total_count": 25,
+            "unresolved_count": 0 if is_bad_complete else 25 - unique,
+            "ambiguous_count": 0,
+            "exact_identity": False if is_bad_complete else None,
+            "exact_derivative": False if is_bad_complete else None,
+            "exact_translation_normalization": False if is_bad_complete else None,
+        }
+        return summary, {"prefix": list(prefix)}, {"status": summary["reconstruction_status"], "unique_count": unique}
+
+    monkeypatch.setattr(branch_search_module, "_evaluate_prefix", fake_evaluate_prefix)
+
+    result = branch_search_module.search_lambda_branches_checkpointed(
+        degenerate_identity_factors(),
+        prime=2,
+        levels=3,
+        depth=2,
+        beam_width=1,
+        max_numerator=10,
+        max_denominator=10,
+        score_levels=2,
+        score_max_numerator=5,
+        score_max_denominator=5,
+        refine_multiplier=1,
+    )
+
+    assert len(result["history"]) == 2
+
+
 def test_checkpointed_lambda_branch_search_can_start_from_initial_prefix(monkeypatch):
     def fake_evaluate_prefix(
         seed,
@@ -380,6 +432,8 @@ def test_checkpointed_lambda_branch_search_can_start_from_initial_prefix(monkeyp
         prefix,
         max_numerator,
         max_denominator,
+        score_consistency=False,
+        consistency_min_unique=0,
     ):
         unique_by_prefix = {
             (1,): 6,
@@ -478,6 +532,9 @@ def test_search_lambda_branches_cli_supports_initial_prefix_and_refine_all():
             "--initial-prefix",
             "0",
             "--refine-all",
+            "--score-consistency",
+            "--consistency-min-unique",
+            "0",
             "--p2",
             "0,0",
             "--p3",
@@ -501,4 +558,34 @@ def test_search_lambda_branches_cli_supports_initial_prefix_and_refine_all():
     report = json.loads(result.stdout)
     assert report["initial_prefixes"] == [[0]]
     assert report["refine_all"] is True
+    assert report["score_consistency"] is True
+    assert report["consistency_min_unique"] == 0
+    assert report["best"]["hard_contradiction_count"] == 0
     assert out_path.exists()
+
+
+def test_consistency_score_prioritizes_fewer_hard_contradictions_over_unique_count():
+    consistent = {
+        "status": "partial",
+        "unique_count": 20,
+        "unresolved": ["a", "b", "c", "d", "e"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "symbolic_constraint_count": 5,
+            "unknown_count": 5,
+        },
+    }
+    inconsistent = {
+        "status": "partial",
+        "unique_count": 23,
+        "unresolved": ["a", "b"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 2,
+            "symbolic_constraint_count": 2,
+            "unknown_count": 2,
+        },
+    }
+
+    assert _score_candidate(consistent) > _score_candidate(inconsistent)

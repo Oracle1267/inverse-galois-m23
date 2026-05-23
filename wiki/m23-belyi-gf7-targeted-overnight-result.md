@@ -9,6 +9,7 @@ sensitivity: internal
 sources:
   - "[[wiki/m23-belyi-gf7-targeted-branch-runner]]"
   - "[[experiments/m23/reports/gf7-branch-search/gf7-targeted-overnight-summary]]"
+  - "[[wiki/m23-belyi-consistency-scoring-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -22,6 +23,10 @@ relationships:
     type: "supersedes"
     confidence: 0.82
     note: "Improves the reconstruction signal from 20/25 to 23/25 coefficients."
+  - target: "[[wiki/m23-belyi-consistency-scoring-runner]]"
+    type: "supports"
+    confidence: 0.80
+    note: "This result motivated the consistency-aware scoring mode."
 supersedes:
   - "[[wiki/m23-belyi-gf7-overnight-result]]"
 superseded_by: []
@@ -71,3 +76,5 @@ A symbolic check with `p4[3]` and `p8[7]` as variables found nonzero exact-equat
 The targeted search found a much stronger numerical shadow, but the current scoring function is still too naive: it rewards many unique rational reconstructions even when the resulting partial rational object is already inconsistent with exact equations.
 
 The next search program should add a partial exact-consistency score, or move to deeper lifting and then re-score candidates by whether the unique reconstructed subset survives exact coefficient checks.
+
+That follow-up now exists as [[wiki/m23-belyi-consistency-scoring-runner]].

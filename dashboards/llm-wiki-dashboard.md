@@ -44,6 +44,7 @@ review_after: 2026-06-20
 - [[wiki/m23-belyi-gf7-overnight-result]]
 - [[wiki/m23-belyi-gf7-targeted-branch-runner]]
 - [[wiki/m23-belyi-gf7-targeted-overnight-result]]
+- [[wiki/m23-belyi-consistency-scoring-runner]]
 
 ## Current Working Memory
 
