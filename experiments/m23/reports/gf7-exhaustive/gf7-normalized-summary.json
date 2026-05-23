@@ -1,0 +1,291 @@
+{
+  "batch_size": 10000,
+  "batches": [
+    {
+      "end_left_factor_triples": 110000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-100000-110000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-100000-110000.md",
+      "solutions": [],
+      "start_left_factor_triples": 100000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 120000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-110000-120000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-110000-120000.md",
+      "solutions": [],
+      "start_left_factor_triples": 110000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 130000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-120000-130000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-120000-130000.md",
+      "solutions": [],
+      "start_left_factor_triples": 120000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 140000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-130000-140000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-130000-140000.md",
+      "solutions": [],
+      "start_left_factor_triples": 130000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 150000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-140000-150000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-140000-150000.md",
+      "solutions": [],
+      "start_left_factor_triples": 140000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 160000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-150000-160000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-150000-160000.md",
+      "solutions": [],
+      "start_left_factor_triples": 150000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 170000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-160000-170000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-160000-170000.md",
+      "solutions": [],
+      "start_left_factor_triples": 160000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 180000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-170000-180000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-170000-180000.md",
+      "solutions": [],
+      "start_left_factor_triples": 170000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 190000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-180000-190000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-180000-190000.md",
+      "solutions": [],
+      "start_left_factor_triples": 180000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 200000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-190000-200000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-190000-200000.md",
+      "solutions": [],
+      "start_left_factor_triples": 190000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 210000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-200000-210000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-200000-210000.md",
+      "solutions": [],
+      "start_left_factor_triples": 200000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 220000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-210000-220000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-210000-220000.md",
+      "solutions": [],
+      "start_left_factor_triples": 210000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 230000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-220000-230000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-220000-230000.md",
+      "solutions": [],
+      "start_left_factor_triples": 220000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 240000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-230000-240000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-230000-240000.md",
+      "solutions": [],
+      "start_left_factor_triples": 230000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 250000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-240000-250000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-240000-250000.md",
+      "solutions": [],
+      "start_left_factor_triples": 240000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 260000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-250000-260000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-250000-260000.md",
+      "solutions": [],
+      "start_left_factor_triples": 250000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 270000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-260000-270000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-260000-270000.md",
+      "solutions": [],
+      "start_left_factor_triples": 260000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 280000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-270000-280000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-270000-280000.md",
+      "solutions": [],
+      "start_left_factor_triples": 270000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 290000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-280000-290000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-280000-290000.md",
+      "solutions": [],
+      "start_left_factor_triples": 280000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    },
+    {
+      "end_left_factor_triples": 300000,
+      "json_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-290000-300000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf7-exhaustive\\gf7-normalized-290000-300000.md",
+      "solutions": [
+        {
+          "lam": 6,
+          "p2": [
+            0,
+            3
+          ],
+          "p3": [
+            6,
+            3,
+            3
+          ],
+          "p4": [
+            2,
+            6,
+            2,
+            6
+          ],
+          "p7": [
+            5,
+            4,
+            6,
+            1,
+            5,
+            3,
+            3
+          ],
+          "p8": [
+            1,
+            3,
+            5,
+            5,
+            6,
+            2,
+            6,
+            0
+          ]
+        }
+      ],
+      "start_left_factor_triples": 290000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 10000,
+      "tested_left_factor_triples": 10000
+    }
+  ],
+  "modulus": 7,
+  "next_start_left_factor_triples": 300000,
+  "report_dir": "experiments\\m23\\reports\\gf7-exhaustive",
+  "report_prefix": "gf7-normalized",
+  "solutions": [
+    {
+      "lam": 6,
+      "p2": [
+        0,
+        3
+      ],
+      "p3": [
+        6,
+        3,
+        3
+      ],
+      "p4": [
+        2,
+        6,
+        2,
+        6
+      ],
+      "p7": [
+        5,
+        4,
+        6,
+        1,
+        5,
+        3,
+        3
+      ],
+      "p8": [
+        1,
+        3,
+        5,
+        5,
+        6,
+        2,
+        6,
+        0
+      ]
+    }
+  ],
+  "start_left_factor_triples": 100000,
+  "stop_left_factor_triples": 5764801,
+  "stopped_reason": "solution_found",
+  "tested_lambda_values": 200000,
+  "tested_left_factor_triples": 200000
+}

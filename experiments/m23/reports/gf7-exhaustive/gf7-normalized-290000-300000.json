@@ -1,0 +1,68 @@
+{
+  "derivative_prefilter_rejections": 0,
+  "derivative_rejections": 0,
+  "enumerated_left_factor_triples": 416713,
+  "lambda_derivation_rejections": 9999,
+  "modulus": 7,
+  "normalization_rejections": 0,
+  "search_options": {
+    "coprime_first": true,
+    "derivative_first": true,
+    "derive_lambda": true,
+    "fixed_p2": null,
+    "fixed_p3": null,
+    "fixed_p4": null,
+    "max_left_factor_triples": 10000,
+    "max_solutions": 3,
+    "normalized_first": true,
+    "require_coprime_left": true,
+    "require_derivative": true,
+    "require_nonzero_lambda": true,
+    "require_translation_normalized": true,
+    "start_left_factor_triples": 290000
+  },
+  "skipped_left_factor_triples": 0,
+  "skipped_start_left_factor_triples": 290000,
+  "solutions": [
+    {
+      "lam": 6,
+      "p2": [
+        0,
+        3
+      ],
+      "p3": [
+        6,
+        3,
+        3
+      ],
+      "p4": [
+        2,
+        6,
+        2,
+        6
+      ],
+      "p7": [
+        5,
+        4,
+        6,
+        1,
+        5,
+        3,
+        3
+      ],
+      "p8": [
+        1,
+        3,
+        5,
+        5,
+        6,
+        2,
+        6,
+        0
+      ]
+    }
+  ],
+  "stopped_reason": "max_left_factor_triples",
+  "tested_lambda_values": 10000,
+  "tested_left_factor_triples": 10000
+}

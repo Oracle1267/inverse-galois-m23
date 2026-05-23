@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-22
 last_confirmed: 2026-05-22
 confidence: 0.78
@@ -25,7 +25,8 @@ relationships:
     note: "Extends the same GF(7) search line from 500 to 100,000 tested triples."
 supersedes:
   - "[[wiki/m23-belyi-gf7-normalized-500-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-modular-survivor-report]]"
 review_after: 2026-06-22
 ---
 
@@ -69,3 +70,7 @@ Across the local runner interval, every tested candidate failed the forced-lambd
 This is a bounded negative result, not full `GF(7)` exhaustion. It does show the same rejection pattern seen in the later `GF(5)` run: once `P8` and lambda are forced, the tested triples fail at the lambda derivation stage.
 
 The next `GF(7)` continuation should start at `--start-left-factor-triples 100000`, but a more useful next step may be to add stronger branch-cycle or structural filters before scaling this line further.
+
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf7-modular-survivor-report]], which extends the same `GF(7)` search line and records a modular survivor found by 300,000 tested triples.

@@ -52,7 +52,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf5-prefix-report]] - durable interpretation of the first constrained `GF(5)` Belyi prefix run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] - durable interpretation of the larger normalized-first `GF(5)` Belyi run.
 - [[wiki/m23-belyi-gf5-exhausted-report]] - exhaustion report for the constrained `GF(5)` Belyi search.
-- [[wiki/m23-belyi-gf7-deep-100000-report]] - current constrained `GF(7)` Belyi frontier through 100,000 tested triples.
+- [[wiki/m23-belyi-gf7-modular-survivor-report]] - first constrained `GF(7)` Belyi modular survivor found by the batch runner.
 
 ## Active Project
 
@@ -131,6 +131,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-22-m23-belyi-gf5-exhausted]]
 - [[logs/ingest/2026-05-22-m23-runner-progress]]
 - [[logs/ingest/2026-05-22-m23-belyi-gf7-100000]]
+- [[logs/ingest/2026-05-23-m23-belyi-gf7-survivor]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 
