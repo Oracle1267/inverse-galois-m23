@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-23
 last_confirmed: 2026-05-23
 confidence: 0.84
@@ -25,7 +25,8 @@ relationships:
     note: "Extends the same GF(7) search line from a 100,000 frontier to a modular survivor by 300,000 tested triples."
 supersedes:
   - "[[wiki/m23-belyi-gf7-deep-100000-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-lift-report]]"
 review_after: 2026-06-23
 ---
 
@@ -87,3 +88,6 @@ The batch rejected 9,999 of its 10,000 tested triples at lambda derivation, leav
 
 This is the first positive signal from the local equation-system path. The next mathematical step is not to treat the survivor as the requested degree-23 integer polynomial. The next step is to use the modular survivor as a seed for lifting: try to recover compatible higher-precision or rational coefficients satisfying the Elkies identity, then derive a candidate degree-23 polynomial and pass it through the M23 verification standard.
 
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf7-lift-report]], which records a successful lift of the survivor through modulus `7^6`.

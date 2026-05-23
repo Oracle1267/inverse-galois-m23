@@ -91,9 +91,11 @@ Local checkpointed runner:
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
 - The constrained `GF(5)` search has exhausted all 212,636 pairwise-coprime normalized left-factor triples with no modular solutions.
 - The constrained `GF(7)` search found one modular equation-system survivor in the interval 290,000-300,000 tested triples.
+- The `GF(7)` survivor lifts through modulus `7^6 = 117649` under the identity, derivative, and translation-normalization constraints.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
 - The batch runner `experiments/m23/scripts/run_belyi_batches.py` can continue a local search without chat supervision by writing interval checkpoints and a summary JSON file.
+- The lift CLI `experiments/m23/scripts/lift_belyi_survivor.py` can test prime-power lifting of a stored modular survivor.
 
 ## Report Artifacts
 
@@ -104,6 +106,7 @@ Local checkpointed runner:
 - [[wiki/m23-belyi-gf5-exhausted-report]] records exhaustion of the constrained `GF(5)` search space.
 - [[wiki/m23-belyi-gf7-deep-100000-report]] records the prior `GF(7)` frontier through 100,000 tested triples.
 - [[wiki/m23-belyi-gf7-modular-survivor-report]] records the first `GF(7)` modular survivor found by the batch runner.
+- [[wiki/m23-belyi-gf7-lift-report]] records the successful lift of that survivor through `7^6`.
 
 ## Derivative Constraint
 
@@ -143,4 +146,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor. The next improvement should use that survivor as a lifting seed before spending more effort on blind enumeration.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts through `7^6`. The next improvement should attempt rational reconstruction or impose a controlled normalization for the one free lift variable before trying to derive the final degree-23 polynomial.
