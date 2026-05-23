@@ -127,7 +127,11 @@ def main() -> int:
                 consistency = (
                     ""
                     if best.get("hard_contradiction_count") is None
-                    else f" hard={best['hard_contradiction_count']} linear={best.get('linear_conflict_count', 0)}"
+                    else (
+                        f" hard={best['hard_contradiction_count']}"
+                        + f" linear_system={best.get('linear_system_conflict_count', 0)}"
+                        + f" linear={best.get('linear_conflict_count', 0)}"
+                    )
                 )
                 print(
                     f"depth {int(event['position']) + 1}/{event['depth']} finished: "

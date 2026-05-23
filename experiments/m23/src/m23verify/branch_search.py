@@ -30,6 +30,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             exact_score,
             inexact_penalty,
             -int(partial_consistency["hard_contradiction_count"]),
+            -int(partial_consistency.get("linear_system_conflict_count", 0)),
             -int(partial_consistency.get("linear_conflict_count", 0)),
             int(reconstruction["unique_count"]),
             -int(partial_consistency["unknown_count"]),
@@ -42,6 +43,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             complete_score,
             exact_score,
             inexact_penalty,
+            -1_000_000,
             -1_000_000,
             -1_000_000,
             int(reconstruction["unique_count"]),
@@ -80,12 +82,14 @@ def _candidate_summary(
         "exact_derivative": reconstruction.get("exact_derivative"),
         "exact_translation_normalization": reconstruction.get("exact_translation_normalization"),
         "hard_contradiction_count": None,
+        "linear_system_conflict_count": None,
         "linear_conflict_count": None,
         "symbolic_constraint_count": None,
     }
     partial_consistency = reconstruction.get("partial_consistency")
     if isinstance(partial_consistency, dict):
         summary["hard_contradiction_count"] = partial_consistency["hard_contradiction_count"]
+        summary["linear_system_conflict_count"] = partial_consistency.get("linear_system_conflict_count", 0)
         summary["linear_conflict_count"] = partial_consistency.get("linear_conflict_count", 0)
         summary["symbolic_constraint_count"] = partial_consistency["symbolic_constraint_count"]
         summary["unknown_count"] = partial_consistency["unknown_count"]
@@ -637,6 +641,7 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
         lines.extend(
             [
                 f"- Hard consistency contradictions: `{best['hard_contradiction_count']}`",
+                f"- Linear system conflicts: `{best.get('linear_system_conflict_count', 0)}`",
                 f"- Linear symbolic conflicts: `{best.get('linear_conflict_count', 0)}`",
                 f"- Symbolic consistency constraints: `{best['symbolic_constraint_count']}`",
             ]
@@ -657,7 +662,11 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
             consistency = (
                 ""
                 if candidate.get("hard_contradiction_count") is None
-                else f" hard `{candidate['hard_contradiction_count']}` linear `{candidate.get('linear_conflict_count', 0)}`"
+                else (
+                    f" hard `{candidate['hard_contradiction_count']}`"
+                    + f" linear-system `{candidate.get('linear_system_conflict_count', 0)}`"
+                    + f" linear `{candidate.get('linear_conflict_count', 0)}`"
+                )
             )
             lines.append(
                 "- "

@@ -59,6 +59,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf7-targeted-overnight-result]] - completed targeted continuation result, improving the current signal to 23/25 reconstructed coefficients.
 - [[wiki/m23-belyi-consistency-scoring-runner]] - consistency-aware branch scoring that penalizes exact-equation contradictions.
 - [[wiki/m23-belyi-gf7-targeted-consistency-result]] - targeted consistency rescore and linear-symbolic conflict finding.
+- [[wiki/m23-belyi-gf7-targeted-linear-consistency-result]] - targeted linear-conflict rescore and full linear-system inconsistency finding.
 
 ## Active Project
 
@@ -147,6 +148,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-overnight-result]]
 - [[logs/ingest/2026-05-23-m23-belyi-consistency-scoring-runner]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-consistency-result]]
+- [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-linear-consistency-result]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

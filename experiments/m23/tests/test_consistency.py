@@ -3,6 +3,7 @@ from copy import deepcopy
 import sympy as sp
 
 from m23verify.consistency import _linear_conflicts, _linear_implication_from_expression, partial_consistency_report
+from m23verify.consistency import _linear_system_report
 from m23verify.reconstruction import reconstruct_lift_report
 
 
@@ -71,3 +72,18 @@ def test_linear_implication_conflicts_detect_incompatible_symbolic_constraints()
     assert len(conflicts) == 1
     assert conflicts[0]["symbol"] == "a"
     assert conflicts[0]["values"] == ["2", "3"]
+
+
+def test_linear_system_report_detects_multivariate_inconsistency():
+    a = sp.Symbol("a")
+    b = sp.Symbol("b")
+    records = [
+        ("identity", 1, a + b),
+        ("identity", 2, a + b - 1),
+    ]
+
+    report = _linear_system_report(records)
+
+    assert report["linear_system_equation_count"] == 2
+    assert report["linear_system_conflict_count"] == 1
+    assert report["linear_system_consistent"] is False

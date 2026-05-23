@@ -81,6 +81,52 @@ def _linear_conflicts(implications: list[dict[str, object]]) -> list[dict[str, o
     return conflicts
 
 
+def _linear_system_report(records: list[tuple[str, int, sp.Expr]]) -> dict[str, object]:
+    symbols = sorted(
+        set().union(*(expr.free_symbols for _source, _index, expr in records)) if records else set(),
+        key=lambda symbol: symbol.name,
+    )
+    linear_records: list[tuple[str, int, sp.Expr]] = []
+    for source, index, expr in records:
+        try:
+            polynomial = sp.Poly(expr, *symbols)
+        except (sp.PolynomialError, TypeError):
+            continue
+        if polynomial.total_degree() <= 1:
+            linear_records.append((source, index, expr))
+
+    if not linear_records or not symbols:
+        return {
+            "linear_system_equation_count": len(linear_records),
+            "linear_system_rank": 0,
+            "linear_system_augmented_rank": 0,
+            "linear_system_consistent": True,
+            "linear_system_conflict_count": 0,
+            "linear_system_equations": [],
+        }
+
+    equations = [expr for _source, _index, expr in linear_records]
+    coefficient_matrix, rhs_matrix = sp.linear_eq_to_matrix(equations, symbols)
+    rank = coefficient_matrix.rank()
+    augmented_rank = coefficient_matrix.row_join(rhs_matrix).rank()
+    consistent = rank == augmented_rank
+    return {
+        "linear_system_equation_count": len(linear_records),
+        "linear_system_rank": rank,
+        "linear_system_augmented_rank": augmented_rank,
+        "linear_system_consistent": consistent,
+        "linear_system_conflict_count": 0 if consistent else 1,
+        "linear_system_equations": [
+            {
+                "source": source,
+                "index": index,
+                "expression": str(expr),
+            }
+            for source, index, expr in linear_records[:20]
+        ],
+    }
+
+
 def _classify_expression(
     expr: sp.Expr,
     *,
@@ -88,6 +134,7 @@ def _classify_expression(
     index: int,
     hard_contradictions: list[dict[str, object]],
     symbolic_constraints: list[dict[str, object]],
+    symbolic_expressions: list[tuple[str, int, sp.Expr]],
     linear_implications: list[dict[str, object]],
 ) -> str:
     numerator = sp.factor(sp.together(expr).as_numer_denom()[0])
@@ -100,6 +147,7 @@ def _classify_expression(
     }
     if numerator.free_symbols:
         symbolic_constraints.append(entry)
+        symbolic_expressions.append((source, index, numerator))
         implication = _linear_implication_from_expression(numerator, source=source, index=index)
         if implication is not None:
             linear_implications.append(implication)
@@ -142,6 +190,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
 
     hard_contradictions: list[dict[str, object]] = []
     symbolic_constraints: list[dict[str, object]] = []
+    symbolic_expressions: list[tuple[str, int, sp.Expr]] = []
     linear_implications: list[dict[str, object]] = []
     zero_count = 0
     for source, expr, degree in (
@@ -155,6 +204,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
                 index=index,
                 hard_contradictions=hard_contradictions,
                 symbolic_constraints=symbolic_constraints,
+                symbolic_expressions=symbolic_expressions,
                 linear_implications=linear_implications,
             )
             if classification == "zero":
@@ -165,18 +215,21 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
         index=1,
         hard_contradictions=hard_contradictions,
         symbolic_constraints=symbolic_constraints,
+        symbolic_expressions=symbolic_expressions,
         linear_implications=linear_implications,
     )
     if classification == "zero":
         zero_count += 1
 
     linear_conflicts = _linear_conflicts(linear_implications)
+    linear_system = _linear_system_report(symbolic_expressions)
     return {
         "unknowns": unknowns,
         "unknown_count": len(unknowns),
         "hard_contradiction_count": len(hard_contradictions),
         "linear_implication_count": len(linear_implications),
         "linear_conflict_count": len(linear_conflicts),
+        **linear_system,
         "symbolic_constraint_count": len(symbolic_constraints),
         "zero_coefficient_count": zero_count,
         "hard_contradictions": hard_contradictions[:20],

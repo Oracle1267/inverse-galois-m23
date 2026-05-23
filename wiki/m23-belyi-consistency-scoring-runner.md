@@ -64,6 +64,8 @@ Candidates below `--consistency-min-unique` are kept below candidates that actua
 
 The scorer also detects cheap linear symbolic conflicts. If two residual equations independently force different exact values for the same unresolved coefficient, the branch is treated as symbolically inconsistent even when no residual is a standalone nonzero constant.
 
+The scorer now also rank-checks the full linear subsystem across all unresolved coefficients. If the coefficient matrix and augmented matrix have different ranks, the branch is treated as linearly inconsistent even when no single variable has an obvious forced-value conflict.
+
 ## Verified Smoke
 
 The controlled degenerate identity smoke passed with `hard_contradiction_count = 0` and `symbolic_constraint_count = 0`:
