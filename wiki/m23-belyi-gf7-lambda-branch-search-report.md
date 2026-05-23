@@ -29,7 +29,8 @@ relationships:
     note: "The checkpointed runner implements the report's next engineering step."
 supersedes:
   - "[[wiki/m23-belyi-gf7-reconstruction-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-overnight-result]]"
 review_after: 2026-06-23
 ---
 

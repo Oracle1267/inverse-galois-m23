@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 from uuid import uuid4
 
+import m23verify.branch_search as branch_search_module
 from m23verify.belyi import ElkiesIdentityFactors
 from m23verify.branch_search import search_lambda_branches, search_lambda_branches_checkpointed
 
@@ -312,3 +313,59 @@ def test_checkpointed_lambda_branch_resume_rejects_mismatched_parameters():
         assert "beam_width" in str(exc)
     else:
         raise AssertionError("expected incompatible checkpoint to be rejected")
+
+
+def test_checkpointed_lambda_branch_search_reports_best_seen_not_only_final_frontier(monkeypatch):
+    def fake_evaluate_prefix(
+        seed,
+        *,
+        prime,
+        levels,
+        prefix,
+        max_numerator,
+        max_denominator,
+    ):
+        unique_by_prefix = {
+            (0,): 5,
+            (1,): 1,
+            (0, 0): 3,
+            (0, 1): 2,
+        }
+        unique = unique_by_prefix[tuple(prefix)]
+        summary = {
+            "prefix": list(prefix),
+            "score": [0, 0, unique, unique - 10, 0],
+            "lift_status": "lifted",
+            "final_modulus": levels,
+            "final_lambda": int("".join(str(digit) for digit in prefix) or "0"),
+            "reconstruction_status": "partial",
+            "unique_count": unique,
+            "total_count": 10,
+            "unresolved_count": 10 - unique,
+            "ambiguous_count": 0,
+            "exact_identity": None,
+            "exact_derivative": None,
+            "exact_translation_normalization": None,
+        }
+        return summary, {"prefix": list(prefix)}, {"status": "partial", "unique_count": unique}
+
+    monkeypatch.setattr(branch_search_module, "_evaluate_prefix", fake_evaluate_prefix)
+
+    result = branch_search_module.search_lambda_branches_checkpointed(
+        degenerate_identity_factors(),
+        prime=2,
+        levels=3,
+        depth=2,
+        beam_width=1,
+        max_numerator=10,
+        max_denominator=10,
+        score_levels=2,
+        score_max_numerator=5,
+        score_max_denominator=5,
+        refine_multiplier=1,
+    )
+
+    assert result["best"]["prefix"] == [0]
+    assert result["best"]["unique_count"] == 5
+    assert result["final_best"]["prefix"] == [0, 0]
+    assert result["final_best"]["unique_count"] == 3

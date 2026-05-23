@@ -109,10 +109,32 @@ def _validate_checkpoint_compatibility(checkpoint: dict[str, object], expected: 
 
 
 def _sort_summaries(records: list[tuple[dict[str, object], dict[str, object], dict[str, object]]]) -> None:
-    records.sort(key=lambda item: tuple(item[0]["score"]), reverse=True)  # type: ignore[arg-type]
+    records.sort(key=lambda item: _summary_sort_key(item[0]), reverse=True)
 
 
 ProgressCallback = Callable[[dict[str, object]], None]
+BranchRecord = tuple[dict[str, object], dict[str, object], dict[str, object]]
+
+
+def _summary_sort_key(summary: dict[str, object]) -> tuple[tuple[object, ...], int]:
+    return (tuple(summary["score"]), len(summary["prefix"]))  # type: ignore[arg-type]
+
+
+def _is_better_summary(candidate: dict[str, object], current: dict[str, object] | None) -> bool:
+    return current is None or _summary_sort_key(candidate) > _summary_sort_key(current)
+
+
+def _is_better_record(candidate: BranchRecord, current: BranchRecord | None) -> bool:
+    return current is None or _is_better_summary(candidate[0], current[0])
+
+
+def _best_summary_from_history(history: list[dict[str, object]]) -> dict[str, object] | None:
+    best: dict[str, object] | None = None
+    for step in history:
+        for candidate in step.get("kept", []):  # type: ignore[union-attr]
+            if isinstance(candidate, dict) and _is_better_summary(candidate, best):
+                best = candidate
+    return best
 
 
 def search_lambda_branches(
@@ -143,12 +165,11 @@ def search_lambda_branches(
     prefixes: list[list[int]] = [[]]
     history: list[dict[str, object]] = []
     evaluated = 0
-    best_summary: dict[str, object] | None = None
-    best_lift: dict[str, object] | None = None
-    best_reconstruction: dict[str, object] | None = None
+    best_record: BranchRecord | None = None
+    final_record: BranchRecord | None = None
 
     if depth == 0:
-        best_summary, best_lift, best_reconstruction = _evaluate_prefix(
+        best_record = _evaluate_prefix(
             seed,
             prime=prime,
             levels=levels,
@@ -156,6 +177,7 @@ def search_lambda_branches(
             max_numerator=max_numerator,
             max_denominator=max_denominator,
         )
+        final_record = best_record
         evaluated = 1
 
     for position in range(depth):
@@ -184,13 +206,15 @@ def search_lambda_branches(
             }
         )
         if kept:
-            best_summary, best_lift, best_reconstruction = kept[0]
-        if best_summary and best_summary["reconstruction_status"] == "complete":
+            final_record = kept[0]
+            if _is_better_record(final_record, best_record):
+                best_record = final_record
+        if best_record and best_record[0]["reconstruction_status"] == "complete":
             break
 
-    assert best_summary is not None
-    assert best_lift is not None
-    assert best_reconstruction is not None
+    assert best_record is not None
+    assert final_record is not None
+    best_summary, best_lift, best_reconstruction = best_record
     return {
         "status": best_summary["reconstruction_status"],
         "prime": prime,
@@ -202,6 +226,7 @@ def search_lambda_branches(
         "digit_options": digit_options,
         "evaluated_branches": evaluated,
         "best": best_summary,
+        "final_best": final_record[0],
         "best_lift": best_lift,
         "best_reconstruction": best_reconstruction,
         "history": history,
@@ -251,6 +276,7 @@ def search_lambda_branches_checkpointed(
     history: list[dict[str, object]] = []
     evaluated = 0
     start_position = 0
+    checkpoint_best_summary: dict[str, object] | None = None
 
     if resume and checkpoint_root is not None:
         checkpoint = _latest_checkpoint(checkpoint_root, checkpoint_prefix)
@@ -274,14 +300,25 @@ def search_lambda_branches_checkpointed(
             prefixes = [list(item["prefix"]) for item in checkpoint["kept"]]  # type: ignore[index]
             history = list(checkpoint.get("history", []))  # type: ignore[arg-type]
             evaluated = int(checkpoint.get("evaluated_branches", 0))
+            stored_best = checkpoint.get("best")
+            checkpoint_best_summary = stored_best if isinstance(stored_best, dict) else _best_summary_from_history(history)
 
-    best_summary: dict[str, object] | None = None
-    best_lift: dict[str, object] | None = None
-    best_reconstruction: dict[str, object] | None = None
+    best_record: BranchRecord | None = None
+    final_record: BranchRecord | None = None
+
+    if checkpoint_best_summary is not None:
+        best_record = _evaluate_prefix(
+            seed,
+            prime=prime,
+            levels=levels,
+            prefix=list(checkpoint_best_summary["prefix"]),  # type: ignore[arg-type]
+            max_numerator=max_numerator,
+            max_denominator=max_denominator,
+        )
 
     if start_position >= depth:
         best_prefix = prefixes[0] if prefixes else []
-        best_summary, best_lift, best_reconstruction = _evaluate_prefix(
+        final_record = _evaluate_prefix(
             seed,
             prime=prime,
             levels=levels,
@@ -289,6 +326,8 @@ def search_lambda_branches_checkpointed(
             max_numerator=max_numerator,
             max_denominator=max_denominator,
         )
+        if _is_better_record(final_record, best_record):
+            best_record = final_record
 
     for position in range(start_position, depth):
         cheap_records: list[tuple[dict[str, object], dict[str, object], dict[str, object]]] = []
@@ -358,7 +397,9 @@ def search_lambda_branches_checkpointed(
         kept = refined[:beam_width]
         prefixes = [candidate[0]["prefix"] for candidate in kept]  # type: ignore[list-item]
         if kept:
-            best_summary, best_lift, best_reconstruction = kept[0]
+            final_record = kept[0]
+            if _is_better_record(final_record, best_record):
+                best_record = final_record
         step = {
             "position": position,
             "expanded": expanded,
@@ -383,6 +424,7 @@ def search_lambda_branches_checkpointed(
             "evaluated_branches": evaluated,
             "history": history,
             "kept": step["kept"],
+            "best": best_record[0] if best_record is not None else None,
         }
         if checkpoint_root is not None:
             _write_json(_checkpoint_path(checkpoint_root, checkpoint_prefix, position), checkpoint_data)
@@ -398,12 +440,12 @@ def search_lambda_branches_checkpointed(
                     "best": best,
                 }
             )
-        if best_summary and best_summary["reconstruction_status"] == "complete":
+        if best_record and best_record[0]["reconstruction_status"] == "complete":
             break
 
-    assert best_summary is not None
-    assert best_lift is not None
-    assert best_reconstruction is not None
+    assert best_record is not None
+    assert final_record is not None
+    best_summary, best_lift, best_reconstruction = best_record
     return {
         "status": best_summary["reconstruction_status"],
         "prime": prime,
@@ -421,6 +463,7 @@ def search_lambda_branches_checkpointed(
         "checkpoint_dir": str(checkpoint_root) if checkpoint_root is not None else None,
         "checkpoint_prefix": checkpoint_prefix,
         "best": best_summary,
+        "final_best": final_record[0],
         "best_lift": best_lift,
         "best_reconstruction": best_reconstruction,
         "history": history,
@@ -430,6 +473,8 @@ def search_lambda_branches_checkpointed(
 def render_branch_search_markdown(result: dict[str, object], title: str = "M23 Belyi Lambda Branch Search") -> str:
     best = result["best"]
     assert isinstance(best, dict)
+    final_best = result.get("final_best")
+    assert final_best is None or isinstance(final_best, dict)
     lines = [
         f"# {title}",
         "",
@@ -444,10 +489,16 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
         f"- Best prefix: `{best['prefix']}`",
         f"- Best lambda: `{best['final_lambda']}`",
         f"- Unique coefficients: `{best['unique_count']} / {best['total_count']}`",
-        "",
-        "## Beam History",
-        "",
     ]
+    if isinstance(final_best, dict) and final_best["prefix"] != best["prefix"]:
+        lines.extend(
+            [
+                f"- Final frontier prefix: `{final_best['prefix']}`",
+                f"- Final frontier lambda: `{final_best['final_lambda']}`",
+                f"- Final frontier unique coefficients: `{final_best['unique_count']} / {final_best['total_count']}`",
+            ]
+        )
+    lines.extend(["", "## Beam History", ""])
     for step in result["history"]:  # type: ignore[index]
         assert isinstance(step, dict)
         lines.extend([f"### Position {step['position']}", ""])

@@ -9,6 +9,7 @@ sensitivity: internal
 sources:
   - "[[wiki/m23-belyi-gf7-lambda-branch-search-report]]"
   - "[[experiments/m23/reports/gf7-branch-search/gf7-checkpointed-smoke]]"
+  - "[[wiki/m23-belyi-gf7-overnight-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -22,6 +23,10 @@ relationships:
     type: "supports"
     confidence: 0.84
     note: "Extends the local finite-field tooling with an unattended lambda-branch runner."
+  - target: "[[wiki/m23-belyi-gf7-overnight-result]]"
+    type: "supports"
+    confidence: 0.86
+    note: "The runner produced the completed overnight result."
 supersedes: []
 superseded_by: []
 review_after: 2026-06-23
@@ -67,3 +72,7 @@ If interrupted, rerun the same command with `--resume`.
 ## Uncertainty
 
 This runner is heuristic because the beam can discard a branch that only becomes good at a deeper level. It is useful for searching shadows of a rational map, but a negative overnight run is not an exhaustion proof.
+
+## Completed Run
+
+The first overnight run is recorded in [[wiki/m23-belyi-gf7-overnight-result]]. It did not find a complete reconstruction, but improved the best signal to 20/25 unique coefficients at lambda `12130`.

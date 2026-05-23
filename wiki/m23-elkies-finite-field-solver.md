@@ -10,6 +10,7 @@ sources:
   - "[[wiki/m23-literature-constraint-map]]"
   - "[[sources/elkies-2013-complex-m23-polynomials]]"
   - "[[wiki/m23-belyi-gf7-overnight-branch-runner]]"
+  - "[[wiki/m23-belyi-gf7-overnight-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -108,6 +109,7 @@ Checkpointed lambda branch runner:
 - The reconstruction CLI `experiments/m23/scripts/reconstruct_belyi_lift.py` can test small-rational explanations for lifted coefficients.
 - The branch-search CLI `experiments/m23/scripts/search_lambda_branches.py` can search `lambda` correction sequences with a bounded beam.
 - The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
+- The first overnight branch search completed without a full reconstruction, but improved the strongest known branch to 20/25 reconstructed coefficients at lambda `12130`.
 
 ## Report Artifacts
 
@@ -122,6 +124,7 @@ Checkpointed lambda branch runner:
 - [[wiki/m23-belyi-gf7-reconstruction-report]] records the first partial rational reconstruction attempts and identifies the free `lambda` direction.
 - [[wiki/m23-belyi-gf7-lambda-branch-search-report]] records the first bounded beam search over the free `lambda` direction.
 - [[wiki/m23-belyi-gf7-overnight-branch-runner]] records the checkpointed local runner for unattended lambda branch searches.
+- [[wiki/m23-belyi-gf7-overnight-result]] records the completed overnight run and current strongest reconstruction signal.
 
 ## Derivative Constraint
 
@@ -161,4 +164,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The next local step is to let the checkpointed branch runner search the free `lambda` direction for deeper rational-reconstruction signal.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The overnight branch search improved the rational-reconstruction signal to 20/25 coefficients, leaving five coefficients unresolved.
