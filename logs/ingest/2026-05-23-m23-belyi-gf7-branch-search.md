@@ -17,6 +17,9 @@ relationships:
   - target: "[[wiki/m23-belyi-gf7-lambda-branch-search-report]]"
     type: "supports"
     confidence: 0.86
+  - target: "[[wiki/m23-belyi-gf7-overnight-branch-runner]]"
+    type: "related-to"
+    confidence: 0.82
 supersedes: []
 superseded_by: []
 review_after: 2026-06-23
@@ -54,5 +57,5 @@ review_after: 2026-06-23
 
 ## Follow-Up
 
-- Add checkpointing and progress output before running wider branch searches.
-- Consider cheaper branch scoring before full rational reconstruction.
+- Checkpointing, progress output, and cheaper score-then-refine search are now recorded in [[wiki/m23-belyi-gf7-overnight-branch-runner]].
+- Consider alternative scoring heuristics if the first overnight branch search does not improve rational reconstruction.

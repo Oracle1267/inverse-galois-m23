@@ -2,7 +2,7 @@
 type: dashboard
 status: active
 created: 2026-05-20
-last_confirmed: 2026-05-20
+last_confirmed: 2026-05-23
 confidence: 0.90
 quality_score: 0.90
 sensitivity: internal
@@ -53,6 +53,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf5-normalized-500-report]] - durable interpretation of the larger normalized-first `GF(5)` Belyi run.
 - [[wiki/m23-belyi-gf5-exhausted-report]] - exhaustion report for the constrained `GF(5)` Belyi search.
 - [[wiki/m23-belyi-gf7-lambda-branch-search-report]] - bounded beam search over the free `lambda` direction in the `GF(7)` Belyi lift.
+- [[wiki/m23-belyi-gf7-overnight-branch-runner]] - checkpointed local runner for unattended `GF(7)` lambda branch searches.
 
 ## Active Project
 
@@ -135,6 +136,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-lift]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-reconstruction]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-branch-search]]
+- [[logs/ingest/2026-05-23-m23-belyi-gf7-overnight-runner]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

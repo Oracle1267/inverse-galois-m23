@@ -12,7 +12,11 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 from m23verify.belyi import ElkiesIdentityFactors
-from m23verify.branch_search import render_branch_search_markdown, search_lambda_branches
+from m23verify.branch_search import (
+    render_branch_search_markdown,
+    search_lambda_branches,
+    search_lambda_branches_checkpointed,
+)
 from m23verify.lifting import factors_from_solution_dict
 
 
@@ -66,6 +70,15 @@ def main() -> int:
     parser.add_argument("--beam-width", type=int, required=True)
     parser.add_argument("--max-numerator", type=int, required=True)
     parser.add_argument("--max-denominator", type=int, required=True)
+    parser.add_argument("--score-levels", type=int)
+    parser.add_argument("--score-max-numerator", type=int)
+    parser.add_argument("--score-max-denominator", type=int)
+    parser.add_argument("--refine-multiplier", type=int, default=2)
+    parser.add_argument("--checkpoint-dir")
+    parser.add_argument("--checkpoint-prefix", default="lambda-branch-search")
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--progress-every", type=int, default=10)
+    parser.add_argument("--quiet", action="store_true")
     parser.add_argument("--digits", type=parse_digits)
     parser.add_argument("--seed-json")
     parser.add_argument("--solution-index", type=int, default=0)
@@ -80,16 +93,81 @@ def main() -> int:
     parser.add_argument("--title", default="M23 Belyi Lambda Branch Search")
     args = parser.parse_args()
 
-    result = search_lambda_branches(
-        seed_from_args(args),
-        prime=args.prime,
-        levels=args.levels,
-        depth=args.depth,
-        beam_width=args.beam_width,
-        max_numerator=args.max_numerator,
-        max_denominator=args.max_denominator,
-        digits=args.digits,
-    )
+    seed = seed_from_args(args)
+
+    def emit_progress(event: dict[str, object]) -> None:
+        if args.quiet:
+            return
+        if event["event"] == "depth-start":
+            print(
+                f"depth {int(event['position']) + 1}/{event['depth']} started: "
+                f"expanded={event['expanded']} beam={event['beam_width']}",
+                file=sys.stderr,
+                flush=True,
+            )
+        elif event["event"] == "cheap-progress":
+            print(
+                f"depth {int(event['position']) + 1}: cheap {event['done']}/{event['total']}",
+                file=sys.stderr,
+                flush=True,
+            )
+        elif event["event"] == "refine-progress":
+            print(
+                f"depth {int(event['position']) + 1}: refine {event['done']}/{event['total']}",
+                file=sys.stderr,
+                flush=True,
+            )
+        elif event["event"] == "depth-finished":
+            best = event.get("best")
+            if isinstance(best, dict):
+                print(
+                    f"depth {int(event['position']) + 1}/{event['depth']} finished: "
+                    f"expanded={event['expanded']} refined={event['refined']} "
+                    f"best_prefix={best['prefix']} lambda={best['final_lambda']} "
+                    f"unique={best['unique_count']}/{best['total_count']} "
+                    f"status={best['reconstruction_status']}",
+                    file=sys.stderr,
+                    flush=True,
+                )
+
+    if args.checkpoint_dir:
+        score_levels = args.score_levels if args.score_levels is not None else min(args.levels, max(1, args.levels - 2))
+        score_max_numerator = (
+            args.score_max_numerator if args.score_max_numerator is not None else args.max_numerator
+        )
+        score_max_denominator = (
+            args.score_max_denominator if args.score_max_denominator is not None else args.max_denominator
+        )
+        result = search_lambda_branches_checkpointed(
+            seed,
+            prime=args.prime,
+            levels=args.levels,
+            depth=args.depth,
+            beam_width=args.beam_width,
+            max_numerator=args.max_numerator,
+            max_denominator=args.max_denominator,
+            score_levels=score_levels,
+            score_max_numerator=score_max_numerator,
+            score_max_denominator=score_max_denominator,
+            refine_multiplier=args.refine_multiplier,
+            digits=args.digits,
+            checkpoint_dir=args.checkpoint_dir,
+            checkpoint_prefix=args.checkpoint_prefix,
+            resume=args.resume,
+            progress_every=args.progress_every,
+            progress_callback=emit_progress,
+        )
+    else:
+        result = search_lambda_branches(
+            seed,
+            prime=args.prime,
+            levels=args.levels,
+            depth=args.depth,
+            beam_width=args.beam_width,
+            max_numerator=args.max_numerator,
+            max_denominator=args.max_denominator,
+            digits=args.digits,
+        )
     output = json.dumps(result, indent=2, sort_keys=True)
     if args.out:
         out_path = Path(args.out)

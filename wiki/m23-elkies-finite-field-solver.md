@@ -2,13 +2,14 @@
 type: wiki-page
 status: active
 created: 2026-05-22
-last_confirmed: 2026-05-22
+last_confirmed: 2026-05-23
 confidence: 0.72
 quality_score: 0.82
 sensitivity: internal
 sources:
   - "[[wiki/m23-literature-constraint-map]]"
   - "[[sources/elkies-2013-complex-m23-polynomials]]"
+  - "[[wiki/m23-belyi-gf7-overnight-branch-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -83,6 +84,12 @@ Local checkpointed runner:
 .\.venv\Scripts\python experiments/m23/scripts/run_belyi_batches.py --modulus 5 --start-left-factor-triples 32000 --stop-left-factor-triples 212636 --batch-size 4000 --max-solutions 3 --require-translation-normalized --normalized-first --require-coprime-left --coprime-first --require-nonzero-lambda --require-derivative --derivative-first --derive-lambda --report-dir experiments/m23/reports/gf5-exhaustive --report-prefix gf5-normalized
 ```
 
+Checkpointed lambda branch runner:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 12 --depth 8 --beam-width 25 --max-numerator 80000 --max-denominator 80000 --score-levels 8 --score-max-numerator 10000 --score-max-denominator 10000 --refine-multiplier 2 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-overnight --checkpoint-prefix gf7-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-overnight-summary.md --title "M23 Belyi GF(7) Overnight Lambda Branch Search"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -100,6 +107,7 @@ Local checkpointed runner:
 - The lift CLI `experiments/m23/scripts/lift_belyi_survivor.py` can test prime-power lifting of a stored modular survivor.
 - The reconstruction CLI `experiments/m23/scripts/reconstruct_belyi_lift.py` can test small-rational explanations for lifted coefficients.
 - The branch-search CLI `experiments/m23/scripts/search_lambda_branches.py` can search `lambda` correction sequences with a bounded beam.
+- The branch-search CLI can now run unattended with progress output, numeric-depth checkpoints, resume support, cheaper branch scoring, and full refinement of the strongest beam candidates.
 
 ## Report Artifacts
 
@@ -113,6 +121,7 @@ Local checkpointed runner:
 - [[wiki/m23-belyi-gf7-lift-report]] records the successful lift of that survivor through `7^6`.
 - [[wiki/m23-belyi-gf7-reconstruction-report]] records the first partial rational reconstruction attempts and identifies the free `lambda` direction.
 - [[wiki/m23-belyi-gf7-lambda-branch-search-report]] records the first bounded beam search over the free `lambda` direction.
+- [[wiki/m23-belyi-gf7-overnight-branch-runner]] records the checkpointed local runner for unattended lambda branch searches.
 
 ## Derivative Constraint
 
@@ -152,4 +161,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The next improvement should make branch search resumable and cheaper before trying wider free-parameter searches.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The next local step is to let the checkpointed branch runner search the free `lambda` direction for deeper rational-reconstruction signal.
