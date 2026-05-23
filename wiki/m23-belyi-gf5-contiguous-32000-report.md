@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-22
 last_confirmed: 2026-05-22
 confidence: 0.76
@@ -26,7 +26,8 @@ relationships:
     note: "Extends the same GF(5) search line from 24,000 to 32,000 tested triples."
 supersedes:
   - "[[wiki/m23-belyi-gf5-contiguous-24000-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf5-exhausted-report]]"
 review_after: 2026-06-22
 ---
 
@@ -58,3 +59,7 @@ The intervals from 10,000 onward use `--derivative-first --derive-lambda`. These
 This is still a bounded negative result, not exhaustion of the full `GF(5)` search space. It does show a stable early pattern: in the accelerated intervals, every tested left-factor triple fails because the forced lambda condition is not admissible.
 
 The next contiguous batch should start at `--start-left-factor-triples 32000`.
+
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf5-exhausted-report]], which records exhaustion of the full constrained `GF(5)` search space.

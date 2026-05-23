@@ -89,7 +89,7 @@ Local checkpointed runner:
 - The constrained prefix search over `GF(2)` with coprime left factors, nonzero `lambda`, and derivative compatibility found no solutions in the first 20 left-factor triples.
 - A constrained prefix search over `GF(5)` with translation normalization, coprime left factors, nonzero `lambda`, derivative compatibility, and `--coprime-first` found no solutions after internally enumerating 708 raw triples, testing 50 coprime triples, and scanning 200 lambda values.
 - The normalized-first `GF(5)` run found no solutions after generating 948 normalized triples, testing 500 coprime triples, and scanning 2,000 lambda values.
-- The resumed `GF(5)` search has covered the contiguous interval from 0 through 32,000 tested triples with no modular solutions.
+- The constrained `GF(5)` search has exhausted all 212,636 pairwise-coprime normalized left-factor triples with no modular solutions.
 - The normalized-first `GF(7)` run found no solutions after generating 827 normalized triples, testing 500 coprime triples, and scanning 3,000 lambda values.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
@@ -101,7 +101,7 @@ Local checkpointed runner:
 - [[wiki/m23-belyi-gf5-prefix-report]] interprets that run as a bounded negative result and a reporting-pipeline check.
 - [[experiments/m23/reports/2026-05-22-belyi-gf5-normalized-500]] records the larger normalized-first `GF(5)` run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] interprets the larger run as the current finite-field search frontier.
-- [[wiki/m23-belyi-gf5-contiguous-32000-report]] records the current contiguous `GF(5)` coverage.
+- [[wiki/m23-belyi-gf5-exhausted-report]] records exhaustion of the constrained `GF(5)` search space.
 - [[experiments/m23/reports/2026-05-22-belyi-gf7-normalized-500]] records the same normalized-first search over `GF(7)`.
 - [[wiki/m23-belyi-gf7-normalized-500-report]] compares the second-field run with the `GF(5)` frontier.
 
@@ -133,7 +133,7 @@ The `--start-left-factor-triples` flag makes these searches resumable by skippin
 
 The batch runner is intended for unattended local execution. It repeatedly runs adjacent intervals, writes checkpoint artifacts, and stops on the first survivor or at the requested stop offset.
 
-For the current `GF(5)` line, the stop offset `212636` is the exact count of pairwise-coprime normalized left-factor triples. Since the current frontier is 32,000, the remaining local run has 180,636 tested candidates.
+For the current `GF(5)` line, the stop offset `212636` is the exact count of pairwise-coprime normalized left-factor triples. The local runner reached that stop offset with no solutions.
 
 ## Enumeration Order
 
@@ -141,4 +141,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The next improvements should add stronger branch-cycle constraints, compare more finite fields, or run longer report-producing searches.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors; the next improvements should add stronger branch-cycle constraints or compare a deeper `GF(7)` run before scaling further.

@@ -1,0 +1,475 @@
+{
+  "batch_size": 4000,
+  "batches": [
+    {
+      "end_left_factor_triples": 36000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-32000-36000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-32000-36000.md",
+      "solutions": [],
+      "start_left_factor_triples": 32000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 40000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-36000-40000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-36000-40000.md",
+      "solutions": [],
+      "start_left_factor_triples": 36000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 44000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-40000-44000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-40000-44000.md",
+      "solutions": [],
+      "start_left_factor_triples": 40000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 48000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-44000-48000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-44000-48000.md",
+      "solutions": [],
+      "start_left_factor_triples": 44000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 52000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-48000-52000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-48000-52000.md",
+      "solutions": [],
+      "start_left_factor_triples": 48000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 56000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-52000-56000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-52000-56000.md",
+      "solutions": [],
+      "start_left_factor_triples": 52000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 60000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-56000-60000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-56000-60000.md",
+      "solutions": [],
+      "start_left_factor_triples": 56000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 64000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-60000-64000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-60000-64000.md",
+      "solutions": [],
+      "start_left_factor_triples": 60000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 68000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-64000-68000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-64000-68000.md",
+      "solutions": [],
+      "start_left_factor_triples": 64000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 72000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-68000-72000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-68000-72000.md",
+      "solutions": [],
+      "start_left_factor_triples": 68000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 76000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-72000-76000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-72000-76000.md",
+      "solutions": [],
+      "start_left_factor_triples": 72000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 80000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-76000-80000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-76000-80000.md",
+      "solutions": [],
+      "start_left_factor_triples": 76000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 84000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-80000-84000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-80000-84000.md",
+      "solutions": [],
+      "start_left_factor_triples": 80000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 88000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-84000-88000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-84000-88000.md",
+      "solutions": [],
+      "start_left_factor_triples": 84000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 92000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-88000-92000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-88000-92000.md",
+      "solutions": [],
+      "start_left_factor_triples": 88000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 96000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-92000-96000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-92000-96000.md",
+      "solutions": [],
+      "start_left_factor_triples": 92000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 100000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-96000-100000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-96000-100000.md",
+      "solutions": [],
+      "start_left_factor_triples": 96000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 104000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-100000-104000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-100000-104000.md",
+      "solutions": [],
+      "start_left_factor_triples": 100000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 108000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-104000-108000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-104000-108000.md",
+      "solutions": [],
+      "start_left_factor_triples": 104000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 112000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-108000-112000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-108000-112000.md",
+      "solutions": [],
+      "start_left_factor_triples": 108000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 116000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-112000-116000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-112000-116000.md",
+      "solutions": [],
+      "start_left_factor_triples": 112000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 120000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-116000-120000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-116000-120000.md",
+      "solutions": [],
+      "start_left_factor_triples": 116000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 124000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-120000-124000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-120000-124000.md",
+      "solutions": [],
+      "start_left_factor_triples": 120000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 128000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-124000-128000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-124000-128000.md",
+      "solutions": [],
+      "start_left_factor_triples": 124000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 132000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-128000-132000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-128000-132000.md",
+      "solutions": [],
+      "start_left_factor_triples": 128000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 136000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-132000-136000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-132000-136000.md",
+      "solutions": [],
+      "start_left_factor_triples": 132000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 140000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-136000-140000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-136000-140000.md",
+      "solutions": [],
+      "start_left_factor_triples": 136000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 144000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-140000-144000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-140000-144000.md",
+      "solutions": [],
+      "start_left_factor_triples": 140000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 148000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-144000-148000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-144000-148000.md",
+      "solutions": [],
+      "start_left_factor_triples": 144000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 152000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-148000-152000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-148000-152000.md",
+      "solutions": [],
+      "start_left_factor_triples": 148000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 156000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-152000-156000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-152000-156000.md",
+      "solutions": [],
+      "start_left_factor_triples": 152000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 160000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-156000-160000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-156000-160000.md",
+      "solutions": [],
+      "start_left_factor_triples": 156000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 164000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-160000-164000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-160000-164000.md",
+      "solutions": [],
+      "start_left_factor_triples": 160000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 168000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-164000-168000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-164000-168000.md",
+      "solutions": [],
+      "start_left_factor_triples": 164000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 172000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-168000-172000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-168000-172000.md",
+      "solutions": [],
+      "start_left_factor_triples": 168000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 176000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-172000-176000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-172000-176000.md",
+      "solutions": [],
+      "start_left_factor_triples": 172000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 180000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-176000-180000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-176000-180000.md",
+      "solutions": [],
+      "start_left_factor_triples": 176000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 184000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-180000-184000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-180000-184000.md",
+      "solutions": [],
+      "start_left_factor_triples": 180000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 188000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-184000-188000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-184000-188000.md",
+      "solutions": [],
+      "start_left_factor_triples": 184000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 192000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-188000-192000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-188000-192000.md",
+      "solutions": [],
+      "start_left_factor_triples": 188000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 196000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-192000-196000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-192000-196000.md",
+      "solutions": [],
+      "start_left_factor_triples": 192000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 200000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-196000-200000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-196000-200000.md",
+      "solutions": [],
+      "start_left_factor_triples": 196000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 204000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-200000-204000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-200000-204000.md",
+      "solutions": [],
+      "start_left_factor_triples": 200000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 208000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-204000-208000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-204000-208000.md",
+      "solutions": [],
+      "start_left_factor_triples": 204000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 212000,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-208000-212000.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-208000-212000.md",
+      "solutions": [],
+      "start_left_factor_triples": 208000,
+      "stopped_reason": "max_left_factor_triples",
+      "tested_lambda_values": 4000,
+      "tested_left_factor_triples": 4000
+    },
+    {
+      "end_left_factor_triples": 212636,
+      "json_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-212000-212636.json",
+      "markdown_path": "experiments\\m23\\reports\\gf5-exhaustive\\gf5-normalized-212000-212636.md",
+      "solutions": [],
+      "start_left_factor_triples": 212000,
+      "stopped_reason": "exhausted",
+      "tested_lambda_values": 636,
+      "tested_left_factor_triples": 636
+    }
+  ],
+  "modulus": 5,
+  "next_start_left_factor_triples": 212636,
+  "report_dir": "experiments\\m23\\reports\\gf5-exhaustive",
+  "report_prefix": "gf5-normalized",
+  "solutions": [],
+  "start_left_factor_triples": 32000,
+  "stop_left_factor_triples": 212636,
+  "stopped_reason": "exhausted",
+  "tested_lambda_values": 180636,
+  "tested_left_factor_triples": 180636
+}
