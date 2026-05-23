@@ -52,7 +52,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf5-prefix-report]] - durable interpretation of the first constrained `GF(5)` Belyi prefix run.
 - [[wiki/m23-belyi-gf5-normalized-500-report]] - durable interpretation of the larger normalized-first `GF(5)` Belyi run.
 - [[wiki/m23-belyi-gf5-exhausted-report]] - exhaustion report for the constrained `GF(5)` Belyi search.
-- [[wiki/m23-belyi-gf7-reconstruction-report]] - partial rational reconstruction attempts and free-parameter finding for the `GF(7)` Belyi lift.
+- [[wiki/m23-belyi-gf7-lambda-branch-search-report]] - bounded beam search over the free `lambda` direction in the `GF(7)` Belyi lift.
 
 ## Active Project
 
@@ -134,6 +134,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-survivor]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-lift]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-reconstruction]]
+- [[logs/ingest/2026-05-23-m23-belyi-gf7-branch-search]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

@@ -1,6 +1,6 @@
 ---
 type: wiki-page
-status: active
+status: stale
 created: 2026-05-23
 last_confirmed: 2026-05-23
 confidence: 0.78
@@ -25,7 +25,8 @@ relationships:
     note: "Adds rational reconstruction as the next phase after lifting."
 supersedes:
   - "[[wiki/m23-belyi-gf7-lift-report]]"
-superseded_by: []
+superseded_by:
+  - "[[wiki/m23-belyi-gf7-lambda-branch-search-report]]"
 review_after: 2026-06-23
 ---
 
@@ -59,3 +60,6 @@ The modular survivor is not a one-off: it lifts deeply. However, the current rec
 
 The next useful step is a systematic search over the free `lambda` correction sequence, scored by rational reconstruction and exact residual checks. A better version should treat `lambda` as a 7-adic parameter rather than greedily fixing digits without backtracking.
 
+## Supersession
+
+This page is superseded by [[wiki/m23-belyi-gf7-lambda-branch-search-report]], which records the first bounded beam search over the free `lambda` correction sequence.

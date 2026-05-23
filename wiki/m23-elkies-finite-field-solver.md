@@ -93,11 +93,13 @@ Local checkpointed runner:
 - The constrained `GF(7)` search found one modular equation-system survivor in the interval 290,000-300,000 tested triples.
 - The `GF(7)` survivor lifts through modulus `7^6 = 117649` under the identity, derivative, and translation-normalization constraints.
 - The lifting system has one free direction, represented by `lambda` correction digits. A first steered branch improved rational reconstruction but did not produce a complete rational map.
+- A first bounded beam search over the free `lambda` direction evaluated 581 branches and recovered the same best `lambda = 223` branch, still partial at 16/25 reconstructed coefficients.
 - The solver has explicit bounds through `--max-left-factor-triples` and `--max-solutions` to avoid runaway enumeration.
 - The CLI can now write reproducible JSON and Markdown reports with `--out`, `--markdown-out`, and `--title`.
 - The batch runner `experiments/m23/scripts/run_belyi_batches.py` can continue a local search without chat supervision by writing interval checkpoints and a summary JSON file.
 - The lift CLI `experiments/m23/scripts/lift_belyi_survivor.py` can test prime-power lifting of a stored modular survivor.
 - The reconstruction CLI `experiments/m23/scripts/reconstruct_belyi_lift.py` can test small-rational explanations for lifted coefficients.
+- The branch-search CLI `experiments/m23/scripts/search_lambda_branches.py` can search `lambda` correction sequences with a bounded beam.
 
 ## Report Artifacts
 
@@ -110,6 +112,7 @@ Local checkpointed runner:
 - [[wiki/m23-belyi-gf7-modular-survivor-report]] records the first `GF(7)` modular survivor found by the batch runner.
 - [[wiki/m23-belyi-gf7-lift-report]] records the successful lift of that survivor through `7^6`.
 - [[wiki/m23-belyi-gf7-reconstruction-report]] records the first partial rational reconstruction attempts and identifies the free `lambda` direction.
+- [[wiki/m23-belyi-gf7-lambda-branch-search-report]] records the first bounded beam search over the free `lambda` direction.
 
 ## Derivative Constraint
 
@@ -149,4 +152,4 @@ The CLI flags `--coprime-first` and `--normalized-first` change the meaning of t
 
 ## Interpretation
 
-This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The next improvement should search the free `lambda` correction sequence systematically before trying to derive the final degree-23 polynomial.
+This is not yet a serious M23 construction. It is the first tested finite-field search primitive for the equation-system path. The constrained `GF(5)` version is exhausted without survivors, while the constrained `GF(7)` version has produced one modular survivor that lifts deeply. The next improvement should make branch search resumable and cheaper before trying wider free-parameter searches.
