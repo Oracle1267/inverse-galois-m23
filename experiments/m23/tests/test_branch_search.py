@@ -589,3 +589,27 @@ def test_consistency_score_prioritizes_fewer_hard_contradictions_over_unique_cou
     }
 
     assert _score_candidate(consistent) > _score_candidate(inconsistent)
+
+
+def test_consistency_score_keeps_skipped_candidates_below_scored_candidates():
+    scored = {
+        "status": "partial",
+        "unique_count": 20,
+        "unresolved": ["a", "b", "c", "d", "e"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 3,
+            "symbolic_constraint_count": 5,
+            "unknown_count": 5,
+        },
+    }
+    skipped = {
+        "status": "partial",
+        "unique_count": 19,
+        "unresolved": ["a", "b", "c", "d", "e", "f"],
+        "ambiguous": [],
+        "consistency_scoring_enabled": True,
+        "partial_consistency_skipped": "unique_count_below_threshold",
+    }
+
+    assert _score_candidate(scored) > _score_candidate(skipped)

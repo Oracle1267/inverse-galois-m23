@@ -36,6 +36,18 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             -len(reconstruction.get("unresolved", [])),  # type: ignore[arg-type]
             -len(reconstruction.get("ambiguous", [])),  # type: ignore[arg-type]
         )
+    if reconstruction.get("consistency_scoring_enabled") is True:
+        return (
+            complete_score,
+            exact_score,
+            inexact_penalty,
+            -1_000_000,
+            int(reconstruction["unique_count"]),
+            -int(reconstruction.get("total_count", 0)),
+            0,
+            -len(reconstruction.get("unresolved", [])),  # type: ignore[arg-type]
+            -len(reconstruction.get("ambiguous", [])),  # type: ignore[arg-type]
+        )
     return (
         complete_score,
         exact_score,
@@ -98,8 +110,12 @@ def _evaluate_prefix(
         max_numerator=max_numerator,
         max_denominator=max_denominator,
     )
-    if score_consistency and int(reconstruction["unique_count"]) >= consistency_min_unique:
-        reconstruction["partial_consistency"] = partial_consistency_report(reconstruction)
+    if score_consistency:
+        reconstruction["consistency_scoring_enabled"] = True
+        if int(reconstruction["unique_count"]) >= consistency_min_unique:
+            reconstruction["partial_consistency"] = partial_consistency_report(reconstruction)
+        else:
+            reconstruction["partial_consistency_skipped"] = "unique_count_below_threshold"
     return _candidate_summary(prefix, lift, reconstruction), lift, reconstruction
 
 

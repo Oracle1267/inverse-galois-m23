@@ -36,6 +36,7 @@ review_after: 2026-06-23
 - Added symbolic partial consistency scoring for reconstructed Belyi branch candidates.
 - Added branch-score priority for hard exact-equation contradictions.
 - Tightened early stopping so complete but inexact reconstructions do not terminate the branch search.
+- Fixed consistency-score ordering so candidates below `--consistency-min-unique` do not outrank candidates that were actually consistency-scored.
 - Added CLI flags `--score-consistency` and `--consistency-min-unique`.
 - Added checkpoint compatibility metadata for consistency-scored runs.
 - Added a controlled smoke report under `experiments/m23/reports/gf7-branch-search/`.

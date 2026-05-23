@@ -183,6 +183,7 @@
   },
   "best_reconstruction": {
     "ambiguous": [],
+    "consistency_scoring_enabled": true,
     "exact_derivative": true,
     "exact_identity": true,
     "exact_translation_normalization": true,

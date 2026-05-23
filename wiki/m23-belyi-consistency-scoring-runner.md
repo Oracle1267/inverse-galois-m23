@@ -60,6 +60,8 @@ The cheaper pre-score pass remains numeric-only. Checkpoints record both options
 
 The search loop also stops early only for a complete and exact reconstruction. A complete but inexact reconstruction is treated as an invalid branch signal, not as a found solution.
 
+Candidates below `--consistency-min-unique` are kept below candidates that actually receive consistency scoring. This preserves the threshold as a compute guard instead of letting unscored candidates outrank scored candidates because of tuple-shape differences.
+
 ## Verified Smoke
 
 The controlled degenerate identity smoke passed with `hard_contradiction_count = 0` and `symbolic_constraint_count = 0`:
