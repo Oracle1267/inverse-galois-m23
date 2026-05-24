@@ -12,6 +12,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner-min18-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -69,7 +70,7 @@ The scorer also detects cheap linear symbolic conflicts. If two residual equatio
 
 The scorer now also rank-checks the full linear subsystem across all unresolved coefficients. If the coefficient matrix and augmented matrix have different ranks, the branch is treated as linearly inconsistent even when no single variable has an obvious forced-value conflict.
 
-The scorer now also runs a capped low-degree Groebner check. It first tries the lowest-degree symbolic residuals directly. If that does not prove inconsistency, it substitutes any solved linear subsystem and tries the lowest-degree reduced nonlinear residuals. A basis containing `1` is treated as a nonlinear conflict.
+The scorer now also runs a capped low-degree Groebner check over six equations. It first tries the lowest-degree symbolic residuals directly. If that does not prove inconsistency, it substitutes any solved linear subsystem and tries the lowest-degree reduced nonlinear residuals. A basis containing `1` is treated as a nonlinear conflict.
 
 The scorer now also checks linear-solution residuals. If the linear subsystem uniquely solves every unresolved variable, it substitutes that solution into all symbolic residuals. Remaining nonzero constant residuals are treated as a conflict.
 
@@ -83,10 +84,10 @@ The controlled degenerate identity smoke passed with `hard_contradiction_count =
 
 ## Recommended Next Run
 
-The targeted Groebner min18 rescore found an apparent clean branch, but a post-run linear-solution residual check ruled it out. Rerun the min18 frontier with the upgraded scorer:
+The targeted linear-solution min18 rescore found an apparent clean branch, but a post-run six-equation Groebner check ruled it out. Rerun the min18 frontier with the upgraded scorer:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 18 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-linear-solution-consistency-min18 --checkpoint-prefix gf7-targeted-linear-solution-consistency-min18 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-linear-solution-consistency-min18-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-linear-solution-consistency-min18-summary.md --title "M23 Belyi GF(7) Targeted Linear-Solution Consistency Min18 Rescore"
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 18 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-consistency-min18 --checkpoint-prefix gf7-targeted-groebner6-consistency-min18 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min18-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min18-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Consistency Min18 Rescore"
 ```
 
 If interrupted, rerun the same command with `--resume`.

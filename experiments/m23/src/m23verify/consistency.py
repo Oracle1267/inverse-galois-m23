@@ -276,7 +276,7 @@ def _linearly_reduced_records(records: list[tuple[str, int, sp.Expr]]) -> list[t
 
 def _low_degree_groebner_report(
     records: list[tuple[str, int, sp.Expr]],
-    max_equations: int = 4,
+    max_equations: int = 6,
 ) -> dict[str, object]:
     if max_equations <= 0:
         return _default_groebner_report()

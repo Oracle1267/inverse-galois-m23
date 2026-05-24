@@ -50,6 +50,7 @@ review_after: 2026-06-20
 - [[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]
 - [[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]]
 - [[wiki/m23-belyi-gf7-targeted-groebner-min18-result]]
+- [[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]
 
 ## Current Working Memory
 
