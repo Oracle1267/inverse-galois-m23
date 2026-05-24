@@ -131,6 +131,7 @@ def main() -> int:
                         f" hard={best['hard_contradiction_count']}"
                         + f" linear_system={best.get('linear_system_conflict_count', 0)}"
                         + f" linear={best.get('linear_conflict_count', 0)}"
+                        + f" linear_solution={best.get('linear_solution_conflict_count', 0)}"
                         + f" groebner={best.get('groebner_conflict_count', 0)}"
                     )
                 )

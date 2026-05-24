@@ -127,6 +127,67 @@ def _linear_system_report(records: list[tuple[str, int, sp.Expr]]) -> dict[str, 
     }
 
 
+def _linear_solution_residual_report(records: list[tuple[str, int, sp.Expr]]) -> dict[str, object]:
+    symbols = sorted(
+        set().union(*(expr.free_symbols for _source, _index, expr in records)) if records else set(),
+        key=lambda symbol: symbol.name,
+    )
+    default = {
+        "linear_solution_solved": False,
+        "linear_solution_conflict_count": 0,
+        "linear_solution_residual_conflict_count": 0,
+        "linear_solution_symbol_count": len(symbols),
+        "linear_solution_values": {},
+        "linear_solution_residual_conflicts": [],
+    }
+    if not records or not symbols:
+        return default
+
+    linear_equations: list[sp.Expr] = []
+    for _source, _index, expr in records:
+        try:
+            polynomial = sp.Poly(expr, *symbols)
+        except (sp.PolynomialError, TypeError):
+            continue
+        if polynomial.total_degree() <= 1:
+            linear_equations.append(expr)
+    if not linear_equations:
+        return default
+
+    try:
+        solutions = sp.solve(linear_equations, symbols, dict=True)
+    except Exception as exc:  # pragma: no cover - defensive guard for long searches
+        return {**default, "linear_solution_error": str(exc)}
+    if len(solutions) != 1:
+        return default
+
+    solution = solutions[0]
+    if any(symbol not in solution for symbol in symbols):
+        return default
+
+    residual_conflicts: list[dict[str, object]] = []
+    for source, index, expr in records:
+        reduced = sp.factor(sp.together(expr.subs(solution)).as_numer_denom()[0])
+        if reduced != 0 and not reduced.free_symbols:
+            residual_conflicts.append(
+                {
+                    "source": source,
+                    "index": index,
+                    "expression": str(reduced),
+                }
+            )
+
+    conflict_count = len(residual_conflicts)
+    return {
+        "linear_solution_solved": True,
+        "linear_solution_conflict_count": 1 if conflict_count else 0,
+        "linear_solution_residual_conflict_count": conflict_count,
+        "linear_solution_symbol_count": len(symbols),
+        "linear_solution_values": {str(symbol): str(sp.factor(solution[symbol])) for symbol in symbols},
+        "linear_solution_residual_conflicts": residual_conflicts[:20],
+    }
+
+
 def _default_groebner_report() -> dict[str, object]:
     return {
         "groebner_equation_count": 0,
@@ -334,6 +395,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
 
     linear_conflicts = _linear_conflicts(linear_implications)
     linear_system = _linear_system_report(symbolic_expressions)
+    linear_solution = _linear_solution_residual_report(symbolic_expressions)
     groebner = _low_degree_groebner_report(symbolic_expressions)
     return {
         "unknowns": unknowns,
@@ -342,6 +404,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
         "linear_implication_count": len(linear_implications),
         "linear_conflict_count": len(linear_conflicts),
         **linear_system,
+        **linear_solution,
         **groebner,
         "symbolic_constraint_count": len(symbolic_constraints),
         "zero_coefficient_count": zero_count,

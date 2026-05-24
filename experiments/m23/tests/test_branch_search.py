@@ -660,6 +660,7 @@ def test_consistency_score_penalizes_linear_system_conflicts():
             "linear_system_conflict_count": 0,
             "linear_conflict_count": 0,
             "groebner_conflict_count": 0,
+            "linear_solution_conflict_count": 0,
             "symbolic_constraint_count": 8,
             "unknown_count": 6,
         },
@@ -707,8 +708,44 @@ def test_consistency_score_penalizes_groebner_conflicts():
             "linear_system_conflict_count": 0,
             "linear_conflict_count": 0,
             "groebner_conflict_count": 1,
+            "linear_solution_conflict_count": 0,
             "symbolic_constraint_count": 4,
             "unknown_count": 5,
+        },
+    }
+
+    assert _score_candidate(compatible) > _score_candidate(inconsistent)
+
+
+def test_consistency_score_penalizes_linear_solution_conflicts():
+    compatible = {
+        "status": "partial",
+        "unique_count": 18,
+        "unresolved": ["a", "b", "c", "d", "e", "f", "g"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_system_conflict_count": 0,
+            "linear_conflict_count": 0,
+            "groebner_conflict_count": 0,
+            "linear_solution_conflict_count": 0,
+            "symbolic_constraint_count": 8,
+            "unknown_count": 7,
+        },
+    }
+    inconsistent = {
+        "status": "partial",
+        "unique_count": 19,
+        "unresolved": ["a", "b", "c", "d", "e", "f"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_system_conflict_count": 0,
+            "linear_conflict_count": 0,
+            "groebner_conflict_count": 0,
+            "linear_solution_conflict_count": 1,
+            "symbolic_constraint_count": 4,
+            "unknown_count": 6,
         },
     }
 

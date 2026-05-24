@@ -11,6 +11,7 @@
     "hard_contradiction_count": 0,
     "lift_status": "lifted",
     "linear_conflict_count": 0,
+    "linear_solution_conflict_count": 0,
     "linear_system_conflict_count": 0,
     "prefix": [
       0
@@ -19,6 +20,7 @@
     "score": [
       1,
       1,
+      0,
       0,
       0,
       0,
@@ -209,6 +211,12 @@
       "linear_conflicts": [],
       "linear_implication_count": 0,
       "linear_implications": [],
+      "linear_solution_conflict_count": 0,
+      "linear_solution_residual_conflict_count": 0,
+      "linear_solution_residual_conflicts": [],
+      "linear_solution_solved": false,
+      "linear_solution_symbol_count": 0,
+      "linear_solution_values": {},
       "linear_system_augmented_rank": 0,
       "linear_system_conflict_count": 0,
       "linear_system_consistent": true,
@@ -583,6 +591,7 @@
     "hard_contradiction_count": 0,
     "lift_status": "lifted",
     "linear_conflict_count": 0,
+    "linear_solution_conflict_count": 0,
     "linear_system_conflict_count": 0,
     "prefix": [
       0
@@ -591,6 +600,7 @@
     "score": [
       1,
       1,
+      0,
       0,
       0,
       0,
@@ -624,6 +634,7 @@
           "hard_contradiction_count": 0,
           "lift_status": "lifted",
           "linear_conflict_count": 0,
+          "linear_solution_conflict_count": 0,
           "linear_system_conflict_count": 0,
           "prefix": [
             0
@@ -632,6 +643,7 @@
           "score": [
             1,
             1,
+            0,
             0,
             0,
             0,

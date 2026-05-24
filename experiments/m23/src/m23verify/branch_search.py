@@ -32,6 +32,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             -int(partial_consistency["hard_contradiction_count"]),
             -int(partial_consistency.get("linear_system_conflict_count", 0)),
             -int(partial_consistency.get("linear_conflict_count", 0)),
+            -int(partial_consistency.get("linear_solution_conflict_count", 0)),
             -int(partial_consistency.get("groebner_conflict_count", 0)),
             int(reconstruction["unique_count"]),
             -int(partial_consistency["unknown_count"]),
@@ -44,6 +45,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             complete_score,
             exact_score,
             inexact_penalty,
+            -1_000_000,
             -1_000_000,
             -1_000_000,
             -1_000_000,
@@ -86,6 +88,7 @@ def _candidate_summary(
         "hard_contradiction_count": None,
         "linear_system_conflict_count": None,
         "linear_conflict_count": None,
+        "linear_solution_conflict_count": None,
         "groebner_conflict_count": None,
         "symbolic_constraint_count": None,
     }
@@ -94,6 +97,7 @@ def _candidate_summary(
         summary["hard_contradiction_count"] = partial_consistency["hard_contradiction_count"]
         summary["linear_system_conflict_count"] = partial_consistency.get("linear_system_conflict_count", 0)
         summary["linear_conflict_count"] = partial_consistency.get("linear_conflict_count", 0)
+        summary["linear_solution_conflict_count"] = partial_consistency.get("linear_solution_conflict_count", 0)
         summary["groebner_conflict_count"] = partial_consistency.get("groebner_conflict_count", 0)
         summary["symbolic_constraint_count"] = partial_consistency["symbolic_constraint_count"]
         summary["unknown_count"] = partial_consistency["unknown_count"]
@@ -647,6 +651,7 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
                 f"- Hard consistency contradictions: `{best['hard_contradiction_count']}`",
                 f"- Linear system conflicts: `{best.get('linear_system_conflict_count', 0)}`",
                 f"- Linear symbolic conflicts: `{best.get('linear_conflict_count', 0)}`",
+                f"- Linear-solution residual conflicts: `{best.get('linear_solution_conflict_count', 0)}`",
                 f"- Groebner low-degree conflicts: `{best.get('groebner_conflict_count', 0)}`",
                 f"- Symbolic consistency constraints: `{best['symbolic_constraint_count']}`",
             ]
@@ -671,6 +676,7 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
                     f" hard `{candidate['hard_contradiction_count']}`"
                     + f" linear-system `{candidate.get('linear_system_conflict_count', 0)}`"
                     + f" linear `{candidate.get('linear_conflict_count', 0)}`"
+                    + f" linear-solution `{candidate.get('linear_solution_conflict_count', 0)}`"
                     + f" groebner `{candidate.get('groebner_conflict_count', 0)}`"
                 )
             )
