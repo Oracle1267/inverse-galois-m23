@@ -3,7 +3,7 @@ from copy import deepcopy
 import sympy as sp
 
 from m23verify.consistency import _linear_conflicts, _linear_implication_from_expression, partial_consistency_report
-from m23verify.consistency import _linear_system_report
+from m23verify.consistency import _linear_system_report, _low_degree_groebner_report
 from m23verify.reconstruction import reconstruct_lift_report
 
 
@@ -87,3 +87,17 @@ def test_linear_system_report_detects_multivariate_inconsistency():
     assert report["linear_system_equation_count"] == 2
     assert report["linear_system_conflict_count"] == 1
     assert report["linear_system_consistent"] is False
+
+
+def test_low_degree_groebner_report_detects_inconsistency():
+    a = sp.Symbol("a")
+    records = [
+        ("identity", 1, a**2 - 1),
+        ("identity", 2, a - 2),
+    ]
+
+    report = _low_degree_groebner_report(records, max_equations=2)
+
+    assert report["groebner_equation_count"] == 2
+    assert report["groebner_conflict_count"] == 1
+    assert report["groebner_contains_one"] is True

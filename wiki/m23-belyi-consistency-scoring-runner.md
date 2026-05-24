@@ -9,6 +9,7 @@ sensitivity: internal
 sources:
   - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
   - "[[experiments/m23/reports/gf7-branch-search/consistency-smoke]]"
+  - "[[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -66,9 +67,11 @@ The scorer also detects cheap linear symbolic conflicts. If two residual equatio
 
 The scorer now also rank-checks the full linear subsystem across all unresolved coefficients. If the coefficient matrix and augmented matrix have different ranks, the branch is treated as linearly inconsistent even when no single variable has an obvious forced-value conflict.
 
+The scorer now also runs a capped low-degree Groebner check. It first tries the lowest-degree symbolic residuals directly. If that does not prove inconsistency, it substitutes any solved linear subsystem and tries the lowest-degree reduced nonlinear residuals. A basis containing `1` is treated as a nonlinear conflict.
+
 ## Verified Smoke
 
-The controlled degenerate identity smoke passed with `hard_contradiction_count = 0` and `symbolic_constraint_count = 0`:
+The controlled degenerate identity smoke passed with `hard_contradiction_count = 0`, `groebner_conflict_count = 0`, and `symbolic_constraint_count = 0`:
 
 ```powershell
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 2 --levels 2 --depth 1 --beam-width 1 --max-numerator 10 --max-denominator 10 --score-consistency --consistency-min-unique 0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-consistency-smoke --checkpoint-prefix consistency-smoke --p2 0,0 --p3 0,0,0 --p4 0,0,0,0 --p7 0,0,0,0,0,0,0 --p8 0,0,0,0,0,0,0,0 --lambda 0 --out experiments/m23/reports/gf7-branch-search/consistency-smoke.json --markdown-out experiments/m23/reports/gf7-branch-search/consistency-smoke.md --title "M23 Belyi Consistency Scoring Smoke"
@@ -76,10 +79,10 @@ The controlled degenerate identity smoke passed with `hard_contradiction_count =
 
 ## Recommended Next Run
 
-Continue from the best known prefix and let the new scorer reject branches that are already exact-equation contradictory:
+Continue from the targeted prefix and let the new scorer reject branches that are already low-degree nonlinear contradictory:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 16 --depth 15 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0,6,4,2,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-consistency-overnight --checkpoint-prefix gf7-consistency-overnight --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-consistency-overnight-summary.md --title "M23 Belyi GF(7) Consistency-Scored Branch Search"
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner-consistency --checkpoint-prefix gf7-targeted-groebner-consistency --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.md --title "M23 Belyi GF(7) Targeted Groebner Consistency Rescore"
 ```
 
 If interrupted, rerun the same command with `--resume`.

@@ -47,6 +47,7 @@ review_after: 2026-06-20
 - [[wiki/m23-belyi-consistency-scoring-runner]]
 - [[wiki/m23-belyi-gf7-targeted-consistency-result]]
 - [[wiki/m23-belyi-gf7-targeted-linear-consistency-result]]
+- [[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]
 
 ## Current Working Memory
 

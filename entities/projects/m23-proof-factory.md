@@ -3,13 +3,14 @@ type: entity
 entity_type: project
 status: active
 created: 2026-05-22
-last_confirmed: 2026-05-22
-confidence: 0.74
-quality_score: 0.84
+last_confirmed: 2026-05-23
+confidence: 0.76
+quality_score: 0.85
 sensitivity: internal
 sources:
   - "[[wiki/m23-proof-factory]]"
   - "[[wiki/m23-search-loop]]"
+  - "[[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]"
 aliases:
   - M23 inverse Galois proof factory
   - M23 search loop
@@ -55,3 +56,5 @@ The M23 proof factory is a vault-backed research project for generating, testing
 ## Notes
 
 The first implementation now has a local verification harness, known-boundary tables, and a resumable trinomial batch loop. The current loop is process infrastructure, not evidence that trinomials are a promising M23 family.
+
+The Belyi-map line now includes finite-field search, prime-power lifting, rational reconstruction, branch search, and consistency scoring. The current strongest-looking `GF(7)` branches have been ruled out by progressively stronger exact-equation checks, most recently a low-degree Groebner inconsistency after linear reduction.

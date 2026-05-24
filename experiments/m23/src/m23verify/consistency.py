@@ -127,6 +127,117 @@ def _linear_system_report(records: list[tuple[str, int, sp.Expr]]) -> dict[str, 
     }
 
 
+def _default_groebner_report() -> dict[str, object]:
+    return {
+        "groebner_equation_count": 0,
+        "groebner_symbol_count": 0,
+        "groebner_contains_one": False,
+        "groebner_conflict_count": 0,
+        "groebner_basis_preview": [],
+        "groebner_equations": [],
+    }
+
+
+def _record_degree(expr: sp.Expr, symbols: list[sp.Symbol]) -> int:
+    if not symbols:
+        return 0
+    try:
+        return int(sp.Poly(expr, *symbols).total_degree())
+    except (sp.PolynomialError, TypeError):
+        return 1_000_000
+
+
+def _groebner_subset_report(records: list[tuple[str, int, sp.Expr]], max_equations: int) -> dict[str, object]:
+    symbols = sorted(
+        set().union(*(expr.free_symbols for _source, _index, expr in records)) if records else set(),
+        key=lambda symbol: symbol.name,
+    )
+    if not records or not symbols:
+        return _default_groebner_report()
+
+    sorted_records = sorted(
+        records,
+        key=lambda record: (_record_degree(record[2], symbols), str(record[2])),
+    )
+    chosen = sorted_records[:max_equations]
+    expressions = [sp.expand(expr) for _source, _index, expr in chosen]
+    basis = sp.groebner(expressions, *symbols, order="lex")
+    contains_one = any(sp.expand(poly.as_expr()) == 1 for poly in basis.polys)
+    return {
+        "groebner_equation_count": len(chosen),
+        "groebner_symbol_count": len(symbols),
+        "groebner_contains_one": contains_one,
+        "groebner_conflict_count": 1 if contains_one else 0,
+        "groebner_basis_preview": [str(poly.as_expr()) for poly in basis.polys[:8]],
+        "groebner_equations": [
+            {
+                "source": source,
+                "index": index,
+                "degree": _record_degree(expr, symbols),
+                "expression": str(expr),
+            }
+            for source, index, expr in chosen
+        ],
+    }
+
+
+def _linearly_reduced_records(records: list[tuple[str, int, sp.Expr]]) -> list[tuple[str, int, sp.Expr]]:
+    symbols = sorted(
+        set().union(*(expr.free_symbols for _source, _index, expr in records)) if records else set(),
+        key=lambda symbol: symbol.name,
+    )
+    if not records or not symbols:
+        return records
+
+    linear_equations: list[sp.Expr] = []
+    for _source, _index, expr in records:
+        try:
+            polynomial = sp.Poly(expr, *symbols)
+        except (sp.PolynomialError, TypeError):
+            continue
+        if polynomial.total_degree() <= 1:
+            linear_equations.append(expr)
+    if not linear_equations:
+        return records
+
+    solutions = sp.solve(linear_equations, symbols, dict=True)
+    if not solutions:
+        return records
+
+    substitution = solutions[0]
+    reduced: list[tuple[str, int, sp.Expr]] = []
+    for source, index, expr in records:
+        reduced_expr = sp.factor(sp.cancel(expr.subs(substitution)))
+        if reduced_expr != 0:
+            reduced.append((source, index, reduced_expr))
+    return reduced
+
+
+def _low_degree_groebner_report(
+    records: list[tuple[str, int, sp.Expr]],
+    max_equations: int = 4,
+) -> dict[str, object]:
+    if max_equations <= 0:
+        return _default_groebner_report()
+    try:
+        direct = _groebner_subset_report(records, max_equations=max_equations)
+        if direct["groebner_contains_one"]:
+            return direct
+
+        reduced_records = _linearly_reduced_records(records)
+        if reduced_records == records:
+            return direct
+        reduced = _groebner_subset_report(reduced_records, max_equations=max_equations)
+        if reduced["groebner_equation_count"] == 0:
+            return direct
+        reduced["groebner_linear_reduced"] = True
+        return reduced
+    except Exception as exc:  # pragma: no cover - defensive guard for long searches
+        report = _default_groebner_report()
+        report["groebner_error"] = str(exc)
+        return report
+
+
 def _classify_expression(
     expr: sp.Expr,
     *,
@@ -223,6 +334,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
 
     linear_conflicts = _linear_conflicts(linear_implications)
     linear_system = _linear_system_report(symbolic_expressions)
+    groebner = _low_degree_groebner_report(symbolic_expressions)
     return {
         "unknowns": unknowns,
         "unknown_count": len(unknowns),
@@ -230,6 +342,7 @@ def partial_consistency_report(reconstruction_report: dict[str, object]) -> dict
         "linear_implication_count": len(linear_implications),
         "linear_conflict_count": len(linear_conflicts),
         **linear_system,
+        **groebner,
         "symbolic_constraint_count": len(symbolic_constraints),
         "zero_coefficient_count": zero_count,
         "hard_contradictions": hard_contradictions[:20],
