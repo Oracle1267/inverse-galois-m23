@@ -10,6 +10,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-overnight-result]]"
   - "[[experiments/m23/reports/gf7-branch-search/consistency-smoke]]"
   - "[[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -79,10 +80,10 @@ The controlled degenerate identity smoke passed with `hard_contradiction_count =
 
 ## Recommended Next Run
 
-Continue from the targeted prefix and let the new scorer reject branches that are already low-degree nonlinear contradictory:
+The targeted Groebner-aware rescore found no clean scored candidates among the kept high-signal frontier. Lower the scoring threshold so consistency checks influence the beam earlier:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner-consistency --checkpoint-prefix gf7-targeted-groebner-consistency --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.md --title "M23 Belyi GF(7) Targeted Groebner Consistency Rescore"
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 18 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner-consistency-min18 --checkpoint-prefix gf7-targeted-groebner-consistency-min18 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-min18-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-min18-summary.md --title "M23 Belyi GF(7) Targeted Groebner Consistency Min18 Rescore"
 ```
 
 If interrupted, rerun the same command with `--resume`.

@@ -17,6 +17,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-consistency-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-linear-consistency-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -127,6 +128,12 @@ Groebner-aware targeted consistency rescore:
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 20 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner-consistency --checkpoint-prefix gf7-targeted-groebner-consistency --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-summary.md --title "M23 Belyi GF(7) Targeted Groebner Consistency Rescore"
 ```
 
+Earlier Groebner-aware targeted consistency rescore:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 18 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner-consistency-min18 --checkpoint-prefix gf7-targeted-groebner-consistency-min18 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-min18-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner-consistency-min18-summary.md --title "M23 Belyi GF(7) Targeted Groebner Consistency Min18 Rescore"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -155,6 +162,7 @@ Groebner-aware targeted consistency rescore:
 - The first targeted consistency rescore found a 22/25 branch with zero hard contradictions, but post-run linear symbolic checking showed that branch also has incompatible forced values for `p3[0]`.
 - The first targeted linear consistency rescore found a 20/25 branch with no single-variable linear conflict, but a post-run rank check showed the full linear subsystem is inconsistent.
 - The first targeted linear-system consistency rescore found a 20/25 branch with no hard, single-variable linear, or linear-system conflict, but a post-run low-degree Groebner check showed the reduced nonlinear subsystem is inconsistent.
+- The first targeted Groebner-aware rescore found no clean scored branch among the kept high-signal frontier; the next search should score consistency earlier.
 
 ## Report Artifacts
 
@@ -176,6 +184,7 @@ Groebner-aware targeted consistency rescore:
 - [[wiki/m23-belyi-gf7-targeted-consistency-result]] records the hard-contradiction rescore and the follow-up linear-symbolic conflict.
 - [[wiki/m23-belyi-gf7-targeted-linear-consistency-result]] records the single-variable linear-conflict rescore and the follow-up full linear-system conflict.
 - [[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]] records the full linear-system rescore and the follow-up low-degree nonlinear Groebner conflict.
+- [[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]] records the Groebner-aware rescore and the contradiction-saturated targeted frontier.
 
 ## Derivative Constraint
 

@@ -61,6 +61,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf7-targeted-consistency-result]] - targeted consistency rescore and linear-symbolic conflict finding.
 - [[wiki/m23-belyi-gf7-targeted-linear-consistency-result]] - targeted linear-conflict rescore and full linear-system inconsistency finding.
 - [[wiki/m23-belyi-gf7-targeted-linear-system-consistency-result]] - targeted linear-system rescore and low-degree nonlinear Groebner inconsistency finding.
+- [[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]] - targeted Groebner-aware rescore showing no clean scored kept candidates.
 
 ## Active Project
 
@@ -151,6 +152,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-consistency-result]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-linear-consistency-result]]
 - [[logs/ingest/2026-05-23-m23-belyi-gf7-targeted-linear-system-consistency-result]]
+- [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-groebner-consistency-result]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 
