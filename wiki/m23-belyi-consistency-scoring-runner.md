@@ -13,6 +13,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-groebner-consistency-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -84,10 +85,10 @@ The controlled degenerate identity smoke passed with `hard_contradiction_count =
 
 ## Recommended Next Run
 
-The targeted linear-solution min18 rescore found an apparent clean branch, but a post-run six-equation Groebner check ruled it out. Rerun the min18 frontier with the upgraded scorer:
+The targeted Groebner6 min18 rescore found no clean scored candidates. Lower the threshold to score consistency earlier in the same targeted region:
 
 ```powershell
-.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 18 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-consistency-min18 --checkpoint-prefix gf7-targeted-groebner6-consistency-min18 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min18-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min18-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Consistency Min18 Rescore"
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 16 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-consistency-min16 --checkpoint-prefix gf7-targeted-groebner6-consistency-min16 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Consistency Min16 Rescore"
 ```
 
 If interrupted, rerun the same command with `--resume`.
