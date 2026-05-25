@@ -23,6 +23,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]]"
   - "[[wiki/m23-belyi-gf7-clean-continuation-result]]"
+  - "[[wiki/m23-belyi-timeout-branch-review-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -164,6 +165,12 @@ $env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 14 --depth 13 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 16 --initial-prefix 3,2,0,5,0,0,0,0,5,1,6,4 --initial-prefix 3,2,0,5,0,0,0,1,0,4,0,0 --initial-prefix 3,2,0,5,0,0,0,1,0,4,6,0 --initial-prefix 3,2,0,5,0,0,0,4,1,2,5,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-clean-continuation --checkpoint-prefix gf7-targeted-groebner6-clean-continuation --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-clean-continuation-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-clean-continuation-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Clean Continuation"
 ```
 
+Groebner timeout branch review:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/review_timeout_branches.py --source-report experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --prime 7 --levels 13 --max-numerator 250000 --max-denominator 250000 --consistency-min-unique 16 --groebner-timeout-seconds 600 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-groebner-timeout-review-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-groebner-timeout-review-summary.md --title "M23 Belyi GF(7) Groebner Timeout Branch Review"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -199,6 +206,7 @@ $env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 - The first targeted Groebner6 min18 rescore found no clean scored candidates in the kept frontier.
 - The first targeted Groebner6 min16 rescore found four clean final branches at 16/25 and three quarantined Groebner timeout candidates.
 - The first clean-frontier continuation extended those four branches by one base-7 digit and dropped the best reconstruction signal to 5/25.
+- The timeout-review runner can recheck quarantined Groebner timeout branches with a longer timeout before changing search strategy.
 
 ## Report Artifacts
 
@@ -226,6 +234,7 @@ $env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]] records the six-equation Groebner rescore with no clean scored kept candidates.
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] records the earlier-threshold six-equation Groebner rescore and clean lower-unique frontier.
 - [[wiki/m23-belyi-gf7-clean-continuation-result]] records the one-digit continuation and weakened reconstruction signal.
+- [[wiki/m23-belyi-timeout-branch-review-runner]] records the focused runner for quarantined Groebner timeout candidates.
 
 ## Derivative Constraint
 
