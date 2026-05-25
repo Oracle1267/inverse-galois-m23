@@ -21,6 +21,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-groebner-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]]"
+  - "[[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -155,6 +156,13 @@ Earlier six-equation Groebner targeted consistency rescore:
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 16 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-consistency-min16 --checkpoint-prefix gf7-targeted-groebner6-consistency-min16 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Consistency Min16 Rescore"
 ```
 
+Clean-frontier continuation:
+
+```powershell
+$env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
+.\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 14 --depth 13 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 16 --initial-prefix 3,2,0,5,0,0,0,0,5,1,6,4 --initial-prefix 3,2,0,5,0,0,0,1,0,4,0,0 --initial-prefix 3,2,0,5,0,0,0,1,0,4,6,0 --initial-prefix 3,2,0,5,0,0,0,4,1,2,5,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-clean-continuation --checkpoint-prefix gf7-targeted-groebner6-clean-continuation --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-clean-continuation-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-clean-continuation-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Clean Continuation"
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -188,6 +196,7 @@ Earlier six-equation Groebner targeted consistency rescore:
 - The first targeted Groebner min18 rescore found an apparent clean 19/25 branch, but a post-run linear-solution residual check showed 39 constant contradictions after solving all six unresolved coefficients.
 - The first targeted linear-solution min18 rescore found an apparent clean 18/25 branch, but a post-run six-equation Groebner check proved inconsistency.
 - The first targeted Groebner6 min18 rescore found no clean scored candidates in the kept frontier.
+- The first targeted Groebner6 min16 rescore found four clean final branches at 16/25 and three quarantined Groebner timeout candidates.
 
 ## Report Artifacts
 
@@ -213,6 +222,7 @@ Earlier six-equation Groebner targeted consistency rescore:
 - [[wiki/m23-belyi-gf7-targeted-groebner-min18-result]] records the earlier-threshold Groebner rescore and the follow-up linear-solution residual conflict.
 - [[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]] records the linear-solution-aware rescore and the follow-up six-equation Groebner conflict.
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]] records the six-equation Groebner rescore with no clean scored kept candidates.
+- [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] records the earlier-threshold six-equation Groebner rescore and clean lower-unique frontier.
 
 ## Derivative Constraint
 

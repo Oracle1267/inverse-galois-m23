@@ -65,6 +65,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf7-targeted-groebner-min18-result]] - earlier Groebner-aware rescore and linear-solution residual inconsistency finding.
 - [[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]] - linear-solution-aware rescore and six-equation Groebner inconsistency finding.
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]] - six-equation Groebner rescore showing no clean scored kept candidates.
+- [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] - earlier six-equation Groebner rescore finding a clean lower-unique frontier.
 
 ## Active Project
 
@@ -160,6 +161,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-linear-solution-min18-result]]
 - [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-groebner6-min18-result]]
 - [[logs/ingest/2026-05-25-m23-groebner-timeout-quarantine]]
+- [[logs/ingest/2026-05-25-m23-belyi-gf7-targeted-groebner6-min16-result]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 
