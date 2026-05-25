@@ -22,6 +22,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]]"
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]]"
+  - "[[wiki/m23-belyi-gf7-clean-continuation-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -197,6 +198,7 @@ $env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 - The first targeted linear-solution min18 rescore found an apparent clean 18/25 branch, but a post-run six-equation Groebner check proved inconsistency.
 - The first targeted Groebner6 min18 rescore found no clean scored candidates in the kept frontier.
 - The first targeted Groebner6 min16 rescore found four clean final branches at 16/25 and three quarantined Groebner timeout candidates.
+- The first clean-frontier continuation extended those four branches by one base-7 digit and dropped the best reconstruction signal to 5/25.
 
 ## Report Artifacts
 
@@ -223,6 +225,7 @@ $env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 - [[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]] records the linear-solution-aware rescore and the follow-up six-equation Groebner conflict.
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]] records the six-equation Groebner rescore with no clean scored kept candidates.
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] records the earlier-threshold six-equation Groebner rescore and clean lower-unique frontier.
+- [[wiki/m23-belyi-gf7-clean-continuation-result]] records the one-digit continuation and weakened reconstruction signal.
 
 ## Derivative Constraint
 
