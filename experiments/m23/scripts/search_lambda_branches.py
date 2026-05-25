@@ -121,6 +121,13 @@ def main() -> int:
                 file=sys.stderr,
                 flush=True,
             )
+        elif event["event"] == "refine-start":
+            print(
+                f"depth {int(event['position']) + 1}: refining {event['done']}/{event['total']} "
+                f"prefix={event['prefix']}",
+                file=sys.stderr,
+                flush=True,
+            )
         elif event["event"] == "depth-finished":
             best = event.get("best")
             if isinstance(best, dict):
@@ -133,6 +140,7 @@ def main() -> int:
                         + f" linear={best.get('linear_conflict_count', 0)}"
                         + f" linear_solution={best.get('linear_solution_conflict_count', 0)}"
                         + f" groebner={best.get('groebner_conflict_count', 0)}"
+                        + f" groebner_timeout={best.get('groebner_timeout_count', 0)}"
                     )
                 )
                 print(

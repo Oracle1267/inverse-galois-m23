@@ -52,6 +52,7 @@ review_after: 2026-06-20
 - [[wiki/m23-belyi-gf7-targeted-groebner-min18-result]]
 - [[wiki/m23-belyi-gf7-targeted-linear-solution-min18-result]]
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min18-result]]
+- [[logs/ingest/2026-05-25-m23-groebner-timeout-quarantine]]
 
 ## Current Working Memory
 

@@ -159,6 +159,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-groebner-min18-result]]
 - [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-linear-solution-min18-result]]
 - [[logs/ingest/2026-05-24-m23-belyi-gf7-targeted-groebner6-min18-result]]
+- [[logs/ingest/2026-05-25-m23-groebner-timeout-quarantine]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 

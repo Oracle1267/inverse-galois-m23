@@ -75,6 +75,8 @@ The scorer now also runs a capped low-degree Groebner check over six equations. 
 
 The scorer now also checks linear-solution residuals. If the linear subsystem uniquely solves every unresolved variable, it substitutes that solution into all symbolic residuals. Remaining nonzero constant residuals are treated as a conflict.
 
+Long six-equation Groebner checks now run in a timeout worker controlled by `M23_GROEBNER_TIMEOUT_SECONDS`, defaulting to 60 seconds. A timeout is not treated as mathematical rejection; it is penalized for beam ranking and recorded as a timed-out candidate for later review with a stronger algebra system or a longer timeout.
+
 ## Verified Smoke
 
 The controlled degenerate identity smoke passed with `hard_contradiction_count = 0`, `linear_solution_conflict_count = 0`, `groebner_conflict_count = 0`, and `symbolic_constraint_count = 0`:
@@ -85,9 +87,10 @@ The controlled degenerate identity smoke passed with `hard_contradiction_count =
 
 ## Recommended Next Run
 
-The targeted Groebner6 min18 rescore found no clean scored candidates. Lower the threshold to score consistency earlier in the same targeted region:
+The targeted Groebner6 min18 rescore found no clean scored candidates. The min16 rerun exposed a pathological Groebner candidate, so the runner now quarantines Groebner timeouts instead of allowing one candidate to block the whole search. Resume the min16 run with the timeout enabled:
 
 ```powershell
+$env:M23_GROEBNER_TIMEOUT_SECONDS = "60"
 .\.venv\Scripts\python experiments/m23/scripts/search_lambda_branches.py --prime 7 --levels 13 --depth 12 --beam-width 35 --max-numerator 250000 --max-denominator 250000 --score-levels 10 --score-max-numerator 50000 --score-max-denominator 50000 --refine-all --score-consistency --consistency-min-unique 16 --initial-prefix 3,2,0,5,0,0,0 --checkpoint-dir experiments/m23/reports/gf7-branch-search/checkpoints-targeted-groebner6-consistency-min16 --checkpoint-prefix gf7-targeted-groebner6-consistency-min16 --progress-every 10 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.md --title "M23 Belyi GF(7) Targeted Groebner6 Consistency Min16 Rescore"
 ```
 

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
+import multiprocessing as mp
+import os
+from queue import Empty
 
 import sympy as sp
 
@@ -194,6 +197,7 @@ def _default_groebner_report() -> dict[str, object]:
         "groebner_symbol_count": 0,
         "groebner_contains_one": False,
         "groebner_conflict_count": 0,
+        "groebner_timeout_count": 0,
         "groebner_basis_preview": [],
         "groebner_equations": [],
     }
@@ -206,6 +210,41 @@ def _record_degree(expr: sp.Expr, symbols: list[sp.Symbol]) -> int:
         return int(sp.Poly(expr, *symbols).total_degree())
     except (sp.PolynomialError, TypeError):
         return 1_000_000
+
+
+def _groebner_worker(expressions: list[sp.Expr], symbols: list[sp.Symbol], queue: mp.Queue) -> None:
+    try:
+        basis = sp.groebner(expressions, *symbols, order="lex")
+        preview = [str(poly.as_expr()) for poly in basis.polys[:8]]
+        contains_one = any(sp.expand(poly.as_expr()) == 1 for poly in basis.polys)
+        queue.put({"basis_preview": preview, "contains_one": contains_one})
+    except BaseException as exc:  # pragma: no cover - subprocess diagnostic path
+        queue.put({"error": str(exc)})
+
+
+def _groebner_timeout_seconds() -> int:
+    raw = os.environ.get("M23_GROEBNER_TIMEOUT_SECONDS", "60")
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        return 60
+
+
+def _compute_groebner_with_timeout(expressions: list[sp.Expr], symbols: list[sp.Symbol]) -> dict[str, object]:
+    context = mp.get_context("spawn")
+    queue: mp.Queue = context.Queue()
+    process = context.Process(target=_groebner_worker, args=(expressions, symbols, queue))
+    process.start()
+    process.join(_groebner_timeout_seconds())
+    if process.is_alive():
+        process.terminate()
+        process.join()
+        return {"timeout": True}
+    try:
+        result = queue.get_nowait()
+    except Empty:
+        return {"error": "groebner worker exited without a result"}
+    return result
 
 
 def _groebner_subset_report(records: list[tuple[str, int, sp.Expr]], max_equations: int) -> dict[str, object]:
@@ -222,14 +261,23 @@ def _groebner_subset_report(records: list[tuple[str, int, sp.Expr]], max_equatio
     )
     chosen = sorted_records[:max_equations]
     expressions = [sp.expand(expr) for _source, _index, expr in chosen]
-    basis = sp.groebner(expressions, *symbols, order="lex")
-    contains_one = any(sp.expand(poly.as_expr()) == 1 for poly in basis.polys)
+    if len(chosen) >= 6:
+        groebner_result = _compute_groebner_with_timeout(expressions, symbols)
+    else:
+        basis = sp.groebner(expressions, *symbols, order="lex")
+        groebner_result = {
+            "basis_preview": [str(poly.as_expr()) for poly in basis.polys[:8]],
+            "contains_one": any(sp.expand(poly.as_expr()) == 1 for poly in basis.polys),
+        }
+    contains_one = bool(groebner_result.get("contains_one", False))
     return {
         "groebner_equation_count": len(chosen),
         "groebner_symbol_count": len(symbols),
         "groebner_contains_one": contains_one,
         "groebner_conflict_count": 1 if contains_one else 0,
-        "groebner_basis_preview": [str(poly.as_expr()) for poly in basis.polys[:8]],
+        "groebner_timeout_count": 1 if groebner_result.get("timeout") is True else 0,
+        "groebner_error": groebner_result.get("error"),
+        "groebner_basis_preview": groebner_result.get("basis_preview", []),
         "groebner_equations": [
             {
                 "source": source,

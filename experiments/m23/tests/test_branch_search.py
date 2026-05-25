@@ -506,6 +506,56 @@ def test_checkpointed_lambda_branch_search_refine_all_refines_every_expanded_bra
     assert result["history"][0]["refined"] == 2
 
 
+def test_checkpointed_lambda_branch_search_records_timeout_candidates(monkeypatch):
+    def fake_evaluate_prefix(
+        seed,
+        *,
+        prime,
+        levels,
+        prefix,
+        max_numerator,
+        max_denominator,
+        score_consistency=False,
+        consistency_min_unique=0,
+    ):
+        is_timeout = prefix == [1]
+        summary = {
+            "prefix": list(prefix),
+            "score": [0, -1 if is_timeout else 0, len(prefix)],
+            "lift_status": "lifted",
+            "final_modulus": levels,
+            "final_lambda": int("".join(str(digit) for digit in prefix) or "0"),
+            "reconstruction_status": "partial",
+            "unique_count": 9 if is_timeout else 8,
+            "total_count": 10,
+            "unresolved_count": 1,
+            "ambiguous_count": 0,
+            "exact_identity": None,
+            "exact_derivative": None,
+            "exact_translation_normalization": None,
+            "groebner_timeout_count": 1 if is_timeout else 0,
+        }
+        return summary, {"prefix": list(prefix)}, {"status": "partial", "unique_count": summary["unique_count"]}
+
+    monkeypatch.setattr(branch_search_module, "_evaluate_prefix", fake_evaluate_prefix)
+
+    result = branch_search_module.search_lambda_branches_checkpointed(
+        degenerate_identity_factors(),
+        prime=2,
+        levels=2,
+        depth=1,
+        beam_width=1,
+        max_numerator=10,
+        max_denominator=10,
+        score_levels=1,
+        score_max_numerator=5,
+        score_max_denominator=5,
+        refine_all=True,
+    )
+
+    assert result["history"][0]["timeout_candidates"][0]["prefix"] == [1]
+
+
 def test_search_lambda_branches_cli_supports_initial_prefix_and_refine_all():
     out_path = local_temp_path("branch-initial-prefix.json")
 
@@ -750,3 +800,40 @@ def test_consistency_score_penalizes_linear_solution_conflicts():
     }
 
     assert _score_candidate(compatible) > _score_candidate(inconsistent)
+
+
+def test_consistency_score_penalizes_groebner_timeouts():
+    compatible = {
+        "status": "partial",
+        "unique_count": 18,
+        "unresolved": ["a", "b", "c", "d", "e", "f", "g"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_system_conflict_count": 0,
+            "linear_conflict_count": 0,
+            "linear_solution_conflict_count": 0,
+            "groebner_conflict_count": 0,
+            "groebner_timeout_count": 0,
+            "symbolic_constraint_count": 8,
+            "unknown_count": 7,
+        },
+    }
+    timed_out = {
+        "status": "partial",
+        "unique_count": 19,
+        "unresolved": ["a", "b", "c", "d", "e", "f"],
+        "ambiguous": [],
+        "partial_consistency": {
+            "hard_contradiction_count": 0,
+            "linear_system_conflict_count": 0,
+            "linear_conflict_count": 0,
+            "linear_solution_conflict_count": 0,
+            "groebner_conflict_count": 0,
+            "groebner_timeout_count": 1,
+            "symbolic_constraint_count": 4,
+            "unknown_count": 6,
+        },
+    }
+
+    assert _score_candidate(compatible) > _score_candidate(timed_out)

@@ -34,6 +34,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             -int(partial_consistency.get("linear_conflict_count", 0)),
             -int(partial_consistency.get("linear_solution_conflict_count", 0)),
             -int(partial_consistency.get("groebner_conflict_count", 0)),
+            -int(partial_consistency.get("groebner_timeout_count", 0)),
             int(reconstruction["unique_count"]),
             -int(partial_consistency["unknown_count"]),
             -int(partial_consistency["symbolic_constraint_count"]),
@@ -45,6 +46,7 @@ def _score_candidate(reconstruction: dict[str, object]) -> tuple[int, ...]:
             complete_score,
             exact_score,
             inexact_penalty,
+            -1_000_000,
             -1_000_000,
             -1_000_000,
             -1_000_000,
@@ -90,6 +92,7 @@ def _candidate_summary(
         "linear_conflict_count": None,
         "linear_solution_conflict_count": None,
         "groebner_conflict_count": None,
+        "groebner_timeout_count": None,
         "symbolic_constraint_count": None,
     }
     partial_consistency = reconstruction.get("partial_consistency")
@@ -99,6 +102,7 @@ def _candidate_summary(
         summary["linear_conflict_count"] = partial_consistency.get("linear_conflict_count", 0)
         summary["linear_solution_conflict_count"] = partial_consistency.get("linear_solution_conflict_count", 0)
         summary["groebner_conflict_count"] = partial_consistency.get("groebner_conflict_count", 0)
+        summary["groebner_timeout_count"] = partial_consistency.get("groebner_timeout_count", 0)
         summary["symbolic_constraint_count"] = partial_consistency["symbolic_constraint_count"]
         summary["unknown_count"] = partial_consistency["unknown_count"]
     return summary
@@ -517,6 +521,16 @@ def search_lambda_branches_checkpointed(
         refined: list[tuple[dict[str, object], dict[str, object], dict[str, object]]] = []
         for index, prefix in enumerate(refine_prefixes, start=1):
             assert isinstance(prefix, list)
+            if progress_callback:
+                progress_callback(
+                    {
+                        "event": "refine-start",
+                        "position": position,
+                        "done": index,
+                        "total": refine_width,
+                        "prefix": prefix,
+                    }
+                )
             refined.append(
                 _evaluate_prefix(
                     seed,
@@ -540,6 +554,11 @@ def search_lambda_branches_checkpointed(
                 )
         _sort_summaries(refined)
         kept = refined[:beam_width]
+        timeout_candidates = [
+            candidate[0]
+            for candidate in refined
+            if int(candidate[0].get("groebner_timeout_count") or 0) > 0
+        ]
         prefixes = [candidate[0]["prefix"] for candidate in kept]  # type: ignore[list-item]
         if kept:
             final_record = kept[0]
@@ -551,6 +570,7 @@ def search_lambda_branches_checkpointed(
             "cheap_scored": len(cheap_records),
             "refined": len(refined),
             "kept": [candidate[0] for candidate in kept],
+            "timeout_candidates": timeout_candidates,
         }
         history.append(step)
         checkpoint_data = {
@@ -653,6 +673,7 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
                 f"- Linear symbolic conflicts: `{best.get('linear_conflict_count', 0)}`",
                 f"- Linear-solution residual conflicts: `{best.get('linear_solution_conflict_count', 0)}`",
                 f"- Groebner low-degree conflicts: `{best.get('groebner_conflict_count', 0)}`",
+                f"- Groebner timeouts: `{best.get('groebner_timeout_count', 0)}`",
                 f"- Symbolic consistency constraints: `{best['symbolic_constraint_count']}`",
             ]
         )
@@ -678,6 +699,7 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
                     + f" linear `{candidate.get('linear_conflict_count', 0)}`"
                     + f" linear-solution `{candidate.get('linear_solution_conflict_count', 0)}`"
                     + f" groebner `{candidate.get('groebner_conflict_count', 0)}`"
+                    + f" groebner-timeout `{candidate.get('groebner_timeout_count', 0)}`"
                 )
             )
             lines.append(
@@ -689,4 +711,16 @@ def render_branch_search_markdown(result: dict[str, object], title: str = "M23 B
                 + consistency
             )
         lines.append("")
+        timeout_candidates = step.get("timeout_candidates", [])
+        if timeout_candidates:
+            lines.extend(["Timed-out Groebner candidates:", ""])
+            for candidate in timeout_candidates:  # type: ignore[assignment]
+                lines.append(
+                    "- "
+                    + f"`{candidate['prefix']}` "
+                    + f"lambda `{candidate['final_lambda']}` "
+                    + f"unique `{candidate['unique_count']} / {candidate['total_count']}` "
+                    + f"status `{candidate['reconstruction_status']}`"
+                )
+            lines.append("")
     return "\n".join(lines).rstrip() + "\n"
