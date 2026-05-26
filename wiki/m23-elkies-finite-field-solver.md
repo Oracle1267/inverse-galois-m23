@@ -24,6 +24,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]]"
   - "[[wiki/m23-belyi-gf7-clean-continuation-result]]"
   - "[[wiki/m23-belyi-timeout-branch-review-runner]]"
+  - "[[wiki/m23-belyi-gf7-timeout-review-result]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -207,6 +208,7 @@ Groebner timeout branch review:
 - The first targeted Groebner6 min16 rescore found four clean final branches at 16/25 and three quarantined Groebner timeout candidates.
 - The first clean-frontier continuation extended those four branches by one base-7 digit and dropped the best reconstruction signal to 5/25.
 - The timeout-review runner can recheck quarantined Groebner timeout branches with a longer timeout before changing search strategy.
+- The first long-timeout review checked all three quarantined branches with a 600-second cap; all three remained timed out with no detected contradiction.
 
 ## Report Artifacts
 
@@ -235,6 +237,7 @@ Groebner timeout branch review:
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] records the earlier-threshold six-equation Groebner rescore and clean lower-unique frontier.
 - [[wiki/m23-belyi-gf7-clean-continuation-result]] records the one-digit continuation and weakened reconstruction signal.
 - [[wiki/m23-belyi-timeout-branch-review-runner]] records the focused runner for quarantined Groebner timeout candidates.
+- [[wiki/m23-belyi-gf7-timeout-review-result]] records the long-timeout review result.
 
 ## Derivative Constraint
 

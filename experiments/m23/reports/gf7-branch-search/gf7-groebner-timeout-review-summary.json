@@ -1,0 +1,101 @@
+{
+  "classification_counts": {
+    "reject": 0,
+    "survivor": 0,
+    "timeout": 3
+  },
+  "consistency_min_unique": 16,
+  "groebner_timeout_seconds": 600,
+  "levels": 13,
+  "max_denominator": 250000,
+  "max_numerator": 250000,
+  "prime": 7,
+  "reviewed_count": 3,
+  "reviews": [
+    {
+      "classification": "timeout",
+      "final_lambda": 2058046087,
+      "groebner_conflict_count": 0,
+      "groebner_timeout_count": 1,
+      "hard_contradiction_count": 0,
+      "linear_conflict_count": 0,
+      "linear_solution_conflict_count": 0,
+      "linear_system_conflict_count": 0,
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "reconstruction_status": "partial",
+      "symbolic_constraint_count": 46,
+      "total_count": 25,
+      "unique_count": 16
+    },
+    {
+      "classification": "timeout",
+      "final_lambda": 38197583556,
+      "groebner_conflict_count": 0,
+      "groebner_timeout_count": 1,
+      "hard_contradiction_count": 0,
+      "linear_conflict_count": 0,
+      "linear_solution_conflict_count": 0,
+      "linear_system_conflict_count": 0,
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        4,
+        1,
+        2,
+        5,
+        2
+      ],
+      "reconstruction_status": "partial",
+      "symbolic_constraint_count": 46,
+      "total_count": 25,
+      "unique_count": 16
+    },
+    {
+      "classification": "timeout",
+      "final_lambda": 2058046087,
+      "groebner_conflict_count": 0,
+      "groebner_timeout_count": 1,
+      "hard_contradiction_count": 0,
+      "linear_conflict_count": 0,
+      "linear_solution_conflict_count": 0,
+      "linear_system_conflict_count": 0,
+      "prefix": [
+        3,
+        2,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        0
+      ],
+      "reconstruction_status": "partial",
+      "symbolic_constraint_count": 46,
+      "total_count": 25,
+      "unique_count": 16
+    }
+  ],
+  "source_report": "experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json",
+  "source_timeout_prefix_count": 3
+}

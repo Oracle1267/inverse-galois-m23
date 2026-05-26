@@ -68,6 +68,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[wiki/m23-belyi-gf7-targeted-groebner6-min16-result]] - earlier six-equation Groebner rescore finding a clean lower-unique frontier.
 - [[wiki/m23-belyi-gf7-clean-continuation-result]] - one-digit continuation showing the clean lower-unique frontier did not persist.
 - [[wiki/m23-belyi-timeout-branch-review-runner]] - focused runner for rechecking quarantined Groebner timeout branches.
+- [[wiki/m23-belyi-gf7-timeout-review-result]] - long-timeout review showing all three quarantined branches remain undecided.
 
 ## Active Project
 
@@ -166,6 +167,7 @@ This vault is set up as a full v2 LLM wiki: raw sources, synthesized pages, type
 - [[logs/ingest/2026-05-25-m23-belyi-gf7-targeted-groebner6-min16-result]]
 - [[logs/ingest/2026-05-25-m23-belyi-gf7-clean-continuation-result]]
 - [[logs/ingest/2026-05-25-m23-belyi-timeout-branch-review-runner]]
+- [[logs/ingest/2026-05-25-m23-belyi-gf7-timeout-review-result]]
 - [[logs/query/README]]
 - [[logs/lint/README]]
 
