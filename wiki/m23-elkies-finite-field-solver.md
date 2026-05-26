@@ -25,6 +25,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-clean-continuation-result]]"
   - "[[wiki/m23-belyi-timeout-branch-review-runner]]"
   - "[[wiki/m23-belyi-gf7-timeout-review-result]]"
+  - "[[wiki/m23-belyi-external-groebner-export-runner]]"
 entities:
   - "[[entities/projects/m23-proof-factory]]"
   - "[[entities/concepts/belyi-map]]"
@@ -172,6 +173,12 @@ Groebner timeout branch review:
 .\.venv\Scripts\python experiments/m23/scripts/review_timeout_branches.py --source-report experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --prime 7 --levels 13 --max-numerator 250000 --max-denominator 250000 --consistency-min-unique 16 --groebner-timeout-seconds 600 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --out experiments/m23/reports/gf7-branch-search/gf7-groebner-timeout-review-summary.json --markdown-out experiments/m23/reports/gf7-branch-search/gf7-groebner-timeout-review-summary.md --title "M23 Belyi GF(7) Groebner Timeout Branch Review"
 ```
 
+External Groebner script export:
+
+```powershell
+.\.venv\Scripts\python experiments/m23/scripts/export_timeout_groebner_scripts.py --source-report experiments/m23/reports/gf7-branch-search/gf7-targeted-groebner6-consistency-min16-summary.json --prime 7 --levels 13 --max-numerator 250000 --max-denominator 250000 --consistency-min-unique 16 --groebner-timeout-seconds 1 --seed-json experiments/m23/reports/gf7-exhaustive/gf7-normalized-summary.json --script-dir experiments/m23/reports/gf7-branch-search/external-groebner-timeouts --out experiments/m23/reports/gf7-branch-search/gf7-timeout-external-export-summary.json
+```
+
 ## Current Behavior
 
 - The degenerate sanity check finds the expected identity with all factors equal to powers of `x` and `lambda = 0`.
@@ -209,6 +216,7 @@ Groebner timeout branch review:
 - The first clean-frontier continuation extended those four branches by one base-7 digit and dropped the best reconstruction signal to 5/25.
 - The timeout-review runner can recheck quarantined Groebner timeout branches with a longer timeout before changing search strategy.
 - The first long-timeout review checked all three quarantined branches with a 600-second cap; all three remained timed out with no detected contradiction.
+- The external Groebner export runner can write Sage and Singular scripts for the timeout branches.
 
 ## Report Artifacts
 
@@ -238,6 +246,7 @@ Groebner timeout branch review:
 - [[wiki/m23-belyi-gf7-clean-continuation-result]] records the one-digit continuation and weakened reconstruction signal.
 - [[wiki/m23-belyi-timeout-branch-review-runner]] records the focused runner for quarantined Groebner timeout candidates.
 - [[wiki/m23-belyi-gf7-timeout-review-result]] records the long-timeout review result.
+- [[wiki/m23-belyi-external-groebner-export-runner]] records the Sage/Singular export runner for timeout branches.
 
 ## Derivative Constraint
 

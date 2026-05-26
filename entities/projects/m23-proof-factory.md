@@ -19,6 +19,7 @@ sources:
   - "[[wiki/m23-belyi-gf7-clean-continuation-result]]"
   - "[[wiki/m23-belyi-timeout-branch-review-runner]]"
   - "[[wiki/m23-belyi-gf7-timeout-review-result]]"
+  - "[[wiki/m23-belyi-external-groebner-export-runner]]"
 aliases:
   - M23 inverse Galois proof factory
   - M23 search loop
@@ -65,4 +66,4 @@ The M23 proof factory is a vault-backed research project for generating, testing
 
 The first implementation now has a local verification harness, known-boundary tables, and a resumable trinomial batch loop. The current loop is process infrastructure, not evidence that trinomials are a promising M23 family.
 
-The Belyi-map line now includes finite-field search, prime-power lifting, rational reconstruction, branch search, consistency scoring, and focused timeout review. The current strongest-looking `GF(7)` branches have been ruled out by progressively stronger exact-equation checks. The targeted min18 frontier has no clean scored branches under the six-equation Groebner scorer. The min16 rescore found a clean lower-unique frontier, but its one-digit continuation dropped the best reconstruction signal to 5/25. The three quarantined timeout branches remained undecided under a 600-second Groebner cap.
+The Belyi-map line now includes finite-field search, prime-power lifting, rational reconstruction, branch search, consistency scoring, focused timeout review, and external Groebner export. The current strongest-looking `GF(7)` branches have been ruled out by progressively stronger exact-equation checks. The targeted min18 frontier has no clean scored branches under the six-equation Groebner scorer. The min16 rescore found a clean lower-unique frontier, but its one-digit continuation dropped the best reconstruction signal to 5/25. The three quarantined timeout branches remained undecided under a 600-second Groebner cap.
