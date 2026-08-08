@@ -10,6 +10,12 @@ The short version: the project was built to organize and automate a proof-factor
 - timeout review and external Groebner escalation,
 - and a vault of durable notes, logs, and synthesized results.
 
+## Why M23 Matters
+
+`M23` is one of the sporadic Mathieu groups, a small set of exceptional finite simple groups that do not belong to the usual infinite families. That makes it mathematically interesting on its own.
+
+Explicitly realizing `M23` as a Galois group over `Q` is hard because you are not just asking for an abstract group to exist in theory. You are asking for a concrete polynomial with exactly that symmetry, and then checking that the polynomial really has the right arithmetic and local behavior. The search space is large, the candidates are subtle, and many promising-looking branches fail only after fairly deep verification.
+
 ## What lives here
 
 - `experiments/m23/` holds the runnable Python tooling, scripts, tests, and experiment reports.
@@ -29,6 +35,30 @@ The project is not just a one-off computation. It is a repeatable workflow for:
 
 That makes it useful both as an experiment log and as an engineering system for continuing the search later without losing context.
 
+## Results So Far
+
+The project has tested several connected search spaces and verification layers:
+
+- a resumable trinomial batch search over degree-23 candidates,
+- finite-field `GF(5)` and `GF(7)` Belyi-style searches,
+- branch search and consistency scoring on the best `GF(7)` survivors,
+- focused timeout review for Groebner-heavy branches,
+- and external Sage/Singular Groebner checks on the quarantined timeout branches.
+
+What has been eliminated:
+
+- many candidate polynomials in the raw trinomial search,
+- a number of low-scoring branch-search frontiers,
+- and the idea that the three quarantined timeout branches were immediate contradictions under the exported six-equation Groebner screen.
+
+What remains:
+
+- no certified `M23` realization yet,
+- no complete proof that the surviving `GF(7)` continuation path succeeds,
+- and no resolution of the remaining partial-lift / continuation question.
+
+The current live `GF(7)` continuation run is still a search, not a proof. It has produced partial survivors and checkpoints, but not a final exact-complete certificate.
+
 ## Current shape
 
 The M23 work currently includes:
@@ -40,6 +70,12 @@ The M23 work currently includes:
 - and a continuous continuation runner for the `GF(7)` branch search.
 
 The repository also keeps the surrounding vault structure used to track confidence, provenance, and supersession of results.
+
+## My Role and Use of AI
+
+I directed the research workflow, defined the verification architecture, evaluated the outputs, and used AI assistance to implement and maintain the tooling around the search.
+
+That means the project reflects a human-led mathematical investigation with AI-assisted engineering support. It does not claim that I personally originated all of the underlying mathematics, but it does document how the workflow was designed, executed, and checked.
 
 ## Getting started
 
