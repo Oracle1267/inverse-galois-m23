@@ -1,5 +1,5 @@
-# Riemann
-
+# Inverse Galois Search for M23
+	​
 This repository is a Markdown-first research vault and codebase for the M23 inverse Galois project.
 
 The short version: the project was built to organize and automate a proof-factory workflow for searching for a degree-23 polynomial over `Z[x]` whose Galois group is `M23`. It combines:
